@@ -1,0 +1,33 @@
+name: Deploy Static Site to Shin Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Sync files via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          
+          # 【重要】あなたの手元の「index.htmlがある場所」を指定します
+          # 通常はルート（一番上）にあるはずなので './' でOKです
+          local-dir: ./
+          
+          # 【重要】シンサーバーの公開フォルダを指定します
+          # 例: public_html/ やドメイン名のフォルダなど
+          server-dir: ./shambalalife.net/public_html/profile/
+          
+          # 【ここがポイント】
+          # これをtrueにすると、サーバーにあってGitにない古いファイルを「自動削除」します
+          # つまり「手元の状態」と「サーバーの状態」を完全に一致させます
+          clean: true
