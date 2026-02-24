@@ -941,3 +941,76 @@ footer {
         height: 180px;
     }
 }
+
+/* =====================================================
+   AI Consultant — Top Page Additions
+   ===================================================== */
+
+.nav-highlight {
+    color: var(--accent-color) !important;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+.hero-rich-link {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 2px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #00d4ff, #8a2be2, #ff6b6b);
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+}
+
+.hero-rich-link-content {
+    background: rgba(10, 10, 10, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 18px;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.3s;
+}
+
+.hero-rich-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(138, 43, 226, 0.4);
+}
+
+.hero-rich-link:hover .hero-rich-link-content {
+    background: rgba(10, 10, 10, 0.7);
+}
+
+.hero-rich-link-badge {
+    background: rgba(0, 212, 255, 0.2);
+    color: var(--accent-color);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.hero-rich-link-text {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    font-family: var(--font-jp);
+}
+
+.hero-rich-link-arrow {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 5px;
+    transition: transform 0.3s;
+}
+
+.hero-rich-link:hover .hero-rich-link-arrow {
+    transform: translateX(10px);
+}
