@@ -14,121 +14,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="consulting/case-study.css">
     <style>
-        /* AI Services Page Specific Styles */
-        .ai-service-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 3rem;
-            margin-bottom: 2.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .ai-service-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .ai-service-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .ai-service-number {
-            background: linear-gradient(135deg, #d4af37, #f0d060);
-            color: #0a0a0a;
-            font-size: 1.2rem;
-            font-weight: 800;
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .ai-service-header h2 {
-            font-size: 1.6rem;
-            margin: 0;
-            background: linear-gradient(135deg, #ffffff, #d4af37);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .ai-service-desc {
-            color: rgba(255, 255, 255, 0.75);
-            line-height: 1.9;
-            font-size: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .ai-service-screenshot {
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s ease;
-        }
-
-        .ai-service-screenshot:hover {
-            transform: scale(1.02);
-        }
-
-        .ai-service-screenshot img {
-            width: 100%;
-            display: block;
-        }
-
-        .ai-service-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .ai-service-feature {
-            background: rgba(212, 175, 55, 0.06);
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            border-radius: 12px;
-            padding: 1.2rem 1.5rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.8rem;
-        }
-
-        .ai-service-feature-icon {
-            font-size: 1.4rem;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .ai-service-feature-text {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .ai-service-feature-text strong {
-            color: #d4af37;
-        }
-
-        .ai-service-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-
-        .ai-service-links .btn {
-            padding: 0.9rem 2rem;
-            font-size: 1rem;
-        }
-
+        /* AI Services Listing Page Styles */
         .ai-service-page-hero {
             text-align: center;
             padding: 8rem 0 3rem;
@@ -162,37 +48,148 @@
             letter-spacing: 0.5px;
         }
 
-        .ai-service-tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
+        /* Card Grid */
+        .ai-cards-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
         }
 
-        .ai-service-tech-tags span {
+        .ai-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .ai-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ai-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .ai-card-thumb {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .ai-card-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .ai-card:hover .ai-card-thumb img {
+            transform: scale(1.05);
+        }
+
+        .ai-card-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 0.25rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            z-index: 2;
+        }
+
+        .ai-card-number {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: #0a0a0a;
+            z-index: 2;
+        }
+
+        .ai-card-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ai-card-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            background: linear-gradient(135deg, #ffffff, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.5;
+        }
+
+        .ai-card-desc {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+            flex: 1;
+        }
+
+        .ai-card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .ai-card-tags span {
             background: rgba(255, 255, 255, 0.06);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
-            padding: 0.3rem 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            padding: 0.2rem 0.7rem;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
+        }
+
+        .ai-card-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #d4af37;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: gap 0.3s ease;
+        }
+
+        .ai-card:hover .ai-card-cta {
+            gap: 0.8rem;
         }
 
         @media (max-width: 768px) {
-            .ai-service-card {
-                padding: 2rem 1.5rem;
-            }
-
-            .ai-service-header h2 {
-                font-size: 1.3rem;
+            .ai-cards-grid {
+                grid-template-columns: 1fr;
             }
 
             .ai-service-page-hero h1 {
                 font-size: 1.8rem;
-            }
-
-            .ai-service-features {
-                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -221,501 +218,87 @@
         <section class="ai-service-page-hero">
             <span class="ai-service-badge">🚀 AI活用サービス例</span>
             <h1 class="fade-in-up">AIサービス案</h1>
-            <p class="fade-in-up delay-1">AI技術を活用した革新的なサービスをご提案しています。<br>以下はその具体例です。</p>
+            <p class="fade-in-up delay-1">AI技術を活用した革新的なサービスをご提案しています。<br>各カードをクリックして詳細をご覧ください。</p>
         </section>
 
-        <!-- ===== NEW: バイブコーディング レシピ共有サイト ===== -->
-        <section class="ai-service-card fade-in-up"
-            style="border: 1px solid rgba(212, 175, 55, 0.3); background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(255, 255, 255, 0.03));">
-            <div
-                style="display: inline-block; background: linear-gradient(135deg, #ff6b35, #ff9f1c); color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.5px;">
-                🔥 NEW 事業プラン</div>
-            <div class="ai-service-header">
-                <div class="ai-service-number" style="background: linear-gradient(135deg, #ff6b35, #ff9f1c);">00</div>
-                <h2>バイブコーディングによるホームページ制作のための<br>プロンプトと成果物のレシピ共有サイト</h2>
-            </div>
+        <!-- ===== Card Grid ===== -->
+        <div class="ai-cards-grid">
 
-            <div class="ai-service-tech-tags">
-                <span>AIコーディング</span>
-                <span>プラットフォーム</span>
-                <span>UGC</span>
-                <span>フリーミアム</span>
-                <span>B2Bマッチング</span>
-            </div>
-
-            <p class="ai-service-desc">
-                AntiGravityやClaude CodeなどのAIツールを使った<strong
-                    style="color: #d4af37;">「プロンプトと成果物のレシピ共有サイト」</strong>です。<br><br>
-                <strong
-                    style="color: #d4af37;">「どのIDEに」「どんなコンテキスト（データ）を読み込ませ」「どうプロンプトを打ったら」「どんなWebサイト（成果物）が完成したか」</strong>。<br>
-                この一連の流れを誰もが投稿・共有できるプラットフォームを作ります。<br>
-                AI開発の<strong style="color: #d4af37;">「一次情報」</strong>が集まるプラットフォームを目指します。
-            </p>
-
-            <!-- Screenshot -->
-            <div class="ai-service-screenshot">
-                <img src="assets/images/recipe-platform/recipe_platform.jpg" alt="AIコーディング レシピ共有プラットフォーム 概要図"
-                    loading="lazy">
-            </div>
-
-            <!-- Geminiとの検討 -->
-            <div style="margin-top: 2.5rem; margin-bottom: 2rem;">
-                <h3
-                    style="color: #d4af37; font-size: 1.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                    👇 AI（Gemini）と壁打ちした客観的評価とビジネスプラン</h3>
-
-                <!-- 1. 事業の妥当性 -->
-                <div
-                    style="background: rgba(255,255,255,0.04); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; border-left: 4px solid #d4af37;">
-                    <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 0.8rem;">1. 事業の妥当性（なぜ今やるべきか）</h4>
-                    <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.95rem;">
-                        ソフトウェア開発のボトルネックが「プログラミング言語の習得」から<strong
-                            style="color: #d4af37;">「適切なコンテキスト設計とプロンプト技術」</strong>へと完全に移行している現在、現場で実際に動いたAIコーディングの「一次情報（生きたレシピ）」は最も価値が高い。<br>
-                        <strong style="color: #d4af37;">非常にタイムリーで、スケールする可能性を秘めた秀逸な事業モデル。</strong>
-                    </p>
-                </div>
-
-                <!-- 2. ターゲット戦略 -->
-                <div
-                    style="background: rgba(255,255,255,0.04); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; border-left: 4px solid #4ecdc4;">
-                    <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 0.8rem;">2. ターゲット戦略</h4>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
-                        <div
-                            style="background: rgba(78,205,196,0.08); border-radius: 12px; padding: 1.2rem; border: 1px solid rgba(78,205,196,0.2);">
-                            <strong style="color: #4ecdc4; font-size: 0.9rem;">🎯 初期ターゲット（供給側）</strong>
-                            <p
-                                style="color: rgba(255,255,255,0.75); line-height: 1.7; font-size: 0.9rem; margin-top: 0.5rem;">
-                                AIを駆使して高速で個人開発を行うアーリーアダプター。「自分の知見を資産化・自己PRしたい」層を熱狂させ、良質なUGCを蓄積。</p>
+            <!-- Card 00: バイブコーディング レシピ共有 -->
+            <a href="ai-services/vibe-coding-recipe.html" class="ai-card-link fade-in-up">
+                <div class="ai-card">
+                    <div class="ai-card-thumb">
+                        <img src="assets/images/recipe-platform/recipe_platform.jpg" alt="AIコーディング レシピ共有プラットフォーム"
+                            loading="lazy">
+                        <div class="ai-card-badge"
+                            style="background: linear-gradient(135deg, #ff6b35, #ff9f1c); color: #fff;">🔥 NEW 事業プラン
                         </div>
-                        <div
-                            style="background: rgba(78,205,196,0.08); border-radius: 12px; padding: 1.2rem; border: 1px solid rgba(78,205,196,0.2);">
-                            <strong style="color: #4ecdc4; font-size: 0.9rem;">📈 拡大期のターゲット（需要側）</strong>
-                            <p
-                                style="color: rgba(255,255,255,0.75); line-height: 1.7; font-size: 0.9rem; margin-top: 0.5rem;">
-                                アイデアはあるがコードが書けない起業家、ディレクター、開発コストを下げたいWeb制作会社、最新手法を学びたい若手エンジニア。</p>
+                        <div class="ai-card-number" style="background: linear-gradient(135deg, #ff6b35, #ff9f1c);">00
                         </div>
                     </div>
+                    <div class="ai-card-body">
+                        <h3 class="ai-card-title">バイブコーディング レシピ共有サイト</h3>
+                        <p class="ai-card-desc">AIコーディングの「プロンプトと成果物のレシピ」を誰もが投稿・共有できるプラットフォーム。AI開発の一次情報が集まる場を創出。</p>
+                        <div class="ai-card-tags">
+                            <span>AIコーディング</span>
+                            <span>プラットフォーム</span>
+                            <span>UGC</span>
+                            <span>フリーミアム</span>
+                        </div>
+                        <div class="ai-card-cta">詳細を見る →</div>
+                    </div>
                 </div>
+            </a>
 
-                <!-- 3. ビジネスプラン -->
-                <div
-                    style="background: rgba(255,255,255,0.04); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; border-left: 4px solid #ff6b6b;">
-                    <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 0.8rem;">3. ビジネスプラン（マネタイズの柱）</h4>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
-                        <div
-                            style="background: rgba(255,107,107,0.08); border-radius: 12px; padding: 1.2rem; border: 1px solid rgba(255,107,107,0.2);">
-                            <strong style="color: #ff6b6b;">💎 フリーミアムモデル</strong>
-                            <p
-                                style="color: rgba(255,255,255,0.75); line-height: 1.7; font-size: 0.9rem; margin-top: 0.5rem;">
-                                基本レシピは無料公開でトラフィック獲得。複雑なアーキテクチャや高度なプロンプトチェーン（認証付きSaaS構築レシピ等）を有料化。</p>
+            <!-- Card 01: AI外壁カラーシミュレーション -->
+            <a href="ai-services/gaiheki-simulator.html" class="ai-card-link fade-in-up delay-1">
+                <div class="ai-card">
+                    <div class="ai-card-thumb">
+                        <img src="assets/images/gaiheki/gaiheki_simulator.png" alt="AI外壁カラーシミュレーション" loading="lazy">
+                        <div class="ai-card-badge"
+                            style="background: linear-gradient(135deg, #d4af37, #f0d060); color: #0a0a0a;">🚀 サービス案
                         </div>
-                        <div
-                            style="background: rgba(255,107,107,0.08); border-radius: 12px; padding: 1.2rem; border: 1px solid rgba(255,107,107,0.2);">
-                            <strong style="color: #ff6b6b;">🤝 B2Bリードジェネレーション</strong>
-                            <p
-                                style="color: rgba(255,255,255,0.75); line-height: 1.7; font-size: 0.9rem; margin-top: 0.5rem;">
-                                優秀なバイブコーダーと開発を依頼したい企業をマッチング。紹介料・成約手数料を獲得。</p>
-                        </div>
-                        <div
-                            style="background: rgba(255,107,107,0.08); border-radius: 12px; padding: 1.2rem; border: 1px solid rgba(255,107,107,0.2);">
-                            <strong style="color: #ff6b6b;">📢 ツールベンダー広告・協賛</strong>
-                            <p
-                                style="color: rgba(255,255,255,0.75); line-height: 1.7; font-size: 0.9rem; margin-top: 0.5rem;">
-                                利用されたAIツールやインフラ（Vercel、Cloudflare等）への動線を設け、アフィリエイト報酬やスポンサーシップを獲得。</p>
+                        <div class="ai-card-number" style="background: linear-gradient(135deg, #d4af37, #f0d060);">01
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- 市場リサーチ -->
-            <div style="margin-top: 2rem; margin-bottom: 2rem;">
-                <h3 style="color: #d4af37; font-size: 1.2rem; margin-bottom: 1.5rem;">📊 市場リサーチ（Manus調査）</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
-                    <div
-                        style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
-                        <strong style="color: #d4af37;">📊 市場の現状と規模</strong>
-                        <ul
-                            style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.9rem; padding-left: 1.2rem; margin-top: 0.5rem;">
-                            <li>世界のAIコードアシスタント市場は2025年に約<strong style="color:#fff;">39億ドル</strong>、2034年には約<strong
-                                    style="color:#fff;">991億ドル</strong>に成長予測</li>
-                            <li>日本のAIシステム市場も急成長中、2024年に<strong style="color:#fff;">1.3兆円</strong>を突破</li>
-                        </ul>
-                    </div>
-                    <div
-                        style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
-                        <strong style="color: #d4af37;">📈 主要トレンド</strong>
-                        <ul
-                            style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.9rem; padding-left: 1.2rem; margin-top: 0.5rem;">
-                            <li>AIエージェント元年！コード補完から「自律エージェント」へシフト</li>
-                            <li>プロンプトだけでなく<strong style="color:#fff;">「コンテキスト」と「レシピ」</strong>の重要性が急増</li>
-                        </ul>
-                    </div>
-                    <div
-                        style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
-                        <strong style="color: #d4af37;">🎯 ターゲット顧客</strong>
-                        <ul
-                            style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.9rem; padding-left: 1.2rem; margin-top: 0.5rem;">
-                            <li>AI高速開発者、非エンジニア起業家、企業開発チーム</li>
-                            <li>課題は「どのツールをどう使うか不明」「プロンプトだけでは再現できない」</li>
-                        </ul>
-                    </div>
-                    <div
-                        style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
-                        <strong style="color: #d4af37;">✨ 機会とリスク</strong>
-                        <ul
-                            style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.9rem; padding-left: 1.2rem; margin-top: 0.5rem;">
-                            <li>プロンプトエンジニアリング市場は<strong style="color:#fff;">30%以上</strong>の成長見込み</li>
-                            <li>リスクは既存ツールの共有機能強化やGitHubの類似機能標準化</li>
-                        </ul>
+                    <div class="ai-card-body">
+                        <h3 class="ai-card-title">AI外壁カラーシミュレーション</h3>
+                        <p class="ai-card-desc">写真1枚からAIが12種類の美しいカラーパターンで塗り替え後のイメージを一括生成。外壁塗装業者様の受注率向上に貢献。</p>
+                        <div class="ai-card-tags">
+                            <span>AI画像生成</span>
+                        </div>
+                        <div class="ai-card-cta">詳細を見る →</div>
                     </div>
                 </div>
-            </div>
+            </a>
 
-            <!-- 競合リサーチ -->
-            <div style="margin-top: 2rem; margin-bottom: 2rem;">
-                <h3 style="color: #d4af37; font-size: 1.2rem; margin-bottom: 1.5rem;">⚔️ 競合リサーチ（Manus調査）</h3>
-                <div style="overflow-x: auto;">
-                    <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
-                        <thead>
-                            <tr style="border-bottom: 2px solid rgba(212,175,55,0.3);">
-                                <th style="padding: 1rem 0.8rem; text-align: left; color: #d4af37;">競合</th>
-                                <th style="padding: 1rem 0.8rem; text-align: left; color: #d4af37;">特徴</th>
-                                <th style="padding: 1rem 0.8rem; text-align: left; color: #d4af37;">弱点</th>
-                            </tr>
-                        </thead>
-                        <tbody style="color: rgba(255,255,255,0.75);">
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
-                                <td style="padding: 0.8rem;"><strong style="color:#fff;">Lovai</strong></td>
-                                <td style="padding: 0.8rem;">AIプロセスを構造化共有するSNS。ブロック単位有料化</td>
-                                <td style="padding: 0.8rem;">コーディング特化度が低い</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
-                                <td style="padding: 0.8rem;"><strong style="color:#fff;">PromptBase</strong></td>
-                                <td style="padding: 0.8rem;">プロンプト特化の最大級マーケットプレイス</td>
-                                <td style="padding: 0.8rem;">プロンプト単体販売が主</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
-                                <td style="padding: 0.8rem;"><strong style="color:#fff;">Zenn / Qiita</strong></td>
-                                <td style="padding: 0.8rem;">エンジニア向け技術ブログ。既存コミュニティが強い</td>
-                                <td style="padding: 0.8rem;">構造化データとしては不向き</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 0.8rem;"><strong style="color:#fff;">GitHub Cookbooks</strong></td>
-                                <td style="padding: 0.8rem;">公式ガイド集。高品質</td>
-                                <td style="padding: 0.8rem;">ユーザー投稿型ではない</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div
-                    style="background: rgba(212,175,55,0.08); border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem; border: 1px solid rgba(212,175,55,0.2);">
-                    <strong style="color: #d4af37;">💡 差別化戦略</strong>
-                    <ul
-                        style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 0.95rem; padding-left: 1.2rem; margin-top: 0.5rem;">
-                        <li>「<strong style="color:#d4af37;">IDE × コンテキスト × プロンプト × 成果物</strong>」をパッケージ化</li>
-                        <li>成果物のプレビュー連携で<strong style="color:#d4af37;">「買えば作れる」</strong>確信を提供</li>
-                    </ul>
-                </div>
-
-                <div
-                    style="background: rgba(78,205,196,0.08); border-radius: 12px; padding: 1.5rem; margin-top: 1rem; border: 1px solid rgba(78,205,196,0.2);">
-                    <strong style="color: #4ecdc4;">🚀 結論・ネクストステップ</strong>
-                    <p style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 0.95rem; margin-top: 0.5rem;">
-                        AIエージェント普及で「コンテキスト設計」が核心に。<strong style="color:#fff;">次世代GitHubのポテンシャル大</strong>。<br>
-                        MVP開発、初期コミュニティ形成、エコシステム連携が鍵。
-                    </p>
-                </div>
-            </div>
-
-            <div class="ai-service-links">
-                <a href="index.html#contact" class="btn btn-highlight btn-large">👉 お問い合わせ・ご相談はこちら</a>
-            </div>
-        </section>
-
-        <!-- ===== Service 1: AI外壁塗装シミュレーター ===== -->
-        <section class="ai-service-card fade-in-up">
-            <div class="ai-service-header">
-                <div class="ai-service-number">01</div>
-                <h2>AI外壁カラーシミュレーション</h2>
-            </div>
-
-            <div class="ai-service-tech-tags">
-                <span>AI画像生成</span>
-            </div>
-
-            <p class="ai-service-desc">
-                <strong style="color: #d4af37;">外壁塗装業者様向けの提案</strong>です。<br><br>
-                お客様がスマートフォンで撮影した自宅の外観写真を1枚お送りいただくだけで、AIが<strong
-                    style="color: #d4af37;">12種類の美しいカラーパターン</strong>で塗り替え後のイメージを一括生成します。<br><br>
-                現在はお申し込みをいただいた後、手動でAI画像を生成してお届けする形ですが、ニーズがあれば<strong
-                    style="color: #d4af37;">お客様自身が写真をアップロードするだけで自動シミュレーションできるWebサービス</strong>として開発・提供することも可能です。<br><br>
-                外壁塗装の営業ツールとして、「施工前に完成イメージを共有できる」ことで受注率向上に貢献します。
-            </p>
-
-            <!-- Screenshot -->
-            <div class="ai-service-screenshot">
-                <img src="assets/images/gaiheki/gaiheki_simulator.png" alt="AI外壁カラーシミュレーション イメージ" loading="lazy">
-            </div>
-
-            <!-- Features -->
-            <div class="ai-service-features">
-                <div class="ai-service-feature">
-                    <span class="ai-service-feature-icon">📸</span>
-                    <div class="ai-service-feature-text"><strong>写真1枚でOK</strong><br>お客様のスマホ写真からAIがカラーシミュレーションを作成</div>
-                </div>
-                <div class="ai-service-feature">
-                    <span class="ai-service-feature-icon">🎨</span>
-                    <div class="ai-service-feature-text"><strong>12通りのカラー一括生成</strong><br>AIが多彩なカラーバリエーションをまとめて提案</div>
-                </div>
-                <div class="ai-service-feature">
-                    <span class="ai-service-feature-icon">📈</span>
-                    <div class="ai-service-feature-text"><strong>受注率アップに貢献</strong><br>施工前に完成イメージを共有し、お客様の決断を後押し</div>
-                </div>
-                <div class="ai-service-feature">
-                    <span class="ai-service-feature-icon">🔧</span>
-                    <div class="ai-service-feature-text">
-                        <strong>自動化シミュレーターも開発可能</strong><br>ニーズに応じてWeb上で自動シミュレーションできるシステムの構築も
+            <!-- Card 02: Global Skill Tourism -->
+            <a href="ai-services/global-skill-tourism.html" class="ai-card-link fade-in-up delay-2">
+                <div class="ai-card" style="border-color: rgba(46, 204, 113, 0.2);">
+                    <div class="ai-card-thumb">
+                        <img src="assets/images/ai-service-an/Global Skill Tourism.png" alt="Global Skill Tourism"
+                            loading="lazy">
+                        <div class="ai-card-badge"
+                            style="background: linear-gradient(135deg, #2ecc71, #27ae60); color: #fff;">🌍 NEW 事業プラン
+                        </div>
+                        <div class="ai-card-number" style="background: linear-gradient(135deg, #2ecc71, #27ae60);">02
+                        </div>
+                    </div>
+                    <div class="ai-card-body">
+                        <h3 class="ai-card-title">Global Skill Tourism（旅する外国介護人材）</h3>
+                        <p class="ai-card-desc">介護×観光の次世代型ワーケーション。海外ケア人材が日本各地を巡りながら介護施設で働く、社会課題解決型の新事業。</p>
+                        <div class="ai-card-tags">
+                            <span>介護×観光</span>
+                            <span>外国人材</span>
+                            <span>ワーケーション</span>
+                            <span>社会課題解決</span>
+                        </div>
+                        <div class="ai-card-cta">詳細を見る →</div>
                     </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="ai-service-links">
-                <a href="https://shambalalife.net/ai/gaiheki-simulator/" target="_blank"
-                    class="btn btn-highlight btn-large">👉 提案ページを見る</a>
-            </div>
-        </section>
-
-        <!-- ===== Service 2: Global Skill Tourism ===== -->
-        <section class="ai-service-card fade-in-up"
-            style="border: 1px solid rgba(46, 204, 113, 0.3); background: linear-gradient(135deg, rgba(46, 204, 113, 0.05), rgba(255, 255, 255, 0.03));">
-            <div
-                style="display: inline-block; background: linear-gradient(135deg, #2ecc71, #27ae60); color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.5px;">
-                🌍 NEW 事業プラン</div>
-            <div class="ai-service-header">
-                <div class="ai-service-number" style="background: linear-gradient(135deg, #2ecc71, #27ae60);">02</div>
-                <h2>Global Skill Tourism（旅する外国介護人材）</h2>
-            </div>
-
-            <div class="ai-service-tech-tags">
-                <span>介護×観光</span>
-                <span>外国人材</span>
-                <span>ワーケーション</span>
-                <span>特定技能</span>
-                <span>社会課題解決</span>
-            </div>
-
-            <p class="ai-service-desc">
-                車椅子で生活している私自身、日常的にヘルパーさんが見つからず依頼を断られるという、
-                介護業界の深刻な人材不足を痛感しています。<br><br>
-                この<strong style="color: #d4af37;">「誰もが直面する社会課題」</strong>を、
-                <strong style="color: #d4af37;">「観光立国・日本」</strong>の強みで解決する新しいプロジェクト
-                <strong style="color: #2ecc71;">『Global Skill Tourism（旅する介護人材）』</strong>を提案します。<br>
-                <span style="font-size: 0.9rem; color: rgba(255,255,255,0.55);">（皆様からの反応があれば、本格的に進めます。）</span>
-            </p>
-
-            <!-- Screenshot -->
-            <div class="ai-service-screenshot">
-                <img src="assets/images/ai-service-an/Global Skill Tourism.png" alt="Global Skill Tourism 概要図"
-                    loading="lazy">
-            </div>
-
-            <!-- どんな事業？ -->
-            <div style="margin-top: 2.5rem; margin-bottom: 2rem;">
-                <h3
-                    style="color: #2ecc71; font-size: 1.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                    🌍 どんな事業？</h3>
-                <div
-                    style="background: rgba(255,255,255,0.04); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; border-left: 4px solid #2ecc71;">
-                    <p style="color: rgba(255,255,255,0.75); line-height: 1.9; font-size: 0.95rem;">
-                        日本語を話せる海外のケア人材（介護士・看護学生など）が、<strong style="color: #d4af37;">半年〜で拠点を移動しながら</strong>、
-                        日本の介護施設や訪問介護で働く<strong style="color: #2ecc71;">次世代型ワーケーション</strong>です。<br><br>
-                        🌸 春は京都の古民家、🏖️ 夏は沖縄のリゾート、🍂 秋は金沢へ。<br>
-                        働きながら日本を巡るという、人生を豊かにする<strong style="color: #d4af37;">「冒険」</strong>をパッケージ化します。
-                    </p>
-                </div>
-            </div>
-
-            <!-- どうやって実現するの？ -->
-            <div style="margin-top: 2rem; margin-bottom: 2rem;">
-                <h3
-                    style="color: #2ecc71; font-size: 1.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                    💡 どうやって実現するの？</h3>
-                <div
-                    style="background: rgba(255,255,255,0.04); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; border-left: 4px solid #3498db;">
-                    <p style="color: rgba(255,255,255,0.75); line-height: 1.9; font-size: 0.95rem;">
-                        最大の壁である<strong style="color: #d4af37;">「日本の資格問題」</strong>は、
-                        来日初月の<strong style="color: #3498db;">「資格取得合宿（初任者研修）」</strong>でクリアします。<br><br>
-                        まずは施設のスタッフ支援や複数人数訪問入浴などからスタートし、
-                        資格取得後に身体介護の補助に入る<strong style="color: #2ecc71;">安全なステップ</strong>を踏みます。
-                    </p>
-                </div>
-            </div>
-
-            <!-- マネタイズ -->
-            <div style="margin-top: 2rem; margin-bottom: 2rem;">
-                <h3
-                    style="color: #2ecc71; font-size: 1.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                    💰 マネタイズ（収益モデル）</h3>
-                <p style="color: rgba(255,255,255,0.65); font-size: 0.95rem; margin-bottom: 1.2rem; line-height: 1.8;">
-                    以下の3本柱で、関わる全員が潤うエコシステムを作ります。
-                </p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
-                    <div
-                        style="background: rgba(46,204,113,0.08); border-radius: 12px; padding: 1.2rem; border: 1px solid rgba(46,204,113,0.2);">
-                        <strong style="color: #2ecc71;">📚 研修・プログラム費</strong>
-                        <p
-                            style="color: rgba(255,255,255,0.75); line-height: 1.7; font-size: 0.9rem; margin-top: 0.5rem;">
-                            海外ヘルパーから頂戴する「資格取得＋就労サポート」の費用を、研修を提供する日本の介護事業所・研修会社とシェアします。</p>
-                    </div>
-                    <div
-                        style="background: rgba(46,204,113,0.08); border-radius: 12px; padding: 1.2rem; border: 1px solid rgba(46,204,113,0.2);">
-                        <strong style="color: #2ecc71;">🤝 紹介手数料</strong>
-                        <p
-                            style="color: rgba(255,255,255,0.75); line-height: 1.7; font-size: 0.9rem; margin-top: 0.5rem;">
-                            人材不足が解消される日本の介護事業所から手数料をいただきます。</p>
-                    </div>
-                    <div
-                        style="background: rgba(46,204,113,0.08); border-radius: 12px; padding: 1.2rem; border: 1px solid rgba(46,204,113,0.2);">
-                        <strong style="color: #2ecc71;">🏡 宿泊・ライフサポート収益</strong>
-                        <p
-                            style="color: rgba(255,255,255,0.75); line-height: 1.7; font-size: 0.9rem; margin-top: 0.5rem;">
-                            ヘルパーが滞在する民泊などの宿泊施設からの紹介手数料や、宿泊予約サイトのアフィリエイト収益を得ます。</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 将来展望 -->
-            <div
-                style="background: rgba(212,175,55,0.08); border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem; margin-bottom: 2rem; border: 1px solid rgba(212,175,55,0.2);">
-                <strong style="color: #d4af37;">🚀 将来展望</strong>
-                <p style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 0.95rem; margin-top: 0.5rem;">
-                    将来的には、日本の<strong style="color: #d4af37;">宮大工技術</strong>を学ぶ建築業や、
-                    <strong style="color: #d4af37;">高度医療</strong>を学ぶ医療職など、あらゆる職種へ横展開が可能です。
-                </p>
-            </div>
-
-            <!-- CTA -->
-            <div
-                style="background: linear-gradient(135deg, rgba(46,204,113,0.15), rgba(39,174,96,0.08)); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; border: 1px solid rgba(46,204,113,0.3); text-align: center;">
-                <p style="color: rgba(255,255,255,0.9); font-size: 1.05rem; line-height: 1.8; margin-bottom: 0;">
-                    少しでも<strong style="color: #2ecc71;">「面白そう！」「話を聞いてみたい」</strong>と思った方は、<br>
-                    ぜひメールかDMをお願いします！<br>
-                    <strong style="color: #d4af37;">一緒に日本の社会課題をハックしましょう。</strong>
-                </p>
-            </div>
-
-            <!-- Manusリサーチ：市場リサーチ -->
-            <div style="margin-top: 2.5rem; margin-bottom: 2rem;">
-                <h3
-                    style="color: #d4af37; font-size: 1.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                    👇 AI（Manus）によるリサーチ</h3>
-
-                <h3 style="color: #d4af37; font-size: 1.2rem; margin-bottom: 1.5rem;">📊 市場リサーチ</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
-                    <div
-                        style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
-                        <strong style="color: #d4af37;">📊 市場の現状と規模</strong>
-                        <ul
-                            style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.9rem; padding-left: 1.2rem; margin-top: 0.5rem;">
-                            <li>日本の介護人材は2040年に約<strong style="color:#fff;">57万人不足</strong>すると予測、有効求人倍率は全職業平均の<strong
-                                    style="color:#fff;">3倍超</strong>と深刻</li>
-                            <li>外国人介護人材（特定技能）は2024年末で約<strong style="color:#fff;">4.4万人</strong>と過去最多を更新し急増中</li>
-                            <li>国内ワーケーション市場は2025年度に<strong style="color:#fff;">3,600億円</strong>規模へ拡大見込み</li>
-                        </ul>
-                    </div>
-                    <div
-                        style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
-                        <strong style="color: #d4af37;">📈 主要トレンド</strong>
-                        <ul
-                            style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.9rem; padding-left: 1.2rem; margin-top: 0.5rem;">
-                            <li>2025年4月より、特定技能外国人の<strong style="color:#fff;">「訪問介護」従事がついに解禁</strong>！在宅介護の人手不足解消の切り札に
-                            </li>
-                            <li>「関係人口」創出のため、自治体がワーケーション誘致に注力。介護×観光の親和性が高まっている</li>
-                        </ul>
-                    </div>
-                    <div
-                        style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
-                        <strong style="color: #d4af37;">🎯 ターゲット顧客</strong>
-                        <ul
-                            style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.9rem; padding-left: 1.2rem; margin-top: 0.5rem;">
-                            <li>海外の看護学生・介護志望者（日本でのキャリアと観光を両立したい層）</li>
-                            <li>人手不足に悩む地方の介護事業所・訪問介護ステーション</li>
-                        </ul>
-                    </div>
-                    <div
-                        style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
-                        <strong style="color: #d4af37;">✨ 機会とリスク</strong>
-                        <ul
-                            style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.9rem; padding-left: 1.2rem; margin-top: 0.5rem;">
-                            <li>制度改正（訪問介護解禁）は<strong style="color:#2ecc71;">追い風</strong></li>
-                            <li>リスクは、複雑な在留資格管理と、短期移動に伴うケアの質・入居者との信頼関係維持の難しさ</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 競合リサーチ -->
-            <div style="margin-top: 2rem; margin-bottom: 2rem;">
-                <h3 style="color: #d4af37; font-size: 1.2rem; margin-bottom: 1.5rem;">⚔️ 競合リサーチ（Manus調査）</h3>
-                <div style="overflow-x: auto;">
-                    <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
-                        <thead>
-                            <tr style="border-bottom: 2px solid rgba(212,175,55,0.3);">
-                                <th style="padding: 1rem 0.8rem; text-align: left; color: #d4af37;">競合</th>
-                                <th style="padding: 1rem 0.8rem; text-align: left; color: #d4af37;">特徴</th>
-                                <th style="padding: 1rem 0.8rem; text-align: left; color: #d4af37;">弱点</th>
-                            </tr>
-                        </thead>
-                        <tbody style="color: rgba(255,255,255,0.75);">
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
-                                <td style="padding: 0.8rem;"><strong style="color:#fff;">大手登録支援機関<br>(ONODERA等)</strong>
-                                </td>
-                                <td style="padding: 0.8rem;">圧倒的な集客力と支援実績</td>
-                                <td style="padding: 0.8rem;">拠点を移動する「旅する」モデルは未着手</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
-                                <td style="padding: 0.8rem;"><strong style="color:#fff;">リゾートバイト系<br>エージェント</strong>
-                                </td>
-                                <td style="padding: 0.8rem;">観光地への人材送り込みに強い</td>
-                                <td style="padding: 0.8rem;">介護資格取得や専門的なケア支援のノウハウが薄い</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 0.8rem;"><strong style="color:#fff;">自治体主導の<br>ワーケーション事業</strong>
-                                </td>
-                                <td style="padding: 0.8rem;">宿泊支援などは手厚い</td>
-                                <td style="padding: 0.8rem;">就労（特に介護）とのマッチング機能が弱い</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div
-                    style="background: rgba(46,204,113,0.08); border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem; border: 1px solid rgba(46,204,113,0.2);">
-                    <strong style="color: #2ecc71;">💡 差別化戦略</strong>
-                    <ul
-                        style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 0.95rem; padding-left: 1.2rem; margin-top: 0.5rem;">
-                        <li>「<strong style="color:#2ecc71;">資格取得合宿</strong>」をパッケージ化し、来日直後のハードルを劇的に下げる</li>
-                        <li>掃除・買い物等の「生活支援」から段階的にステップアップする安全設計</li>
-                        <li>拠点を移動してもキャリアが断絶しない「<strong style="color:#2ecc71;">デジタル・スキルパスポート</strong>」の提供</li>
-                    </ul>
-                </div>
-
-                <div
-                    style="background: rgba(46,204,113,0.08); border-radius: 12px; padding: 1.5rem; margin-top: 1rem; border: 1px solid rgba(46,204,113,0.2);">
-                    <strong style="color: #2ecc71;">🚀 結論・ネクストステップ</strong>
-                    <p style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 0.95rem; margin-top: 0.5rem;">
-                        訪問介護解禁という<strong style="color:#fff;">歴史的転換点</strong>にあり、タイミングは完璧。<br>
-                        まずは「特定技能」の枠組みで、移動可能な仕組み（グループ内異動や派遣形態）の法規制を精査。<br>
-                        開発者優遇のレベニューシェアで、AIを駆使したマッチング・管理の自動化を急ぐべき。
-                    </p>
-                </div>
-            </div>
-
-            <div class="ai-service-links">
-                <a href="index.html#contact" class="btn btn-highlight btn-large">👉 お問い合わせ・ご相談はこちら</a>
-            </div>
-        </section>
+        </div>
 
     </main>
 

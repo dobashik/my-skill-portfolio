@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI外壁カラーシミュレーション | AIサービス案 | IMARCA</title>
+    <meta name="description" content="外壁塗装業者様向けのAIカラーシミュレーション提案。写真1枚から12種類のカラーパターンを一括生成。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../consulting/case-study.css">
+    <style>
+        .ai-service-detail {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .ai-service-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .ai-service-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ai-service-number {
+            background: linear-gradient(135deg, #d4af37, #f0d060);
+            color: #0a0a0a;
+            font-size: 1.2rem;
+            font-weight: 800;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .ai-service-header h2 {
+            font-size: 1.6rem;
+            margin: 0;
+            background: linear-gradient(135deg, #ffffff, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ai-service-desc {
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.9;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .ai-service-screenshot {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .ai-service-screenshot:hover {
+            transform: scale(1.02);
+        }
+
+        .ai-service-screenshot img {
+            width: 100%;
+            display: block;
+        }
+
+        .ai-service-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .ai-service-feature {
+            background: rgba(212, 175, 55, 0.06);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .ai-service-feature-icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .ai-service-feature-text {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .ai-service-feature-text strong {
+            color: #d4af37;
+        }
+
+        .ai-service-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .ai-service-links .btn {
+            padding: 0.9rem 2rem;
+            font-size: 1rem;
+        }
+
+        .ai-service-page-hero {
+            text-align: center;
+            padding: 8rem 0 3rem;
+        }
+
+        .ai-service-page-hero h1 {
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ai-service-page-hero p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .ai-service-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4af37, #f0d060);
+            color: #0a0a0a;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .ai-service-tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ai-service-tech-tags span {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #d4af37;
+        }
+
+        @media (max-width: 768px) {
+            .ai-service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .ai-service-header h2 {
+                font-size: 1.3rem;
+            }
+
+            .ai-service-page-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .ai-service-features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <header>
+        <nav>
+            <div class="logo"><a href="../index.html">IMARCA</a></div>
+            <ul>
+                <li><a href="../ai-services.html" class="nav-highlight">AI活用サービス例</a></li>
+                <li><a href="../consulting/case-study-notebooklm.html" class="nav-highlight">AIコンサル</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#portfolio">Portfolio</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="cs-page">
+        <section class="ai-service-page-hero">
+            <span class="ai-service-badge">🚀 AI活用サービス例</span>
+            <h1 class="fade-in-up">AI外壁カラーシミュレーション</h1>
+            <p class="fade-in-up delay-1">写真1枚からAIが12通りのカラーパターンを一括生成</p>
+        </section>
+        <div class="ai-service-detail">
+            <a href="../ai-services.html" class="back-link fade-in-up">← AIサービス案 一覧に戻る</a>
+            <section class="ai-service-card fade-in-up">
+                <div class="ai-service-header">
+                    <div class="ai-service-number">01</div>
+                    <h2>AI外壁カラーシミュレーション</h2>
+                </div>
+                <div class="ai-service-tech-tags"><span>AI画像生成</span></div>
+                <p class="ai-service-desc">
+                    <strong style="color: #d4af37;">外壁塗装業者様向けの提案</strong>です。<br><br>
+                    お客様がスマートフォンで撮影した自宅の外観写真を1枚お送りいただくだけで、AIが<strong
+                        style="color: #d4af37;">12種類の美しいカラーパターン</strong>で塗り替え後のイメージを一括生成します。<br><br>
+                    現在はお申し込みをいただいた後、手動でAI画像を生成してお届けする形ですが、ニーズがあれば<strong
+                        style="color: #d4af37;">お客様自身が写真をアップロードするだけで自動シミュレーションできるWebサービス</strong>として開発・提供することも可能です。<br><br>
+                    外壁塗装の営業ツールとして、「施工前に完成イメージを共有できる」ことで受注率向上に貢献します。
+                </p>
+                <div class="ai-service-screenshot">
+                    <img src="../assets/images/gaiheki/gaiheki_simulator.png" alt="AI外壁カラーシミュレーション イメージ" loading="lazy">
+                </div>
+                <div class="ai-service-features">
+                    <div class="ai-service-feature">
+                        <span class="ai-service-feature-icon">📸</span>
+                        <div class="ai-service-feature-text"><strong>写真1枚でOK</strong><br>お客様のスマホ写真からAIがカラーシミュレーションを作成
+                        </div>
+                    </div>
+                    <div class="ai-service-feature">
+                        <span class="ai-service-feature-icon">🎨</span>
+                        <div class="ai-service-feature-text"><strong>12通りのカラー一括生成</strong><br>AIが多彩なカラーバリエーションをまとめて提案
+                        </div>
+                    </div>
+                    <div class="ai-service-feature">
+                        <span class="ai-service-feature-icon">📈</span>
+                        <div class="ai-service-feature-text"><strong>受注率アップに貢献</strong><br>施工前に完成イメージを共有し、お客様の決断を後押し
+                        </div>
+                    </div>
+                    <div class="ai-service-feature">
+                        <span class="ai-service-feature-icon">🔧</span>
+                        <div class="ai-service-feature-text">
+                            <strong>自動化シミュレーターも開発可能</strong><br>ニーズに応じてWeb上で自動シミュレーションできるシステムの構築も</div>
+                    </div>
+                </div>
+                <div class="ai-service-links">
+                    <a href="https://shambalalife.net/ai/gaiheki-simulator/" target="_blank"
+                        class="btn btn-highlight btn-large">👉 提案ページを見る</a>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 IMARCA. All Rights Reserved.</p>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+
+</html>
