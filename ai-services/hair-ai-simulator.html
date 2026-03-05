@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIヘアシミュレーター（会話連動型）| AIサービス案 | IMARCA</title>
+    <meta name="description" content="美容師とお客様の会話からリアルタイムで髪型が変化するAIシミュレーションアプリ。会話連動型の全く新しいカウンセリング体験。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../consulting/case-study.css">
+    <style>
+        .ai-service-detail {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .ai-service-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .ai-service-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ai-service-number {
+            background: linear-gradient(135deg, #d4af37, #f0d060);
+            color: #0a0a0a;
+            font-size: 1.2rem;
+            font-weight: 800;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .ai-service-header h2 {
+            font-size: 1.6rem;
+            margin: 0;
+            background: linear-gradient(135deg, #ffffff, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ai-service-desc {
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.9;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .ai-service-screenshot {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .ai-service-screenshot:hover {
+            transform: scale(1.02);
+        }
+
+        .ai-service-screenshot img {
+            width: 100%;
+            display: block;
+        }
+
+        .ai-service-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .ai-service-links .btn {
+            padding: 0.9rem 2rem;
+            font-size: 1rem;
+        }
+
+        .ai-service-page-hero {
+            text-align: center;
+            padding: 5.5rem 0 1rem;
+        }
+
+        .ai-service-page-hero h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ai-service-page-hero p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .ai-service-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4af37, #f0d060);
+            color: #0a0a0a;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .ai-service-tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ai-service-tech-tags span {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #d4af37;
+        }
+
+        /* テーマカラー: 美容系のピンク〜パープル */
+        .hair-accent {
+            color: #e74c9a;
+        }
+
+        .hair-bg {
+            background: rgba(231, 76, 154, 0.08);
+            border-color: rgba(231, 76, 154, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .ai-service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .ai-service-header h2 {
+                font-size: 1.3rem;
+            }
+
+            .ai-service-page-hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <header>
+        <nav>
+            <div class="logo"><a href="../index.html">IMARCA</a></div>
+            <ul>
+                <li><a href="../ai-services.html" class="nav-highlight">AI活用サービス例</a></li>
+                <li><a href="../consulting/case-study-notebooklm.html" class="nav-highlight">AIコンサル</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#portfolio">Portfolio</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="cs-page">
+        <section class="ai-service-page-hero">
+            <span class="ai-service-badge">🚀 AI活用サービス例</span>
+            <h1 class="fade-in-up">💇‍♀️ AIヘアシミュレーター</h1>
+            <p class="fade-in-up delay-1">会話から全自動で髪型が変化する、次世代カウンセリングツール</p>
+        </section>
+        <div class="ai-service-detail">
+            <a href="../ai-services.html" class="back-link fade-in-up">← AIサービス案 一覧に戻る</a>
+            <section class="ai-service-card fade-in-up"
+                style="border: 1px solid rgba(231,76,154,0.3); background: linear-gradient(135deg, rgba(231,76,154,0.05), rgba(255,255,255,0.03));">
+                <div
+                    style="display: inline-block; background: linear-gradient(135deg, #e74c9a, #c0392b); color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.5px;">
+                    💇‍♀️ NEW 事業プラン</div>
+                <div class="ai-service-header">
+                    <div class="ai-service-number" style="background: linear-gradient(135deg, #e74c9a, #c0392b);">00
+                    </div>
+                    <h2>会話連動型 AIヘアシミュレーター</h2>
+                </div>
+                <div class="ai-service-tech-tags">
+                    <span>美容DX</span><span>生成AI</span><span>音声認識</span><span>リアルタイム画像生成</span><span>SaaS</span><span>低価格破壊</span>
+                </div>
+                <p class="ai-service-desc">
+                    美容室での<strong style="color: #e74c9a;">「思っていたのと違う…」</strong>という悲劇をなくすため、iPad等で動く<strong
+                        style="color: #d4af37;">「リアルタイムAIヘアシミュレーター」</strong>を企画しました。<br><br>
+                    このビジョンに共感し、一緒にAIコーディングで開発してくれるエンジニア（完全成果報酬）と、テスト導入にご協力いただける美容室経営者の方を募集します！
+                </p>
+                <div class="ai-service-screenshot">
+                    <img src="../assets/images/ai-service-an/美容師とお客様の「会話」から、全自動で髪型が変化するAIシミュレーションアプリ.png"
+                        alt="AIヘアシミュレーター 概要図" loading="lazy">
+                </div>
+
+                <!-- 2つのコア機能 -->
+                <div style="margin-top: 2.5rem; margin-bottom: 2rem;">
+                    <h3
+                        style="color: #e74c9a; font-size: 1.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        💡 プロダクトの2つのコア機能</h3>
+                    <p
+                        style="color: rgba(255,255,255,0.65); font-size: 0.95rem; margin-bottom: 1.2rem; line-height: 1.8;">
+                        既存のサロン向けタブレット端末アプリの枠を超えた、全く新しい体験を作ります。</p>
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;">
+                        <div
+                            style="background: rgba(231,76,154,0.08); border-radius: 16px; padding: 2rem; border-left: 4px solid #e74c9a;">
+                            <strong style="color: #e74c9a; font-size: 1.1rem;">① 基本シミュレーション（手動ベース）</strong>
+                            <p
+                                style="color: rgba(255,255,255,0.75); line-height: 1.9; font-size: 0.95rem; margin-top: 0.8rem;">
+                                画面のタップ操作で、髪の長さ、カラー、パーマの強さなどを<strong style="color: #d4af37;">直感的にカスタマイズ</strong>。<br>
+                                ベースのカウンセリングツールとして、誰でも簡単に扱えるUIを提供します。
+                            </p>
+                        </div>
+                        <div
+                            style="background: linear-gradient(135deg, rgba(231,76,154,0.12), rgba(212,175,55,0.08)); border-radius: 16px; padding: 2rem; border-left: 4px solid #d4af37;">
+                            <strong style="color: #d4af37; font-size: 1.1rem;">② 【革新】リアルタイム会話連動シミュレーション（自動生成）</strong>
+                            <p
+                                style="color: rgba(255,255,255,0.75); line-height: 1.9; font-size: 0.95rem; margin-top: 0.8rem;">
+                                タブレットが美容師とお客様の会話（文脈）を理解し、<strong style="color: #e74c9a;">操作レスで髪型を提案</strong>します。
+                            </p>
+                            <div
+                                style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 1.2rem; margin-top: 1rem; font-size: 0.9rem; line-height: 1.8;">
+                                <p style="color: rgba(255,255,255,0.6); margin-bottom: 0.3rem;">💬 会話の例：</p>
+                                <p style="color: rgba(255,255,255,0.85);">
+                                    <strong style="color: #e74c9a;">美容師</strong>「例えば、中田英寿さん風のショートとか似合いそうですね」<br>
+                                    <strong style="color: #3498db;">お客様</strong>「あ、それいいですね！」
+                                </p>
+                                <p style="color: rgba(255,255,255,0.7); margin-top: 0.5rem;">
+                                    → この<strong style="color: #d4af37;">「合意」が出た瞬間</strong>にAIがキーワードを抽出し、画面の顔の髪型が<strong
+                                        style="color: #e74c9a;">フワッと中田英寿風に変化</strong>します。
+                                </p>
+                            </div>
+                            <p
+                                style="color: rgba(255,255,255,0.75); line-height: 1.9; font-size: 0.95rem; margin-top: 1rem;">
+                                有名人だけでなく、「もう少し襟足を軽く、全体的に丸みを持たせて…」といった<strong
+                                    style="color: #d4af37;">抽象的な会話からでも</strong>、リアルタイムに画像を生成・変化させます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 競合優位性 -->
+                <div style="margin-top: 2.5rem; margin-bottom: 2rem;">
+                    <h3
+                        style="color: #e74c9a; font-size: 1.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        🔥 既存サービスにどう勝つか？（競合優位性）</h3>
+                    <div
+                        style="background: rgba(255,255,255,0.04); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; border-left: 4px solid #e74c9a;">
+                        <p style="color: rgba(255,255,255,0.75); line-height: 1.9; font-size: 0.95rem;">
+                            現在もサロン向けのARタブレットアプリは存在しますが、<strong
+                                style="color: #e74c9a;">「エンタープライズ向けの高額な料金（初期費用＋高い月額）」</strong>がネックで、個人の美容室には普及していません。<br><br>
+                            私たちは、最新の生成AI APIとモダンなWeb技術（<strong style="color: #d4af37;">Next.js / Cloudflare /
+                                Supabase</strong>など）を駆使し、AIコーディングで<strong
+                                style="color: #d4af37;">爆速・低コスト開発</strong>を実現します。<br><br>
+                            これにより、<strong style="color: #e74c9a;">「圧倒的な低価格SaaS（月額数千円〜）」</strong>として市場の価格破壊を起こせます。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 募集要項 -->
+                <div style="margin-top: 2.5rem; margin-bottom: 2rem;">
+                    <h3
+                        style="color: #e74c9a; font-size: 1.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        🤝 募集要項</h3>
+                    <p
+                        style="color: rgba(255,255,255,0.65); font-size: 0.95rem; margin-bottom: 1.2rem; line-height: 1.8;">
+                        この「魔法のような顧客体験」を最速で形にするため、以下の仲間を探しています！</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                        <div
+                            style="background: rgba(231,76,154,0.08); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(231,76,154,0.2);">
+                            <strong style="color: #e74c9a; font-size: 1.05rem;">👨‍💻 1. AIデベロッパー</strong>
+                            <p style="color: rgba(255,255,255,0.55); font-size: 0.8rem; margin-top: 0.3rem;">完全成果報酬 /
+                                レベニューシェア</p>
+                            <ul
+                                style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.9rem; padding-left: 1.2rem; margin-top: 0.8rem;">
+                                <li>最新のWebスタックを用いたAIコーディング（Vibe Coding）が得意な方</li>
+                                <li>LLMを用いたプロンプトエンジニアリング、音声認識、リアルタイム画像生成API（fal.ai等）の連携にワクワクする方</li>
+                                <li>初期は成果報酬ですが、一緒にSaaSビジネスをスケールさせる熱狂を味わいましょう！</li>
+                            </ul>
+                        </div>
+                        <div
+                            style="background: rgba(231,76,154,0.08); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(231,76,154,0.2);">
+                            <strong style="color: #e74c9a; font-size: 1.05rem;">💇 2. テスト導入いただける美容室の経営者様</strong>
+                            <ul
+                                style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.9rem; padding-left: 1.2rem; margin-top: 0.8rem;">
+                                <li>「新しい顧客体験を作りたい」「カウンセリングの質を上げたい」という方</li>
+                                <li>開発中のプロトタイプを実際の店舗で触り、率直なフィードバックをいただける方</li>
+                                <li><strong style="color: #d4af37;">初期費用・利用料等は一切いただきません</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div
+                    style="background: linear-gradient(135deg, rgba(231,76,154,0.15), rgba(212,175,55,0.08)); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; border: 1px solid rgba(231,76,154,0.3); text-align: center;">
+                    <p style="color: rgba(255,255,255,0.9); font-size: 1.05rem; line-height: 1.8; margin-bottom: 0;">
+                        少しでも<strong style="color: #e74c9a;">「面白そう！」「話を聞いてみたい！」</strong>と思った方は、<br>
+                        ぜひリプかDMをお願いします！<br>
+                        <strong style="color: #d4af37;">一緒に美容業界の当たり前をアップデートしましょう！🚀</strong>
+                    </p>
+                </div>
+
+                <!-- Manusリサーチ -->
+                <div style="margin-top: 2.5rem; margin-bottom: 2rem;">
+                    <h3
+                        style="color: #d4af37; font-size: 1.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        👇 AI（Manus）によるリサーチ</h3>
+                    <h3 style="color: #d4af37; font-size: 1.2rem; margin-bottom: 1.5rem;">📊 市場リサーチ</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                        <div
+                            style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+                            <strong style="color: #d4af37;">📊 市場動向</strong>
+                            <ul
+                                style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.9rem; padding-left: 1.2rem; margin-top: 0.5rem;">
+                                <li>美容業界のAI市場は2026年に向けて<strong style="color:#fff;">「二極化」</strong>が進むと予測</li>
+                                <li>高額な専用ハードウェア（スマートミラー等）に対し、汎用タブレットで動作する<strong
+                                        style="color:#fff;">低価格SaaSへの需要が急増</strong></li>
+                            </ul>
+                        </div>
+                        <div
+                            style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+                            <strong style="color: #d4af37;">🔧 技術的実現性</strong>
+                            <ul
+                                style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.9rem; padding-left: 1.2rem; margin-top: 0.5rem;">
+                                <li><strong style="color:#fff;">Whisper（音声認識）</strong>と<strong
+                                        style="color:#fff;">ControlNet（画像制御）</strong>を組み合わせた「局所的リアルタイム生成」が実用レベルに</li>
+                                <li>会話の文脈から特定の部位（襟足やトップ）のみを<strong style="color:#fff;">数秒で書き換え</strong>可能</li>
+                            </ul>
+                        </div>
+                        <div
+                            style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+                            <strong style="color: #d4af37;">💰 価格戦略</strong>
+                            <ul
+                                style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.9rem; padding-left: 1.2rem; margin-top: 0.5rem;">
+                                <li>美容室のSaaS導入相場は<strong style="color:#fff;">月額2〜4万円</strong>が一般的</li>
+                                <li>APIコストの最適化により<strong style="color:#fff;">「月額数千円」</strong>を実現可能</li>
+                                <li>国内約<strong style="color:#fff;">25万軒</strong>の美容室市場において圧倒的なシェアを獲得する可能性</li>
+                            </ul>
+                        </div>
+                        <div
+                            style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+                            <strong style="color: #d4af37;">🎯 ターゲット</strong>
+                            <ul
+                                style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.9rem; padding-left: 1.2rem; margin-top: 0.5rem;">
+                                <li>カウンセリングの質を上げたい<strong style="color:#fff;">個人経営の美容室</strong></li>
+                                <li>高額なAR端末導入を諦めていた<strong style="color:#fff;">中小規模サロン</strong></li>
+                                <li>差別化を図りたい<strong style="color:#fff;">新規開業の美容室オーナー</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- タグ -->
+                <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06);">
+                    <div class="ai-service-tech-tags">
+                        <span>#美容DX</span><span>#生成AI</span><span>#Whisper</span><span>#ControlNet</span><span>#Next.js</span><span>#Cloudflare</span><span>#Supabase</span><span>#fal.ai</span>
+                    </div>
+                </div>
+
+                <div class="ai-service-links">
+                    <a href="../index.html#contact" class="btn btn-highlight btn-large">👉 お問い合わせ・ご相談はこちら</a>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 IMARCA. All Rights Reserved.</p>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+
+</html>
