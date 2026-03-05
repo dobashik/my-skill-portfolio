@@ -192,6 +192,16 @@
                 font-size: 1.8rem;
             }
         }
+
+        .ai-card-featured {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 900px) {
+            .ai-card-featured {
+                grid-column: span 1;
+            }
+        }
     </style>
 </head>
 
@@ -223,6 +233,35 @@
 
         <!-- ===== Card Grid ===== -->
         <div class="ai-cards-grid">
+
+            <!-- Featured Card: フリーランスギルド・ハブ -->
+            <a href="ai-services/freelance-guild-hub.html" class="ai-card-link ai-card-featured fade-in-up">
+                <div class="ai-card"
+                    style="border-color: rgba(155, 89, 182, 0.4); background: rgba(142, 68, 173, 0.1);">
+                    <div class="ai-card-thumb" style="height: 300px;">
+                        <img src="assets/images/ai-service-an/フリーランスギルド・ハブ.png" alt="フリーランスギルド・ハブ" loading="lazy">
+                        <div class="ai-card-badge"
+                            style="background: linear-gradient(135deg, #8e44ad, #9b59b6); color: #fff;">🔥 初期メンバー募集
+                        </div>
+                        <div class="ai-card-number"
+                            style="background: linear-gradient(135deg, #8e44ad, #9b59b6); color: #fff;">★
+                        </div>
+                    </div>
+                    <div class="ai-card-body">
+                        <h3 class="ai-card-title" style="font-size: 1.4rem;">全フリーランスがフラットにコラボレートできる次世代プラットフォーム</h3>
+                        <p class="ai-card-desc" style="font-size: 1rem;">
+                            AIの進化で「会社」という箱は消える。これからは、自律した個人がフラットに集い、最速で価値を生み出す「ギルド型」のコラボレーションが主流になる。<br>この新しい働き方を体現するプラットフォームを立ち上げるため初期メンバーを募集します。
+                        </p>
+                        <div class="ai-card-tags">
+                            <span>プラットフォーム</span>
+                            <span>ギルド型</span>
+                            <span>スキルシェア</span>
+                            <span>AI時代</span>
+                        </div>
+                        <div class="ai-card-cta">詳細を見る →</div>
+                    </div>
+                </div>
+            </a>
 
             <!-- Card 00: AIヘアシミュレーター（会話連動型）NEW! -->
             <a href="ai-services/hair-ai-simulator.html" class="ai-card-link fade-in-up">

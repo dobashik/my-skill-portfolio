@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フリーランスギルド・ハブ | AIサービス案 | IMARCA</title>
+    <meta name="description" content="全フリーランスがフラットにコラボレートできる次世代プラットフォーム「ギルド・ハブ」参加者募集。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../consulting/case-study.css">
+    <style>
+        .ai-service-detail {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .ai-service-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .ai-service-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ai-service-number {
+            background: linear-gradient(135deg, #d4af37, #f0d060);
+            color: #0a0a0a;
+            font-size: 1.2rem;
+            font-weight: 800;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .ai-service-header h2 {
+            font-size: 1.6rem;
+            margin: 0;
+            line-height: 1.5;
+            background: linear-gradient(135deg, #ffffff, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ai-service-desc {
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.9;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .ai-service-screenshot {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .ai-service-screenshot:hover {
+            transform: scale(1.02);
+        }
+
+        .ai-service-screenshot img {
+            width: 100%;
+            display: block;
+        }
+
+        .ai-service-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .ai-service-links .btn {
+            padding: 0.9rem 2rem;
+            font-size: 1rem;
+        }
+
+        .ai-service-page-hero {
+            text-align: center;
+            padding: 5.5rem 0 1rem;
+        }
+
+        .ai-service-page-hero h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ai-service-page-hero p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .ai-service-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4af37, #f0d060);
+            color: #0a0a0a;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .ai-service-tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ai-service-tech-tags span {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #d4af37;
+        }
+
+        @media (max-width: 768px) {
+            .ai-service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .ai-service-header h2 {
+                font-size: 1.3rem;
+            }
+
+            .ai-service-page-hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <header>
+        <nav>
+            <div class="logo"><a href="../index.html">IMARCA</a></div>
+            <ul>
+                <li><a href="../ai-services.html" class="nav-highlight">AI活用サービス例</a></li>
+                <li><a href="../consulting/case-study-notebooklm.html" class="nav-highlight">AIコンサル</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#portfolio">Portfolio</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="cs-page">
+        <section class="ai-service-page-hero">
+            <span class="ai-service-badge"
+                style="background: linear-gradient(135deg, #8e44ad, #9b59b6); color: #fff;">👥 新規プロジェクト</span>
+            <h1 class="fade-in-up">フリーランスギルド・ハブ</h1>
+            <p class="fade-in-up delay-1">次世代型のマッチングプラットフォーム</p>
+        </section>
+        <div class="ai-service-detail">
+            <a href="../ai-services.html" class="back-link fade-in-up">← AIサービス案 一覧に戻る</a>
+            <section class="ai-service-card fade-in-up"
+                style="border: 1px solid rgba(155, 89, 182, 0.3); background: linear-gradient(135deg, rgba(142, 68, 173, 0.05), rgba(255,255,255,0.03));">
+                <div
+                    style="display: inline-block; background: linear-gradient(135deg, #8e44ad, #9b59b6); color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.5px;">
+                    🔥 初期メンバー募集</div>
+                <div class="ai-service-header">
+                    <div class="ai-service-number"
+                        style="background: linear-gradient(135deg, #8e44ad, #9b59b6); color: #fff;">★
+                    </div>
+                    <h2
+                        style="background: linear-gradient(135deg, #ffffff, #9b59b6); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                        全フリーランスがフラットにコラボレートできる次世代プラットフォーム</h2>
+                </div>
+                <div class="ai-service-tech-tags">
+                    <span>プラットフォーム</span><span>ギルド型</span><span>スキルシェア</span><span>マッチング</span><span>AI時代</span>
+                </div>
+                <p class="ai-service-desc">
+                    AIの進化で「会社」という箱は消える。<br>
+                    これからは、自律した個人がフラットに集い、最速で価値を生み出す<strong
+                        style="color: #9b59b6;">「ギルド型」のコラボレーション</strong>が主流になる。<br><br>
+                    この新しい働き方を体現する「次世代プラットフォーム」を立ち上げるため、<strong style="color: #d4af37;">初期メンバーを募集します！</strong>
+                </p>
+                <div class="ai-service-screenshot">
+                    <img src="../assets/images/ai-service-an/フリーランスギルド・ハブ.png" alt="フリーランスギルド・ハブ概要図" loading="lazy">
+                </div>
+
+                <!-- コンセプト -->
+                <div style="margin-top: 2.5rem; margin-bottom: 2rem;">
+                    <h3
+                        style="color: #9b59b6; font-size: 1.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        💡 どんなプラットフォームを作るのか（コンセプト）</h3>
+                    <div
+                        style="background: rgba(255,255,255,0.04); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; border-left: 4px solid #9b59b6;">
+                        <p style="color: rgba(255,255,255,0.75); line-height: 1.9; font-size: 0.95rem; margin: 0;">
+                            目指しているのは、「全フリーランスがフラットにコラボレートできる次世代型のマッチングプラットフォーム」です。<br><br>
+                            ひとつのアイデアがサービスとして形になるまでには、明確に異なる4つの役割（プロセス）が存在します。このプラットフォームは、その<strong
+                                style="color: #d4af37;">4タイプのフリーランスがお互いのスキルや実績を持ち寄り、プロジェクト単位で自律的にチームを組み</strong>、ゼロからプロダクトを世に送り出すための場所です。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 戦略 -->
+                <div style="margin-top: 2rem; margin-bottom: 2rem;">
+                    <h3
+                        style="color: #9b59b6; font-size: 1.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        🌍 プロジェクトの概要と戦略（コールドスタートの打破）</h3>
+                    <p
+                        style="color: rgba(255,255,255,0.75); line-height: 1.9; font-size: 0.95rem; margin-bottom: 1.5rem;">
+                        とはいえ、いきなりマッチングサイトを作っても人は集まりません。<br>
+                        だからこそ、第一弾として<strong style="color: #d4af37;">「次世代スキルの名刺（ポートフォリオ機能）」</strong>を開発します。
+                    </p>
+                    <div
+                        style="background: rgba(255,255,255,0.04); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; border-left: 4px solid #d4af37;">
+                        <p style="color: rgba(255,255,255,0.75); line-height: 1.9; font-size: 0.95rem; margin: 0;">
+                            AIコーディングなど、今急速に伸びている新しいスキルや実績を、美しく証明・発信できる尖ったツールをまずは単体でリリース。<br>
+                            そこを起点に人が集まり、自然と先ほどの<strong style="color: #9b59b6;">「4タイプのマッチング」が生まれる土壌</strong>を作ります。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ビジネスの妥当性 -->
+                <div style="margin-top: 2rem; margin-bottom: 2rem;">
+                    <h3
+                        style="color: #9b59b6; font-size: 1.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        💰 ビジネスの妥当性（なぜ勝てるのか）</h3>
+                    <p
+                        style="color: rgba(255,255,255,0.75); line-height: 1.9; font-size: 0.95rem; margin-bottom: 1.5rem;">
+                        これまでの開発は「作ってから売る」でしたが、今は違います。
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div
+                            style="background: rgba(155, 89, 182, 0.08); border-radius: 12px; padding: 1.2rem; border: 1px solid rgba(155, 89, 182, 0.2);">
+                            <strong style="color: #9b59b6;">STEP 1: ストーリー発信</strong>
+                            <p
+                                style="color: rgba(255,255,255,0.75); line-height: 1.7; font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 0;">
+                                まずSNSでストーリーを発信し、ニーズ（ウェイティングリスト）を作る。</p>
+                        </div>
+                        <div
+                            style="background: rgba(155, 89, 182, 0.08); border-radius: 12px; padding: 1.2rem; border: 1px solid rgba(155, 89, 182, 0.2);">
+                            <strong style="color: #9b59b6;">STEP 2: 爆速構築</strong>
+                            <p
+                                style="color: rgba(255,255,255,0.75); line-height: 1.7; font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 0;">
+                                ニーズが証明されたら、AIツールを駆使して数日でMVPを爆速構築する。</p>
+                        </div>
+                        <div
+                            style="background: rgba(155, 89, 182, 0.08); border-radius: 12px; padding: 1.2rem; border: 1px solid rgba(155, 89, 182, 0.2);">
+                            <strong style="color: #9b59b6;">STEP 3: 最速収益化</strong>
+                            <p
+                                style="color: rgba(255,255,255,0.75); line-height: 1.7; font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 0;">
+                                作るのは一番最後。だからこそ無駄撃ちがなく、最速で収益化まで到達できます。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 募集する役割 -->
+                <div style="margin-top: 2rem; margin-bottom: 2rem;">
+                    <h3
+                        style="color: #9b59b6; font-size: 1.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        👥 募集する4つの役割（完全フラットな関係）</h3>
+                    <p
+                        style="color: rgba(255,255,255,0.85); font-size: 0.95rem; margin-bottom: 1.2rem; line-height: 1.8;">
+                        今回は、この仕組み自体を一緒に作る（あるいは最初のユースケースとなる）メンバーを募集します。利益は貢献度に応じたレベニューシェアです。</p>
+
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div
+                            style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 1.5rem; border-left: 4px solid #e74c3c;">
+                            <strong style="color: #e74c3c; font-size: 1.1rem;">① プロデューサー（コンセプトメイカー / 配分目安 1.5）</strong>
+                            <p
+                                style="color: rgba(255,255,255,0.75); line-height: 1.7; font-size: 0.95rem; margin-top: 0.8rem; margin-bottom: 0.8rem;">
+                                「こんな課題を解決したい」という原案を作り、プロジェクトの旗を立てる人。</p>
+                            <span
+                                style="display: inline-block; background: rgba(231, 76, 60, 0.15); color: #e74c3c; padding: 0.3rem 0.8rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600;">【権利確定条件】企画書・要件定義の作成と初期メンバー募集の完了</span>
+                        </div>
+
+                        <div
+                            style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 1.5rem; border-left: 4px solid #f39c12;">
+                            <strong style="color: #f39c12; font-size: 1.1rem;">② グロースマーケター（需要創出＆拡声器 / 配分目安 3.0）</strong>
+                            <p
+                                style="color: rgba(255,255,255,0.75); line-height: 1.7; font-size: 0.95rem; margin-top: 0.8rem; margin-bottom: 0.8rem;">
+                                影も形もない段階からストーリーを発信してニーズを証明し、さらに製品完成後も継続的に市場へ届け、熱狂を拡大し続ける人。</p>
+                            <span
+                                style="display: inline-block; background: rgba(243, 156, 18, 0.15); color: #f39c12; padding: 0.3rem 0.8rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600;">【権利確定条件】指定の事前登録者数の達成、およびリリース後の拡散指標クリア</span>
+                        </div>
+
+                        <div
+                            style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 1.5rem; border-left: 4px solid #2ecc71;">
+                            <strong style="color: #2ecc71; font-size: 1.1rem;">③ プロジェクト・アーキテクト（自律型マネージャー / 配分目安
+                                1.5）</strong>
+                            <p
+                                style="color: rgba(255,255,255,0.75); line-height: 1.7; font-size: 0.95rem; margin-top: 0.8rem; margin-bottom: 0.8rem;">
+                                証明されたニーズに対し、実現までの最短ルートを設計する人。時間や予算、利益配分を計算し、タスクを最適にアサインする。</p>
+                            <span
+                                style="display: inline-block; background: rgba(46, 204, 113, 0.15); color: #2ecc71; padding: 0.3rem 0.8rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600;">【権利確定条件】実行計画・予算配分表の作成、タスクアサインの完了</span>
+                        </div>
+
+                        <div
+                            style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 1.5rem; border-left: 4px solid #3498db;">
+                            <strong style="color: #3498db; font-size: 1.1rem;">④ クリエイター（エグゼキューション / 配分目安 4.0）</strong>
+                            <p
+                                style="color: rgba(255,255,255,0.75); line-height: 1.7; font-size: 0.95rem; margin-top: 0.8rem; margin-bottom: 0.8rem;">
+                                すべての準備とニーズが整った「最後」に登場し、AIを駆使して最速でプロダクトを形にする実行部隊。AIを使わない場合も。</p>
+                            <span
+                                style="display: inline-block; background: rgba(52, 152, 219, 0.15); color: #3498db; padding: 0.3rem 0.8rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600;">【権利確定条件】指定仕様を満たすプロダクトの納品（本番環境へのデプロイ）</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manusリサーチ -->
+                <div style="margin-top: 3rem; margin-bottom: 2rem;">
+                    <h3
+                        style="color: #d4af37; font-size: 1.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        👇 AI（Manus）による市場・競合分析</h3>
+
+                    <h3 style="color: #d4af37; font-size: 1.2rem; margin-bottom: 1rem;">📊 日本国内の市場規模</h3>
+                    <p
+                        style="color: rgba(255,255,255,0.75); line-height: 1.9; font-size: 0.95rem; margin-bottom: 1.5rem;">
+                        日本のフリーランス人口は近年急速に増加しており、それに伴い関連市場も拡大しています。
+                    </p>
+                    <div
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                        <div
+                            style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+                            <strong style="color: #d4af37;">👨‍💻 フリーランス人口と経済規模</strong>
+                            <p
+                                style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.9rem; margin-top: 0.8rem; margin-bottom: 0;">
+                                2021年の調査によると、日本のフリーランス人口は約<strong style="color:#fff;">1,577万人</strong>に達し、経済規模は約<strong
+                                    style="color:#fff;">23.8兆円</strong>と推計されています。個人のスキルや専門知識を活かして働く人々が、既に巨大な経済圏を形成しています。
+                            </p>
+                        </div>
+                        <div
+                            style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+                            <strong style="color: #d4af37;">☁️ クラウドソーシング市場</strong>
+                            <p
+                                style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.9rem; margin-top: 0.8rem; margin-bottom: 0;">
+                                オンラインで仕事を受発注する市場も成長を続けており、2024年度には市場規模が約<strong
+                                    style="color:#fff;">4,000億円</strong>に達すると予測されています。プロジェクト単位で外部の専門家を活用する動きが活発化しています。
+                            </p>
+                        </div>
+                        <div
+                            style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+                            <strong style="color: #d4af37;">🤝 スキルシェア市場</strong>
+                            <p
+                                style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.9rem; margin-top: 0.8rem; margin-bottom: 0;">
+                                個人が持つスキルを教えたり提供したりする市場規模は、2024年度には約<strong
+                                    style="color:#fff;">1,400億円</strong>に達する見込みです。特定のスキルを持つ個人が、それを収益に変えることへの関心が高まっています。
+                            </p>
+                        </div>
+                    </div>
+
+                    <h3 style="color: #d4af37; font-size: 1.2rem; margin-bottom: 1rem;">🌍 世界の市場規模</h3>
+                    <div
+                        style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 2rem;">
+                        <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.95rem; margin: 0;">
+                            グローバルに見ると、市場の潜在性はさらに大きくなります。<br>
+                            世界のフリーランスプラットフォームの市場規模は、2023年に約<strong
+                                style="color:#fff;">91.9億米ドル</strong>と評価され、2030年までには約<strong
+                                style="color:#fff;">337.6億米ドル</strong>に成長すると予測されています。年平均成長率（CAGR）は<strong
+                                style="color:#d4af37;">15.3%</strong>と非常に高く、世界中でフリーランスという働き方が急速に普及していることがわかります。
+                        </p>
+                    </div>
+
+                    <h3 style="color: #d4af37; font-size: 1.2rem; margin-bottom: 1rem;">🎯 市場分析のまとめ</h3>
+                    <ul
+                        style="color: rgba(255,255,255,0.75); line-height: 1.9; font-size: 0.95rem; padding-left: 1.2rem; margin-bottom: 2rem;">
+                        <li style="margin-bottom: 0.8rem;"><strong style="color:#fff;">巨大なターゲット人口:</strong>
+                            日本国内だけでも1,500万人を超えるフリーランスが存在し、アプローチできる潜在顧客は非常に多いです。</li>
+                        <li style="margin-bottom: 0.8rem;"><strong style="color:#fff;">成長性の高い市場:</strong>
+                            国内外ともに、フリーランス関連市場は高い成長率を維持しており、新しいサービスが参入する余地は十分にあります。</li>
+                        <li style="margin-bottom: 0.8rem;"><strong style="color:#d4af37;">課題は「コラボレーション」:</strong>
+                            市場は拡大していますが、その多くは「企業から個人へ」の受発注が中心です。ご提案のように「個人と個人がチームを組む」ことに特化したプラットフォームは、まだ未開拓な領域であり、大きなビジネスチャンスが眠っています。
+                        </li>
+                    </ul>
+                    <div
+                        style="background: rgba(212,175,55,0.08); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(212,175,55,0.2); margin-bottom: 3rem;">
+                        <p
+                            style="color: rgba(255,255,255,0.9); line-height: 1.8; font-size: 0.95rem; margin: 0; text-align: center;">
+                            ご提案の事業は、この巨大で成長中の市場が抱える「コラボレーションの非効率性」という課題を解決する可能性を秘めており、市場規模の観点からも非常に有望であると結論付けられます。
+                        </p>
+                    </div>
+
+                    <h3 style="color: #d4af37; font-size: 1.2rem; margin-bottom: 1.5rem;">⚔️ 既存サービスとの違い</h3>
+                    <p
+                        style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.95rem; margin-bottom: 1.5rem;">
+                        AI時代の新しい働き方を提唱する僕らのプラットフォーム。既存サービスとの違いは明確です。
+                    </p>
+                    <div
+                        style="overflow-x: auto; margin-bottom: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; text-align: left;">
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                    <td
+                                        style="padding: 1.2rem 1rem; color: rgba(255,255,255,0.5); width: 80px; text-align: center;">
+                                        ✕ 既存</td>
+                                    <td style="padding: 1.2rem 1rem; color: rgba(255,255,255,0.7);">
+                                        Upworkやランサーズは「単発の仕事」の受発注がメイン。</td>
+                                </tr>
+                                <tr
+                                    style="border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(155, 89, 182, 0.08);">
+                                    <td
+                                        style="padding: 1.2rem 1rem; color: #9b59b6; font-weight: bold; text-align: center;">
+                                        ○ 当方</td>
+                                    <td style="padding: 1.2rem 1rem; color: #fff;">アイデア段階からチームを組み、プロダクトを世に出すまでを一気通貫で支援。
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                    <td style="padding: 1.2rem 1rem; color: rgba(255,255,255,0.5); text-align: center;">
+                                        ✕ 既存</td>
+                                    <td style="padding: 1.2rem 1rem; color: rgba(255,255,255,0.7);">Y
+                                        Combinatorの共同創業者探しは「会社設立」が前提。</td>
+                                </tr>
+                                <tr
+                                    style="border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(155, 89, 182, 0.08);">
+                                    <td
+                                        style="padding: 1.2rem 1rem; color: #9b59b6; font-weight: bold; text-align: center;">
+                                        ○ 当方</td>
+                                    <td style="padding: 1.2rem 1rem; color: #fff;">もっと流動的な「プロジェクト単位」でのコラボレーションを促進。</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                    <td style="padding: 1.2rem 1rem; color: rgba(255,255,255,0.5); text-align: center;">
+                                        ✕ 既存</td>
+                                    <td style="padding: 1.2rem 1rem; color: rgba(255,255,255,0.7);">多くのサービスは「スキル」の切り売り。
+                                    </td>
+                                </tr>
+                                <tr style="background: rgba(155, 89, 182, 0.08);">
+                                    <td
+                                        style="padding: 1.2rem 1rem; color: #9b59b6; font-weight: bold; text-align: center;">
+                                        ○ 当方</td>
+                                    <td style="padding: 1.2rem 1rem; color: #fff;">
+                                        「役割（プロデューサー/マーケター/プランナー/クリエイター）」でマッチングし、真の化学反応を生む。</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p
+                        style="color: #d4af37; font-weight: bold; font-size: 1.05rem; text-align: center; margin-top: 1.5rem;">
+                        僕らは単なるマッチングサイトではなく、新しい働き方のOSを創ります。
+                    </p>
+                </div>
+
+                <!-- CTA -->
+                <div
+                    style="background: linear-gradient(135deg, #1e3c72, #2a5298); border-radius: 16px; padding: 2.5rem; margin-bottom: 2rem; border: 1px solid rgba(255, 255, 255, 0.2); text-align: center;">
+                    <h3 style="color: #fff; font-size: 1.4rem; margin-bottom: 1rem;">一緒に次世代のプラットフォームを作りませんか？</h3>
+                    <p
+                        style="color: rgba(255,255,255,0.8); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        少しでも興味を持たれた方は、ぜひご連絡ください。<br>ゼロから最速で価値を生み出しましょう！
+                    </p>
+                    <a href="../index.html#contact" class="btn btn-highlight btn-large"
+                        style="display: inline-block; padding: 1rem 2.5rem; border-radius: 30px; font-weight: bold; background: #fff; color: #1e3c72;">👉
+                        DM・お問い合わせはこちら</a>
+                </div>
+
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 IMARCA. All Rights Reserved.</p>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+
+</html>
