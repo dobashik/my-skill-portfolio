@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社内フリーランス制度 ― AI時代の新しい組織デザイン | IMARCA</title>
+    <meta name="description" content="就業時間の20%を社員が社内フリーランスとして自律的に活動。AI時代に最適な組織構造の設計・導入を支援します。モデル導入企業募集中。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="case-study.css">
+    <style>
+        /* Freelance System Detail Page Styles */
+        .fl-hero {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .fl-hero-inner {
+            margin-bottom: 40px;
+        }
+
+        .fl-badge {
+            display: inline-block;
+            padding: 10px 28px;
+            background: linear-gradient(135deg, #00d4ff 0%, #8a2be2 100%);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border-radius: 50px;
+            margin-bottom: 30px;
+            letter-spacing: 0.08em;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .fl-main-title {
+            font-size: 2.4rem;
+            line-height: 1.5;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .fl-subtitle {
+            display: block;
+            font-size: 1rem;
+            font-weight: 400;
+            color: #aaa;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+        }
+
+        .fl-hero-lead {
+            font-size: 1.1rem;
+            color: #999;
+            line-height: 1.8;
+        }
+
+        .fl-hero-thumbnail {
+            max-width: 680px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .fl-hero-thumbnail img {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+
+        /* Section heading accent */
+        .fl-section-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        /* Role cards */
+        .fl-role-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin: 2rem 0;
+        }
+
+        .fl-role-card {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
+            padding: 1.8rem;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .fl-role-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .fl-role-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+
+        .fl-role-desc {
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.8;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .fl-role-condition {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Proof items */
+        .fl-proof-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        .fl-proof-list li {
+            padding: 1rem 1.2rem;
+            margin-bottom: 0.8rem;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            border-left: 3px solid rgba(0, 212, 255, 0.4);
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .fl-proof-list li strong {
+            color: #00d4ff;
+        }
+
+        /* Back link */
+        .fl-back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .fl-back-link:hover {
+            color: #00d4ff;
+        }
+
+        /* Quote highlight */
+        .fl-quote {
+            border-left: 4px solid #8a2be2;
+            background: linear-gradient(90deg, rgba(138, 43, 226, 0.08) 0%, transparent 100%);
+            padding: 20px 24px;
+            border-radius: 0 16px 16px 0;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #fff;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* CTA section */
+        .fl-cta {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(138, 43, 226, 0.08));
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .fl-cta h2 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .fl-cta p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .fl-main-title {
+                font-size: 1.7rem;
+            }
+
+            .fl-hero-thumbnail {
+                max-width: 100%;
+            }
+
+            .fl-cta {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <header><!-- nav.js will replace this --></header>
+
+    <main class="cs-page">
+
+        <!-- ===== Hero ===== -->
+        <section class="fl-hero">
+            <div class="fl-hero-inner">
+                <span class="fl-badge">🏢 AIコンサルティング</span>
+                <h1 class="fl-main-title fade-in-up">
+                    <span class="fl-subtitle">AI時代の新しい組織デザイン</span>
+                    社内フリーランス制度
+                </h1>
+                <p class="fl-hero-lead fade-in-up delay-1">なぜ今、あなたの会社の「組織構造」そのものを疑うべきなのか</p>
+            </div>
+            <div class="fl-hero-thumbnail fade-in-up delay-2">
+                <img src="../assets/images/ai-service-an/社内フリーランス制度.png" alt="社内フリーランス制度" loading="lazy"
+                    class="clickable-image">
+                <p class="image-caption-hint">※画像をクリックで全画面表示できます</p>
+            </div>
+        </section>
+
+        <a href="ai-consulting.html" class="fl-back-link fade-in-up">← AIコンサルティング 一覧に戻る</a>
+
+        <!-- ===== Section 1: トップダウン組織の「構造的な欠陥」 ===== -->
+        <section class="cs-card fade-in-up">
+            <div class="cs-card-header">
+                <span class="cs-card-number">01</span>
+                <h2>トップダウン組織の<br>「構造的な欠陥」</h2>
+            </div>
+
+            <p class="cs-body">
+                多くの会社はこうなっています。<br>
+                社長がビジョンを示す → 管理職が噛み砕く → 社員が指示に従う。
+            </p>
+
+            <p class="cs-body">
+                この構造には、見過ごされている致命的な問題があります。
+            </p>
+
+            <div class="fl-quote">
+                「社員一人ひとりの意見が反映されない」ということです。
+            </div>
+
+            <p class="cs-body">
+                会議を思い出してください。一度に喋れるのは一人だけ。他の人は黙って聞いている。声の大きい人、役職の高い人の意見が通る。本当はもっと良いアイデアを持っている人が、発言の順番が来ないまま会議が終わる。
+            </p>
+            <p class="cs-body">
+                これが毎日、毎週、何年も繰り返される。
+            </p>
+            <p class="cs-body">
+                結果、何が起きるか。
+            </p>
+            <p class="cs-body">
+                社員は「自分の才能を活かせない」と感じ始める。自分の表現したいこと、本来持っている能力を発揮する場がない。それがストレスになる。<strong>仕事そのものがストレス環境になる。</strong>
+            </p>
+            <p class="cs-body">
+                人事が本当に向き合うべき課題は、採用でも評価制度でもなく、<strong>「すべての社員が自分の能力を100%発揮できる仕組みになっていない」</strong>ということ。この構造問題を解かない限り、どんな施策を打っても表面的な対処にしかなりません。
+            </p>
+        </section>
+
+        <!-- ===== Section 2: AI時代に起きる不可逆的な変化 ===== -->
+        <section class="cs-card fade-in-up">
+            <div class="cs-card-header">
+                <span class="cs-card-number">02</span>
+                <h2>AI時代に起きる<br>不可逆的な変化</h2>
+            </div>
+
+            <p class="cs-body">
+                ここに、AIの急速な進化が重なります。
+            </p>
+            <p class="cs-body">
+                今、AIを使えば一人で企画 → マーケティング → 設計 → 開発 →
+                リリースまで、サービスの全工程を回すことができます。以前なら5人、10人のチームが必要だったことが、<strong>一人＋AIでできる時代</strong>になった。
+            </p>
+            <p class="cs-body">
+                これが意味することは明確です。
+            </p>
+
+            <div class="fl-quote">
+                究極的には「会社」という箱は要らなくなる。全員がフリーランスとして、プロジェクト単位で協力し合う形に移行していく。これは予測ではなく、すでに始まっている現実です。
+            </div>
+
+            <p class="cs-body">
+                問題は、<strong>「いつ、どうやって、そこへの橋を架けるか」</strong>。
+            </p>
+        </section>
+
+        <!-- ===== Section 3: 「社内フリーランス制度」という解 ===== -->
+        <section class="cs-card fade-in-up">
+            <div class="cs-card-header">
+                <span class="cs-card-number">03</span>
+                <h2>「社内フリーランス制度」<br>という解</h2>
+            </div>
+
+            <p class="cs-body">
+                僕はこの移行を実現するための仕組みとして、<strong>「社内フリーランス制度」</strong>を設計しています。
+            </p>
+            <p class="cs-body">コンセプトはシンプルです。</p>
+
+            <div class="fl-quote">
+                就業時間の20%（週1日）を、社員が「社内フリーランス」として自由に使う。会社はツールやAI環境を支援し、そこから生まれた収益を会社と社員でシェアする。
+            </div>
+
+            <p class="cs-body">
+                ただし、ここに最も重要なルールがあります。
+            </p>
+
+            <div class="cs-wall-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 1.5rem;">
+                <div class="cs-wall-item" style="border-color: rgba(138, 43, 226, 0.3);">
+                    <div class="cs-wall-icon">🚫</div>
+                    <h3>ミーティング禁止</h3>
+                    <p>この時間は上司もいない、チームもない。一人のフリーランスとしてAIを相棒に自律的に動く。</p>
+                </div>
+                <div class="cs-wall-item" style="border-color: rgba(138, 43, 226, 0.3);">
+                    <div class="cs-wall-icon">🚫</div>
+                    <h3>指示禁止</h3>
+                    <p>カフェ巡りが好きならカフェに行く。プログラミングが好きならコードを書く。完全に個人のパッション（情熱）に従う。</p>
+                </div>
+            </div>
+
+            <p class="cs-body">
+                なぜこのルールが必要か。
+            </p>
+            <p class="cs-body">
+                この制度にトップダウン型のマネジメントを持ち込んだ瞬間、「ただのやらされ仕事」に成り下がり、エコシステムは死にます。従来の組織構造の再生産になってしまう。だから<strong>「指示しない・会議しない」を徹底する。</strong>
+            </p>
+        </section>
+
+        <!-- ===== Section 4: まずは全員が「一人で全部やる」からスタート ===== -->
+        <section class="cs-card fade-in-up">
+            <div class="cs-card-header">
+                <span class="cs-card-number">04</span>
+                <h2>まずは全員が<br>「一人で全部やる」からスタート</h2>
+            </div>
+
+            <p class="cs-body">
+                ここがこの制度の核心です。
+            </p>
+            <p class="cs-body">
+                最初は、全員がAIを使って一人で全工程をやります。企画も、集客も、設計も、開発も。AIがあれば、一人でサービスの立ち上げができる。完璧じゃなくていい。まずは自分の興味があることを、自分の手で形にしてみる。
+            </p>
+            <p class="cs-body">
+                そして、<strong>金曜日の夕方。</strong>
+            </p>
+            <p class="cs-body">
+                ここで初めて、メンバー全員が集まる。ただし「報告会議」ではない。各自がその週に取り組んだこと、AIで作った成果物、発見したニーズなどを<strong>「個人のポートフォリオ」として共有する場</strong>です。
+            </p>
+            <p class="cs-body">
+                この共有を重ねていくうちに、あることが見えてきます。
+            </p>
+
+            <div class="cs-wall-grid" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="cs-wall-item" style="border-color: rgba(0, 212, 255, 0.2);">
+                    <div class="cs-wall-icon">💡</div>
+                    <h3>アイデアを出すのが<br><small>得意だ</small></h3>
+                </div>
+                <div class="cs-wall-item" style="border-color: rgba(0, 212, 255, 0.2);">
+                    <div class="cs-wall-icon">📣</div>
+                    <h3>発信して人を<br><small>巻き込むのが好きだ</small></h3>
+                </div>
+                <div class="cs-wall-item" style="border-color: rgba(0, 212, 255, 0.2);">
+                    <div class="cs-wall-icon">📋</div>
+                    <h3>計画を立てて<br><small>整理するのが向いている</small></h3>
+                </div>
+                <div class="cs-wall-item" style="border-color: rgba(0, 212, 255, 0.2);">
+                    <div class="cs-wall-icon">🛠️</div>
+                    <h3>手を動かして<br><small>形にするのが一番楽しい</small></h3>
+                </div>
+            </div>
+
+            <p class="cs-body" style="text-align: center; margin-top: 1.5rem;">
+                自分の特性、自分の役割が、<strong>実践を通じて明確になっていく。</strong>
+            </p>
+        </section>
+
+        <!-- ===== Section 5: 4つの役割と収益配分 ===== -->
+        <section class="cs-card fade-in-up">
+            <div class="cs-card-header">
+                <span class="cs-card-number">05</span>
+                <h2>4つの役割と収益配分</h2>
+            </div>
+
+            <p class="cs-body">
+                この制度では、プロジェクトに関わる人の役割を4つに定義しています。それぞれの人には特性があり、自然とどれかの役割に惹かれていく。もちろん複数の役割を兼ねることもある。
+            </p>
+
+            <div class="fl-role-grid">
+                <!-- ① プロデューサー -->
+                <div class="fl-role-card" style="border-left: 4px solid #e74c3c;">
+                    <div class="fl-role-name" style="color: #e74c3c;">① プロデューサー（コンセプトメイカー）<span
+                            style="opacity: 0.6; font-size: 0.85em; margin-left: 0.5rem;">配分目安：1.5</span></div>
+                    <p class="fl-role-desc">「こんな課題を解決したい」という原案を作り、プロジェクトの旗を立てる人。</p>
+                    <span class="fl-role-condition"
+                        style="background: rgba(231, 76, 60, 0.15); color: #e74c3c;">【権利確定条件】企画書・要件定義の作成と初期メンバー募集の完了</span>
+                </div>
+
+                <!-- ② グロースマーケター -->
+                <div class="fl-role-card" style="border-left: 4px solid #f39c12;">
+                    <div class="fl-role-name" style="color: #f39c12;">② グロースマーケター（需要創出＆拡声器）<span
+                            style="opacity: 0.6; font-size: 0.85em; margin-left: 0.5rem;">配分目安：3.0</span></div>
+                    <p class="fl-role-desc">影も形もない段階からストーリーを発信してニーズを証明し、製品完成後も継続的に市場へ届け、熱狂を拡大し続ける人。</p>
+                    <span class="fl-role-condition"
+                        style="background: rgba(243, 156, 18, 0.15); color: #f39c12;">【権利確定条件】指定の事前登録者数の達成、リリース後の拡散指標クリア</span>
+                </div>
+
+                <!-- ③ プロジェクト・アーキテクト -->
+                <div class="fl-role-card" style="border-left: 4px solid #2ecc71;">
+                    <div class="fl-role-name" style="color: #2ecc71;">③ プロジェクト・アーキテクト（自律型マネージャー）<span
+                            style="opacity: 0.6; font-size: 0.85em; margin-left: 0.5rem;">配分目安：1.5</span></div>
+                    <p class="fl-role-desc">証明されたニーズに対し、実現までの最短ルートを設計する人。時間・予算・利益配分を計算し、タスクを最適にアサインする。</p>
+                    <span class="fl-role-condition"
+                        style="background: rgba(46, 204, 113, 0.15); color: #2ecc71;">【権利確定条件】実行計画・予算配分表の作成、タスクアサインの完了</span>
+                </div>
+
+                <!-- ④ クリエイター -->
+                <div class="fl-role-card" style="border-left: 4px solid #3498db;">
+                    <div class="fl-role-name" style="color: #3498db;">④ クリエイター（エグゼキューション）<span
+                            style="opacity: 0.6; font-size: 0.85em; margin-left: 0.5rem;">配分目安：4.0</span></div>
+                    <p class="fl-role-desc">すべての準備とニーズが整った「最後」に登場し、AIを駆使して最速でプロダクトを形にする実行部隊。</p>
+                    <span class="fl-role-condition"
+                        style="background: rgba(52, 152, 219, 0.15); color: #3498db;">【権利確定条件】指定仕様を満たすプロダクトの納品</span>
+                </div>
+            </div>
+
+            <p class="cs-body">
+                配分目安の数字は、社内プロジェクトが立ち上がったときの成果報酬の割合です。<strong>「需要を作る人」（②）と「実行する人」（④）に最も高い価値を置いています。</strong>AIを使って最速で実行できる時代において、この2つの能力が最も希少だからです。
+            </p>
+            <p class="cs-body">
+                重要なのは、最初から「自分は②だ」と決める必要はないということ。まず一人で全部やってみる。金曜日に共有する。それを繰り返すうちに、自然と自分の特性が見えてくる。そこから役割が分化していく。
+            </p>
+        </section>
+
+        <!-- ===== Section 6: 自然発生するコラボレーション ===== -->
+        <section class="cs-card fade-in-up">
+            <div class="cs-card-header">
+                <span class="cs-card-number">06</span>
+                <h2>自然発生する<br>コラボレーション</h2>
+            </div>
+
+            <p class="cs-body">
+                金曜日の共有を続けていくと、こんなことが起きます。
+            </p>
+
+            <div class="fl-quote"
+                style="border-left-color: #2ecc71; background: linear-gradient(90deg, rgba(46, 204, 113, 0.08) 0%, transparent 100%);">
+                「その課題、僕がSNSで発信して反応を見てみましょうか？」
+            </div>
+            <div class="fl-quote"
+                style="border-left-color: #3498db; background: linear-gradient(90deg, rgba(52, 152, 219, 0.08) 0%, transparent 100%);">
+                「そのアプリ、私なら今のスキルセットで1週間で実装できますよ」
+            </div>
+            <div class="fl-quote"
+                style="border-left-color: #f39c12; background: linear-gradient(90deg, rgba(243, 156, 18, 0.08) 0%, transparent 100%);">
+                「面白い。その2つのプロジェクト、組み合わせたらもっと大きなサービスになりませんか？」
+            </div>
+
+            <p class="cs-body">
+                誰かに指示されたのではなく、お互いのポートフォリオを見て、<strong>自発的に手を挙げる。これが本当の相乗効果です。</strong>
+            </p>
+            <p class="cs-body">
+                そして、無理にコラボレーションを合わせないことも大切。自然消滅するプロジェクトは手放していい。モチベーションが落ちたらやめていい。その代わり、実際にプロダクトを納品した、目標を達成した、という成果が出た時点で初めてレベニューシェアの権利が確定する。だから<strong>会社側のリスクもコントロールできる。</strong>
+            </p>
+        </section>
+
+        <!-- ===== Section 7: すでに世界で「パーツ」は実証されている ===== -->
+        <section class="cs-card fade-in-up">
+            <div class="cs-card-header">
+                <span class="cs-card-number">07</span>
+                <h2>すでに世界で<br>「パーツ」は実証されている</h2>
+            </div>
+
+            <p class="cs-body">
+                この制度は完全に新しい概念ではありません。構成要素はすでに世界中で実証されています。
+            </p>
+
+            <ul class="fl-proof-list">
+                <li><strong>Googleの20%ルール：</strong>就業時間の20%を自由なプロジェクトに使い、Gmail、Google News、AdSenseなどが生まれた</li>
+                <li><strong>3Mの15%ルール：</strong>Post-it Notesがここから誕生</li>
+                <li><strong>AdobeのKickbox：</strong>社員にツールと資金を渡してアイデア開発を支援</li>
+                <li><strong>日本企業の実績：</strong>KDDI、リコー、丸紅などが社内副業制度を導入し成果を出している</li>
+                <li><strong>Slicing Pieモデル：</strong>貢献の種類ごとにウェイトを付けてリアルタイムでシェアを計算する手法がスタートアップで広く採用</li>
+            </ul>
+
+            <p class="cs-body">
+                しかし、これらには共通の限界がありました。「個人が完全に自律してサービスを立ち上げる」という設計にはなっていなかった。AIが登場する前は、一人で全工程を回すことが物理的に不可能だったからです。
+            </p>
+
+            <div class="fl-quote">
+                今、AIがその壁を壊した。<br>
+                だからこそ、「20%ルール＋レベニューシェア＋完全自律＋役割分化」を統合した新しい制度が、今このタイミングで必要なのです。
+            </div>
+        </section>
+
+        <!-- ===== Section 8: CTA ===== -->
+        <section class="fl-cta fade-in-up">
+            <span class="fl-badge" style="margin-bottom: 1.5rem;">🤝 モデル導入企業募集</span>
+            <h2>一緒に成功事例を<br>作りませんか</h2>
+            <p>
+                この「社内フリーランス制度」の設計と導入支援を、<br>
+                <strong style="color: #00d4ff;">モデル企業2〜3社に無料</strong>で行います。
+            </p>
+            <p style="font-size: 0.95rem; max-width: 600px; margin: 0 auto 2rem;">
+                特にIT企業の方はAIリテラシーが高く、この制度との相性が抜群ですが、業種は問いません。<br>
+                「社員の才能を今の組織構造では活かしきれていない」と感じている経営者の方なら、きっと共感していただけると思います。
+            </p>
+            <a href="../index.html#contact" class="btn btn-highlight btn-large">ご連絡はこちら</a>
+            <p style="margin-top: 1.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.5);">IMARCA</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 IMARCA. All Rights Reserved.</p>
+    </footer>
+
+    <script src="../nav.js"></script>
+    <script src="../script.js"></script>
+</body>
+
+</html>

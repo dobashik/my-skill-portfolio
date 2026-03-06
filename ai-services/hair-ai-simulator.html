@@ -187,18 +187,7 @@
 <body>
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
-    <header>
-        <nav>
-            <div class="logo"><a href="../index.html">IMARCA</a></div>
-            <ul>
-                <li><a href="../ai-services.html" class="nav-highlight">AI活用サービス例</a></li>
-                <li><a href="../consulting/case-study-notebooklm.html" class="nav-highlight">AIコンサル</a></li>
-                <li><a href="../index.html#about">About</a></li>
-                <li><a href="../index.html#portfolio">Portfolio</a></li>
-                <li><a href="../index.html#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <header><!-- nav.js will replace this --></header>
     <main class="cs-page">
         <section class="ai-service-page-hero">
             <span class="ai-service-badge">🚀 AI活用サービス例</span>
@@ -227,7 +216,8 @@
                 </p>
                 <div class="ai-service-screenshot">
                     <img src="../assets/images/ai-service-an/美容師とお客様の「会話」から、全自動で髪型が変化するAIシミュレーションアプリ.png"
-                        alt="AIヘアシミュレーター 概要図" loading="lazy">
+                        alt="AIヘアシミュレーター 概要図" loading="lazy" class="clickable-image">
+                    <p class="image-caption-hint">※画像をクリックで全画面表示できます</p>
                 </div>
 
                 <!-- 2つのコア機能 -->
@@ -404,6 +394,7 @@
     <footer>
         <p>&copy; 2025 IMARCA. All Rights Reserved.</p>
     </footer>
+    <script src="../nav.js"></script>
     <script src="../script.js"></script>
 </body>
 
