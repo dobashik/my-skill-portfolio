@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ポートフォリオ | IMARCA</title>
+    <meta name="description" content="IMARCAの開発ポートフォリオ。日本高配当株ポートフォリオ管理サイト、Chrome拡張ツール、iOSモバイルアプリなどの実績をご紹介します。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Portfolio Listing Page Styles */
+        .portfolio-page-hero {
+            text-align: center;
+            padding: 8rem 0 3rem;
+        }
+
+        .portfolio-page-hero h1 {
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #d4af37 50%, #f0d060 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .portfolio-page-hero p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .portfolio-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4af37, #f0d060);
+            color: #0a0a0a;
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Portfolio Cards Grid */
+        .portfolio-cards-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .portfolio-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 175, 55, 0.08);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .portfolio-card-thumb {
+            width: 360px;
+            min-height: 260px;
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .portfolio-card-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .portfolio-card:hover .portfolio-card-thumb img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-card-label {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .portfolio-card-body {
+            padding: 2rem 2.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .portfolio-card-category {
+            display: inline-block;
+            padding: 0.25rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            width: fit-content;
+        }
+
+        .portfolio-card-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+            color: #fff;
+        }
+
+        .portfolio-card-desc {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+
+        .portfolio-card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .portfolio-card-tags span {
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            color: rgba(255, 255, 255, 0.65);
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+
+        .portfolio-card-links {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        /* Gallery inside card */
+        .portfolio-card-gallery {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-card-gallery img {
+            height: 120px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        /* Mobile screenshot special */
+        .mobile-screenshots {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .mobile-screenshots img {
+            height: 200px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-card {
+                flex-direction: column;
+            }
+
+            .portfolio-card-thumb {
+                width: 100%;
+                min-height: 200px;
+            }
+
+            .portfolio-page-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .portfolio-page-hero {
+                padding: 6rem 0 2rem;
+            }
+
+            .mobile-screenshots img {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <header><!-- nav.js will replace this --></header>
+
+    <main style="max-width: 100%; padding: 0;">
+
+        <!-- ===== Hero ===== -->
+        <section class="portfolio-page-hero">
+            <span class="portfolio-badge">🛠 ポートフォリオ</span>
+            <h1 class="fade-in-up">ポートフォリオ</h1>
+            <p class="fade-in-up delay-1">開発したツール・サービスの一覧です。Chrome拡張機能からiOSアプリ、Webサービスまで幅広く開発しています。</p>
+        </section>
+
+        <!-- ===== Card Grid ===== -->
+        <div class="portfolio-cards-grid">
+
+            <!-- ===== 1. 日本高配当株ポートフォリオ管理サイト ===== -->
+            <div class="portfolio-card fade-in-up">
+                <div class="portfolio-card-thumb">
+                    <img src="assets/images/portfoliosite/p1.png" alt="日本高配当株ポートフォリオ管理サイト" loading="lazy">
+                    <div class="portfolio-card-label"
+                        style="background: linear-gradient(135deg, #d4af37, #f0d060); color: #0a0a0a;">🏆 メイン開発</div>
+                </div>
+                <div class="portfolio-card-body">
+                    <span class="portfolio-card-category"
+                        style="background: rgba(212, 175, 55, 0.15); color: #d4af37; border: 1px solid rgba(212, 175, 55, 0.3);">Webサービス</span>
+                    <h3 class="portfolio-card-title">日本高配当株ポートフォリオ管理サイト</h3>
+                    <p class="portfolio-card-desc">
+                        独自のスコアリングシステムで高配当株を評価・分析。ポートフォリオ全体のリスク分散度・配当カレンダー・セクター比率を視覚化し、投資判断を強力にサポートするWebサービスです。
+                    </p>
+                    <div class="portfolio-card-tags">
+                        <span>Next.js</span>
+                        <span>Supabase</span>
+                        <span>Cloudflare</span>
+                        <span>Stripe決済</span>
+                        <span>Google Cloud</span>
+                        <span>Google認証ログイン</span>
+                    </div>
+                    <div class="portfolio-card-links">
+                        <a href="https://cashflow-maker-web.pages.dev/" target="_blank" class="btn btn-highlight"
+                            style="padding: 8px 20px; font-size: 0.9rem;">👉 サイトを見る</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 2. 日本高配当株 分析ツール ===== -->
+            <div class="portfolio-card fade-in-up">
+                <div class="portfolio-card-thumb">
+                    <img src="assets/images/kouhaitoubunseki/k1.png" alt="日本高配当株分析ツール" loading="lazy">
+                    <div class="portfolio-card-label"
+                        style="background: linear-gradient(135deg, #d4af37, #f0d060); color: #0a0a0a;">💰 Chrome拡張</div>
+                </div>
+                <div class="portfolio-card-body">
+                    <span class="portfolio-card-category"
+                        style="background: rgba(212, 175, 55, 0.15); color: #d4af37; border: 1px solid rgba(212, 175, 55, 0.3);">Chrome拡張機能</span>
+                    <h3 class="portfolio-card-title">日本高配当株 分析ツール</h3>
+                    <p class="portfolio-card-desc">
+                        両学長の動画で紹介された財務指標を、株情報サイトから自動取得・判定。企業の財務健全性を一目で確認でき、投資判断を強力にサポートするChrome拡張機能です。
+                    </p>
+                    <div class="portfolio-card-tags">
+                        <span>Chrome Extension</span>
+                        <span>JavaScript</span>
+                        <span>DOM Manipulation</span>
+                        <span>財務分析</span>
+                    </div>
+                    <div class="portfolio-card-links">
+                        <a href="https://x.com/dobashikentarou/status/2015016393016807517" target="_blank" class="btn"
+                            style="padding: 8px 20px; font-size: 0.9rem;">詳細（Xポスト）</a>
+                        <a href="https://chromewebstore.google.com/detail/cashflow-maker-pro/egdiendoebmajhiiepkmngecacfeinhd?authuser=0&hl=ja&pli=1"
+                            target="_blank" class="btn btn-secondary"
+                            style="padding: 8px 20px; font-size: 0.9rem;">ダウンロード</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 3. 複数AI連携 - AIリレーコピー ===== -->
+            <div class="portfolio-card fade-in-up">
+                <div class="portfolio-card-thumb">
+                    <img src="assets/images/ai-relay-screenshot.png" alt="複数AI連携 Chrome拡張" loading="lazy">
+                    <div class="portfolio-card-label"
+                        style="background: linear-gradient(135deg, #3498db, #2980b9); color: #fff;">🔗 近日公開</div>
+                </div>
+                <div class="portfolio-card-body">
+                    <span class="portfolio-card-category"
+                        style="background: rgba(52, 152, 219, 0.15); color: #3498db; border: 1px solid rgba(52, 152, 219, 0.3);">Chrome拡張機能</span>
+                    <h3 class="portfolio-card-title">複数AI連携 - AIリレーコピー</h3>
+                    <p class="portfolio-card-desc">
+                        ChatGPT・Claude・Gemini・Grok・Manusに対応（NotebookLMは対応予定）。ワンクリックで直近のプロンプトと結果をコピーし、別のAIにそのまま貼り付けてリレーできるChrome拡張ツールです。
+                    </p>
+                    <div class="portfolio-card-tags">
+                        <span>Chrome Extension</span>
+                        <span>Manifest V3</span>
+                        <span>5 AI対応</span>
+                        <span>生産性向上</span>
+                    </div>
+                    <p
+                        style="color: rgba(52, 152, 219, 0.8); font-size: 0.85rem; margin-bottom: 1rem; font-weight: 600;">
+                        📌 近日Chromeウェブストアで公開予定</p>
+                </div>
+            </div>
+
+            <!-- ===== 4. 脊髄損傷向けお通じ判定モバイルアプリ ===== -->
+            <div class="portfolio-card fade-in-up">
+                <div class="portfolio-card-thumb"
+                    style="background: linear-gradient(135deg, #2c1654, #1a0a3e); display: flex; align-items: center; justify-content: center; padding: 1rem;">
+                    <img src="assets/images/mobileapli/otuuji1.png" alt="お通じ判定アプリ メイン画面" loading="lazy"
+                        style="object-fit: contain; border-radius: 20px; max-height: 240px; width: auto;">
+                </div>
+                <div class="portfolio-card-body">
+                    <span class="portfolio-card-category"
+                        style="background: rgba(142, 68, 173, 0.15); color: #9b59b6; border: 1px solid rgba(142, 68, 173, 0.3);">iOSアプリ</span>
+                    <h3 class="portfolio-card-title">脊髄損傷向け お通じ判定モバイルアプリ</h3>
+                    <p class="portfolio-card-desc">
+                        脊髄損傷者の日常的な課題に着目し開発中のiOSアプリ。マイク（聴診器）でおなかの音を拾い、周波数スペクトル解析でお通じの状態を判定。部位選択（左・横・右）による計測位置の指定、CSV出力による記録・分析にも対応しています。
+                    </p>
+                    <div class="portfolio-card-tags">
+                        <span>Swift / SwiftUI</span>
+                        <span>iOS</span>
+                        <span>音声解析</span>
+                        <span>ヘルスケア</span>
+                        <span>アクセシビリティ</span>
+                    </div>
+                    <div class="mobile-screenshots">
+                        <img src="assets/images/mobileapli/otuuji1.png" alt="メイン画面" class="clickable-image">
+                        <img src="assets/images/mobileapli/otuuji2.PNG" alt="開発モード" class="clickable-image">
+                    </div>
+                    <p style="color: rgba(142, 68, 173, 0.8); font-size: 0.85rem; font-weight: 600;">🔧
+                        データを取って、アルゴリズム改善中</p>
+                </div>
+            </div>
+
+            <!-- ===== 5. note読者分析ツール ===== -->
+            <div class="portfolio-card fade-in-up">
+                <div class="portfolio-card-thumb"
+                    style="background: linear-gradient(135deg, #1a1a2e, #16213e); display: flex; align-items: center; justify-content: center;">
+                    <div style="font-size: 5rem;">📝</div>
+                </div>
+                <div class="portfolio-card-body">
+                    <span class="portfolio-card-category"
+                        style="background: rgba(212, 175, 55, 0.15); color: #d4af37; border: 1px solid rgba(212, 175, 55, 0.3);">Chrome拡張機能</span>
+                    <h3 class="portfolio-card-title">note読者分析ツール</h3>
+                    <p class="portfolio-card-desc">
+                        自分のnote読者を分析し、AIにペルソナ分析・お勧めテーマ記事を生成するクリエイター向けツールです。
+                    </p>
+                    <div class="portfolio-card-tags">
+                        <span>Chrome Extension</span>
+                        <span>JavaScript</span>
+                        <span>Note API</span>
+                    </div>
+                    <div class="portfolio-card-links">
+                        <a href="https://note.com/dobashi_k/n/n999e7525da11" target="_blank" class="btn"
+                            style="padding: 8px 20px; font-size: 0.9rem;">詳細記事を読む</a>
+                        <a href="https://x.gd/8HOtO" target="_blank" class="btn btn-secondary"
+                            style="padding: 8px 20px; font-size: 0.9rem;">ダウンロード</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 6. Google AI検索 拡張ツール ===== -->
+            <div class="portfolio-card fade-in-up">
+                <div class="portfolio-card-thumb"
+                    style="background: linear-gradient(135deg, #1a1a2e, #16213e); display: flex; align-items: center; justify-content: center;">
+                    <div style="font-size: 5rem;">🔍</div>
+                </div>
+                <div class="portfolio-card-body">
+                    <span class="portfolio-card-category"
+                        style="background: rgba(212, 175, 55, 0.15); color: #d4af37; border: 1px solid rgba(212, 175, 55, 0.3);">Chrome拡張機能</span>
+                    <h3 class="portfolio-card-title">Google AI検索 - 右クリックで「とは」検索</h3>
+                    <p class="portfolio-card-desc">
+                        Webページ上のテキストを選択して右クリックするだけで、「〜とは」をGoogle AI検索モードで即座にシークレット検索できる拡張ツールです。履歴を残さず、最小権限で安心。
+                    </p>
+                    <div class="portfolio-card-tags">
+                        <span>Chrome Extension</span>
+                        <span>JavaScript</span>
+                        <span>Context Menu API</span>
+                    </div>
+                    <div class="portfolio-card-links">
+                        <a href="https://chromewebstore.google.com/detail/jfdpnlhbeocjijdlbnffpacpcbhhncbi"
+                            target="_blank" class="btn btn-secondary"
+                            style="padding: 8px 20px; font-size: 0.9rem;">ダウンロード</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== 7. アファメーションツール ===== -->
+            <div class="portfolio-card fade-in-up">
+                <div class="portfolio-card-thumb"
+                    style="background: linear-gradient(135deg, #1a1a2e, #16213e); display: flex; align-items: center; justify-content: center;">
+                    <div style="font-size: 5rem;">✨</div>
+                </div>
+                <div class="portfolio-card-body">
+                    <span class="portfolio-card-category"
+                        style="background: rgba(255, 107, 107, 0.15); color: #ff6b6b; border: 1px solid rgba(255, 107, 107, 0.3);">販売中</span>
+                    <h3 class="portfolio-card-title">アファメーションツール</h3>
+                    <p class="portfolio-card-desc">
+                        パソコンのブラウザ上で動き、目標達成のためのマインドセットを習慣化するツールです。
+                    </p>
+                    <div class="portfolio-card-tags">
+                        <span>Web App</span>
+                        <span>HTML5/CSS3</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="portfolio-card-links">
+                        <a href="https://shambalalife.net/affirmation_tool/lp/index.html?v=2" target="_blank"
+                            class="btn btn-highlight" style="padding: 8px 20px; font-size: 0.9rem;">公式サイトを見る</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 IMARCA. All Rights Reserved.</p>
+    </footer>
+
+    <script src="nav.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
