@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>積ん読AI（Tsundoku AI）| AIサービス案 | IMARCA</title>
+    <meta name="description"
+        content="世界中のAIノウハウが集まる「AI版Wikipediaチャットボット」を目指すプロジェクト。まずは積ん読を代わりに消化するAIツールから。企業パートナー・AIエンジニア募集中。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../consulting/case-study.css">
+    <style>
+        .ai-service-detail {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .ai-service-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .ai-service-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ai-service-number {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 800;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .ai-service-header h2 {
+            font-size: 1.6rem;
+            margin: 0;
+            line-height: 1.5;
+            background: linear-gradient(135deg, #ffffff, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ai-service-desc {
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.9;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .ai-service-screenshot {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .ai-service-screenshot:hover {
+            transform: scale(1.02);
+        }
+
+        .ai-service-screenshot img {
+            width: 100%;
+            display: block;
+        }
+
+        .ai-service-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .ai-service-links .btn {
+            padding: 0.9rem 2rem;
+            font-size: 1rem;
+        }
+
+        .ai-service-page-hero {
+            text-align: center;
+            padding: 5.5rem 0 1rem;
+        }
+
+        .ai-service-page-hero h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #e74c3c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ai-service-page-hero p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .ai-service-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: #fff;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .ai-service-tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ai-service-tech-tags span {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #e74c3c;
+        }
+
+        /* セクション区切り */
+        .section-block {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-block h3 {
+            color: #e74c3c;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-block p,
+        .section-block li {
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .section-block ul {
+            padding-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        /* ステップ */
+        .step-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .step-item {
+            background: rgba(231, 76, 60, 0.08);
+            border: 1px solid rgba(231, 76, 60, 0.2);
+            border-radius: 12px;
+            padding: 1.2rem;
+            text-align: center;
+        }
+
+        .step-item .step-num {
+            display: inline-block;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            line-height: 32px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-item strong {
+            display: block;
+            color: #fff;
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .step-item p {
+            color: rgba(255, 255, 255, 0.6) !important;
+            font-size: 0.85rem !important;
+            line-height: 1.5 !important;
+            margin: 0;
+        }
+
+        /* フロー図 */
+        .flow-chart {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(231, 76, 60, 0.05);
+            border-radius: 12px;
+        }
+
+        .flow-item {
+            background: rgba(231, 76, 60, 0.15);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+            border-radius: 10px;
+            padding: 0.6rem 1rem;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .flow-arrow {
+            color: #e74c3c;
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        /* 募集カード */
+        .recruit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .recruit-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .recruit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(231, 76, 60, 0.15);
+        }
+
+        .recruit-card h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .recruit-card p,
+        .recruit-card li {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            font-size: 0.9rem;
+        }
+
+        .recruit-card ul {
+            padding-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        /* 競合テーブル */
+        .compete-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .compete-item {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .compete-item strong {
+            color: #d4af37;
+        }
+
+        .compete-item p {
+            margin-top: 0.5rem;
+        }
+
+        /* チャット例 */
+        .chat-example {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(231, 76, 60, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Inter', monospace;
+        }
+
+        .chat-q,
+        .chat-a {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 12px;
+        }
+
+        .chat-q {
+            background: rgba(255, 255, 255, 0.06);
+            border-left: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .chat-a {
+            background: rgba(231, 76, 60, 0.08);
+            border-left: 3px solid #e74c3c;
+        }
+
+        .chat-label {
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .chat-q .chat-label {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .chat-a .chat-label {
+            color: #e74c3c;
+        }
+
+        .chat-q p,
+        .chat-a p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .ai-service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .ai-service-header h2 {
+                font-size: 1.3rem;
+            }
+
+            .ai-service-page-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .step-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .recruit-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <header><!-- nav.js will replace this --></header>
+
+    <main class="cs-page">
+
+        <section class="ai-service-page-hero">
+            <span class="ai-service-badge">🔥 フラッグシッププロジェクト</span>
+            <h1 class="fade-in-up">積ん読AI（Tsundoku AI）</h1>
+            <p class="fade-in-up delay-1">世界中のAIノウハウが集まる「AI版Wikipediaチャットボット」を目指して</p>
+        </section>
+
+        <div class="ai-service-detail">
+            <a href="../ai-services.html" class="back-link fade-in-up">← プロジェクト一覧に戻る</a>
+
+            <section class="ai-service-card fade-in-up"
+                style="border: 1px solid rgba(231, 76, 60, 0.3); background: linear-gradient(135deg, rgba(231, 76, 60, 0.05), rgba(255,255,255,0.03));">
+                <div
+                    style="display: inline-block; background: linear-gradient(135deg, #e74c3c, #c0392b); color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.5px;">
+                    🔥 企業パートナー・AIエンジニア募集中</div>
+                <div class="ai-service-header">
+                    <div class="ai-service-number">★</div>
+                    <h2>世界中のAIノウハウが集まる<br>「AI版Wikipediaチャットボット」を作りたい</h2>
+                </div>
+
+                <div class="ai-service-tech-tags">
+                    <span>AI版Wikipediaチャットボット</span>
+                    <span>RAG</span>
+                    <span>Chrome拡張</span>
+                    <span>Next.js</span>
+                    <span>Supabase</span>
+                    <span>LLM API</span>
+                    <span>ネットワーク効果</span>
+                </div>
+
+                <!-- ビジョン説明 -->
+                <p class="ai-service-desc">
+                    <strong
+                        style="color: #e74c3c; font-size: 1.1rem;">「やりたいこと」を入力すると、<br>「理想のAIツール」と「今の環境でできる代替案」の両方を提案してくれる。</strong><br><br>
+                    しかも、その提案は<strong style="color: #d4af37;">「世界中の人が実際に試して良かったと評価したノウハウ」</strong>に基づいている。<br>
+                    これが、僕が作りたいサービスの最終形です。
+                </p>
+
+                <!-- チャット例 -->
+                <div class="chat-example">
+                    <div class="chat-q">
+                        <div class="chat-label">💬 ユーザーの質問</div>
+                        <p>「営業資料を自動で作りたい。<br>でも、うちの会社はChatGPTしか使えない。」</p>
+                    </div>
+                    <div class="chat-a">
+                        <div class="chat-label">🤖 AIの回答</div>
+                        <p>
+                            <strong style="color: #d4af37;">理想の方法：</strong>Gammaを使えば、テキストを入れるだけでスライドが自動生成されます。<br><br>
+                            <strong style="color: #e74c3c;">現実の代替案：</strong>ChatGPTのみでも可能です。<br>
+                            ① ChatGPTで構成案を作成<br>
+                            ② DALL-E 3で画像生成<br>
+                            ③ Canvaでスライド化
+                        </p>
+                    </div>
+                </div>
+
+                <!-- スクリーンショット -->
+                <div class="ai-service-screenshot">
+                    <img src="../assets/images/ai-service-an/積読AI.png" alt="積ん読AI コンセプト" loading="lazy"
+                        class="clickable-image">
+                    <p class="image-caption-hint">※画像をクリックで全画面表示できます</p>
+                </div>
+
+                <!-- なぜ必要か -->
+                <div class="section-block" style="border-left: 4px solid #e74c3c;">
+                    <h3>❓ なぜこれが必要なのか</h3>
+                    <p>
+                        ChatGPT、Claude、Gemini、Perplexity、Runway、Midjourney、Suno、Cursor、v0…<br>
+                        毎週のように新しいツールが出てきて、正直追いつけない。<br><br>
+                        でも、多くの人が抱えている<strong style="color: #fff;">本当の課題</strong>は「AIがない」ことじゃない。<br>
+                        <strong style="color: #e74c3c; font-size: 1.05rem;">「どのAIを、どう使えばいいかわからない」</strong><br>
+                        これが本当の課題です。
+                    </p>
+                    <div
+                        style="margin-top: 1.5rem; padding: 1rem; background: rgba(231,76,60,0.08); border-radius: 12px; border: 1px solid rgba(231,76,60,0.2);">
+                        <p style="margin: 0; font-size: 0.95rem;">
+                            <strong style="color: #d4af37;">なぜOpenAIやGoogleがやらないのか？</strong><br>
+                            彼らは「AIを作る会社」だから。でも、このサービスは「AIを使う側」の視点。<br>
+                            だから、彼らには作れない。<strong style="color: #fff;">ここに、巨大な空白地帯がある。</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- AI版Wikipediaチャットボットのビジョン -->
+                <div class="section-block" style="border-left: 4px solid #d4af37;">
+                    <h3>🌍 「AI版Wikipediaチャットボット」というビジョン</h3>
+                    <p>
+                        <strong style="color: #d4af37;">「世界中の人が、自分が見つけた良いAIノウハウを投稿し、<br>みんながその恩恵を受けられるプラットフォーム」</strong>
+                    </p>
+                    <div class="step-grid" style="margin-top: 1.5rem;">
+                        <div class="step-item">
+                            <div class="step-num">①</div>
+                            <strong>投稿</strong>
+                            <p>世界中のユーザーが「これ良かった！」というAIノウハウを投稿</p>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">②</div>
+                            <strong>構造化</strong>
+                            <p>AIが自動でタグ付け・要約・構造化</p>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">③</div>
+                            <strong>検索</strong>
+                            <p>「○○したい」と質問すると全員の投稿データから最適な回答を生成</p>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">④</div>
+                            <strong>評価</strong>
+                            <p>「実際に試して良かった」という評価が多いノウハウほど優先表示</p>
+                        </div>
+                    </div>
+
+                    <!-- ネットワーク効果 -->
+                    <div class="flow-chart" style="margin-top: 1.5rem;">
+                        <div class="flow-item">ユーザーが増える</div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-item">ノウハウが増える</div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-item">AI回答精度が上がる</div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-item">さらにユーザーが増える</div>
+                    </div>
+                    <p style="text-align: center; margin-top: 0.5rem;">
+                        <strong style="color: #d4af37;">ネットワーク効果</strong> — 使う人が増えるほど、サービスの価値が上がっていく
+                    </p>
+                </div>
+
+                <!-- コールドスタート → 積ん読AI -->
+                <div class="section-block" style="border-left: 4px solid #3498db;">
+                    <h3>📚 第一歩：「積ん読AI（Tsundoku AI）」</h3>
+                    <p>
+                        「みんなのノウハウが集まるサービス」を作りたい。<br>
+                        でも、最初は誰も投稿してくれない。これが<strong style="color: #fff;">「コールドスタート問題」</strong>。<br><br>
+                        だから、最初のステップとして<strong style="color: #3498db;">「一人で使っても価値があるサービス」</strong>を作ります。
+                    </p>
+
+                    <div
+                        style="margin-top: 1.5rem; padding: 1.5rem; background: rgba(52,152,219,0.08); border-radius: 12px; border: 1px solid rgba(52,152,219,0.2);">
+                        <p style="margin: 0 0 0.5rem 0;">
+                            <strong style="color: #3498db; font-size: 1.05rem;">みなさん、こういう経験ありませんか？</strong>
+                        </p>
+                        <ul>
+                            <li>Xで「お、これ良さそう」とブックマーク</li>
+                            <li>YouTubeで「後で見よう」と保存</li>
+                            <li>noteで「これ参考になりそう」とスキ</li>
+                        </ul>
+                        <p style="margin-top: 0.8rem;"><strong style="color: #fff;">でも、9割は二度と見ない。「積ん読」状態。</strong></p>
+                    </div>
+
+                    <div class="step-grid" style="margin-top: 1.5rem;">
+                        <div class="step-item"
+                            style="background: rgba(52,152,219,0.08); border-color: rgba(52,152,219,0.2);">
+                            <div class="step-num" style="background: linear-gradient(135deg, #3498db, #2980b9);">①</div>
+                            <strong>1クリック保存</strong>
+                            <p>気になるnote/YouTube/記事をとりあえず保存</p>
+                        </div>
+                        <div class="step-item"
+                            style="background: rgba(52,152,219,0.08); border-color: rgba(52,152,219,0.2);">
+                            <div class="step-num" style="background: linear-gradient(135deg, #3498db, #2980b9);">②</div>
+                            <strong>AI自動整理</strong>
+                            <p>AIが自動でタグ付け・要約</p>
+                        </div>
+                        <div class="step-item"
+                            style="background: rgba(52,152,219,0.08); border-color: rgba(52,152,219,0.2);">
+                            <div class="step-num" style="background: linear-gradient(135deg, #3498db, #2980b9);">③</div>
+                            <strong>AI提案</strong>
+                            <p>「○○したい」と聞くと保存情報から最適なAIツールを提案</p>
+                        </div>
+                        <div class="step-item"
+                            style="background: rgba(52,152,219,0.08); border-color: rgba(52,152,219,0.2);">
+                            <div class="step-num" style="background: linear-gradient(135deg, #3498db, #2980b9);">④</div>
+                            <strong>代替案提示</strong>
+                            <p>「今の環境（ChatGPTのみ等）」でできる代替案も表示</p>
+                        </div>
+                    </div>
+
+                    <div
+                        style="margin-top: 1.5rem; padding: 1rem; background: rgba(52,152,219,0.08); border-radius: 12px; text-align: center;">
+                        <p style="margin: 0;">
+                            <strong style="color: #3498db; font-size: 1.05rem;">積ん読を許容する。むしろ、どんどん積ん読してください。</strong><br>
+                            <span
+                                style="color: rgba(255,255,255,0.7);">読まなくていい。見なくていい。タイトルとサムネで「良さそう」と思ったら、1クリックで放り込むだけ。<br>あとはAIが代わりに消化して、必要な時に教えてくれる。</span>
+                        </p>
+                    </div>
+
+                    <div
+                        style="margin-top: 1.5rem; padding: 1rem; background: rgba(212,175,55,0.08); border-radius: 12px; border: 1px solid rgba(212,175,55,0.2);">
+                        <p style="margin: 0;">
+                            <strong style="color: #d4af37;">🚀 グロース戦略</strong><br>
+                            <span style="color: rgba(255,255,255,0.75);">個人が「これ役立った！」と評価したノウハウを匿名で共有可能に。<br>
+                                最初は「自分のため」に使っていたサービスが、いつの間にか「みんなのため」のサービスになる。</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 技術スタック -->
+                <div class="section-block" style="border-left: 4px solid #2ecc71;">
+                    <h3>⚙️ 技術的には完全に実現可能</h3>
+                    <div
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                        <div
+                            style="background: rgba(46,204,113,0.08); border-radius: 12px; padding: 1rem; border: 1px solid rgba(46,204,113,0.2); text-align: center;">
+                            <strong style="color: #2ecc71; display: block; margin-bottom: 0.3rem;">🔌 Chrome拡張</strong>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">1クリック保存</span>
+                        </div>
+                        <div
+                            style="background: rgba(46,204,113,0.08); border-radius: 12px; padding: 1rem; border: 1px solid rgba(46,204,113,0.2); text-align: center;">
+                            <strong style="color: #2ecc71; display: block; margin-bottom: 0.3rem;">🤖 RAG</strong>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">検索拡張生成でチャット回答</span>
+                        </div>
+                        <div
+                            style="background: rgba(46,204,113,0.08); border-radius: 12px; padding: 1rem; border: 1px solid rgba(46,204,113,0.2); text-align: center;">
+                            <strong style="color: #2ecc71; display: block; margin-bottom: 0.3rem;">🗄️ Supabase</strong>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">ベクトル検索 + DB</span>
+                        </div>
+                        <div
+                            style="background: rgba(46,204,113,0.08); border-radius: 12px; padding: 1rem; border: 1px solid rgba(46,204,113,0.2); text-align: center;">
+                            <strong style="color: #2ecc71; display: block; margin-bottom: 0.3rem;">🌐 Vercel</strong>
+                            <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Next.js + LLM API</span>
+                        </div>
+                    </div>
+                    <p style="margin-top: 1rem; text-align: center;">
+                        <span style="color: rgba(255,255,255,0.6);">月額コスト：</span>
+                        <strong style="color: #2ecc71;">5,000〜15,000円程度</strong>
+                        <span style="color: rgba(255,255,255,0.6);">で運用可能</span>
+                    </p>
+                </div>
+
+                <!-- 市場分析 -->
+                <div style="margin-top: 2rem; margin-bottom: 2rem;">
+                    <h3 style="color: #d4af37; font-size: 1.2rem; margin-bottom: 1.5rem;">📊 市場分析・競合との違い（Manusリサーチ）</h3>
+
+                    <div class="section-block" style="border-left: 4px solid #d4af37;">
+                        <h3 style="color: #d4af37;">📈 市場の可能性</h3>
+                        <div
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                            <div
+                                style="background: rgba(212,175,55,0.08); border-radius: 12px; padding: 1.2rem; border: 1px solid rgba(212,175,55,0.2);">
+                                <strong style="color: #d4af37;">💡 情報過多時代の知識管理市場</strong>
+                                <p style="margin-top: 0.5rem;">「積ん読」の罪悪感や焦りを解消するサービスには、根強い需要がある。</p>
+                            </div>
+                            <div
+                                style="background: rgba(212,175,55,0.08); border-radius: 12px; padding: 1.2rem; border: 1px solid rgba(212,175,55,0.2);">
+                                <strong style="color: #d4af37;">🤖 生成AI活用ノウハウの市場</strong>
+                                <p style="margin-top: 0.5rem;">「どのAIをどう使えばいいかわからない」という人が大半。この需要は今後ますます高まる。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="compete-grid" style="margin-top: 1.5rem;">
+                        <div class="compete-item">
+                            <strong>vs 後で読むサービス（Pocket等）</strong>
+                            <p>「読む」が前提 → 積ん読AIは<strong style="color: #e74c3c;">AIが代わりに消化し対話で活用</strong></p>
+                        </div>
+                        <div class="compete-item">
+                            <strong>vs AI検索（Perplexity等）</strong>
+                            <p>Web上の情報から回答 → 積ん読AIは<strong style="color: #e74c3c;">自分が良いと思って保存した情報</strong>から回答</p>
+                        </div>
+                        <div class="compete-item">
+                            <strong>vs ナレッジベース（Notion等）</strong>
+                            <p>手動整理が必要 → 積ん読AIは<strong style="color: #e74c3c;">保存するだけでAIが自動整理・構造化</strong></p>
+                        </div>
+                        <div class="compete-item">
+                            <strong>vs AIツール紹介（Product Hunt等）</strong>
+                            <p>ツール発見のみ → 積ん読AIは<strong style="color: #e74c3c;">自分の環境でどう使うかの代替案まで提示</strong></p>
+                        </div>
+                    </div>
+
+                    <div
+                        style="background: rgba(231,76,60,0.08); border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem; border: 1px solid rgba(231,76,60,0.2);">
+                        <strong style="color: #e74c3c;">💎 結論</strong>
+                        <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.85);">
+                            「積ん読AI」は、既存ツールの「すきま」を埋める、非常にユニークで価値のある構想。<br>
+                            個人の課題解決から始まり、ネットワーク効果によって集合知のプラットフォームへと成長させる戦略は、この壮大なビジョンを実現するための最も確実な道筋。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ===== 募集セクション ===== -->
+                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid rgba(231,76,60,0.3);">
+                    <h3 style="color: #e74c3c; font-size: 1.5rem; margin-bottom: 0.5rem; text-align: center;">🤝 パートナー募集
+                    </h3>
+                    <p style="color: rgba(255,255,255,0.6); text-align: center; margin-bottom: 2rem;">
+                        このプロジェクトを一緒に形にしてくれる仲間を探しています</p>
+
+                    <div class="recruit-grid">
+                        <div class="recruit-card">
+                            <h4>🏢 一緒に作りたい企業</h4>
+                            <ul>
+                                <li>開発パートナーとして、御社専用にカスタマイズ</li>
+                                <li>API費用・開発費を分担いただける企業</li>
+                                <li><strong style="color: #e74c3c;">最初の1社を探しています</strong></li>
+                            </ul>
+                            <p
+                                style="margin-top: 1rem; padding: 0.8rem; background: rgba(231,76,60,0.08); border-radius: 10px; font-size: 0.85rem;">
+                                「うちの会社で使いたいし、開発費も出せる」<br>
+                                「事業として一緒に育てていきたい」<br>
+                                そういう企業をお待ちしています。
+                            </p>
+                        </div>
+
+                        <div class="recruit-card">
+                            <h4>👨‍💻 一緒に開発したいAIエンジニア</h4>
+                            <ul>
+                                <li>AIコーディング（Claude Code / Antigravity等）で開発</li>
+                                <li>技術スタック：Next.js / Supabase / OpenAI or Gemini</li>
+                                <li>必要に応じてオンラインMTGでコラボ</li>
+                            </ul>
+                            <p
+                                style="margin-top: 1rem; padding: 0.8rem; background: rgba(52,152,219,0.08); border-radius: 10px; font-size: 0.85rem;">
+                                <strong style="color: #3498db;">このプロジェクト、技術的にめちゃくちゃ面白い。</strong><br>
+                                RAG実装、Chrome拡張開発、ベクトル検索最適化、LLMプロンプトエンジニアリング — 全部、実践で学べます。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        style="margin-top: 2rem; text-align: center; padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 16px; border: 1px solid rgba(255,255,255,0.08);">
+                        <p style="color: rgba(255,255,255,0.7); margin-bottom: 1rem; font-size: 0.95rem;">
+                            最終的なビジョンは、<strong style="color: #d4af37;">「世界中のAIノウハウが集まる、AI版Wikipediaチャットボット」</strong><br>
+                            でも、最初の一歩は、<strong style="color: #e74c3c;">「あなたの積ん読を、AIが代わりに消化してくれるツール」</strong><br>
+                            ここから始めます。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="ai-service-links" style="justify-content: center; margin-top: 2.5rem;">
+                    <a href="../index.html#contact" class="btn btn-highlight btn-large">👉 お問い合わせ・ご相談はこちら</a>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 IMARCA. All Rights Reserved.</p>
+    </footer>
+
+    <script src="../nav.js"></script>
+    <script src="../script.js"></script>
+</body>
+
+</html>
