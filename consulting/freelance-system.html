@@ -195,6 +195,58 @@
             margin-bottom: 2rem;
         }
 
+        /* Evidence / Citation styles */
+        .fl-evidence {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.06), rgba(0, 212, 255, 0.04));
+            border: 1px solid rgba(138, 43, 226, 0.15);
+            border-radius: 16px;
+        }
+
+        .fl-evidence-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #8a2be2;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .fl-evidence-body {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.9;
+            margin-bottom: 1.2rem;
+        }
+
+        .fl-citation {
+            border-left: 3px solid rgba(138, 43, 226, 0.4);
+            padding: 0.8rem 1.2rem;
+            margin-top: 1rem;
+            background: rgba(138, 43, 226, 0.05);
+            border-radius: 0 10px 10px 0;
+        }
+
+        .fl-citation-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(138, 43, 226, 0.8);
+            letter-spacing: 0.08em;
+            margin-bottom: 0.4rem;
+        }
+
+        .fl-citation p {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.6;
+            margin: 0;
+            font-style: italic;
+        }
+
         @media (max-width: 768px) {
             .fl-main-title {
                 font-size: 1.7rem;
@@ -273,6 +325,22 @@
             <p class="cs-body">
                 人事が本当に向き合うべき課題は、採用でも評価制度でもなく、<strong>「すべての社員が自分の能力を100%発揮できる仕組みになっていない」</strong>ということ。この構造問題を解かない限り、どんな施策を打っても表面的な対処にしかなりません。
             </p>
+
+            <!-- Evidence: Top-down stress -->
+            <div class="fl-evidence">
+                <div class="fl-evidence-title">&#x1F4CA; Scientific Evidence</div>
+                <p class="fl-evidence-body">
+                    上意下達のトップダウン型組織では、社員は自らの業務に対するコントロール（裁量権）を失いがちです。心理学の『仕事の要求度-コントロールモデル』によれば、仕事の要求度が高い一方で、個人の裁量権が低い状態は、メンタルヘルスに最も悪影響を及ぼすことが示されています。
+                    また、『自己決定理論』では、「自律性」は人間の根源的な心理的欲求の一つとされており、これが満たされない職場環境は、社員のモチベーション低下や "やらされ感"
+                    に繋がり、結果として大きなストレスを生む原因となります。
+                </p>
+                <div class="fl-citation">
+                    <div class="fl-citation-label">References</div>
+                    <p>要求度・コントロールモデル（JD-C（Job Demand-Control Model）モデル） &mdash; パソナセーフティネット「メンタルヘルス・ストレスチェック・EAPサービス」
+                    </p>
+                    <p style="margin-top: 0.3rem;">自己決定理論（SDT）が保証する：エンゲージメントとハイパフォーマンスを両立させる自律的組織の構築</p>
+                </div>
+            </div>
         </section>
 
         <!-- ===== Section 2: AI時代に起きる不可逆的な変化 ===== -->
@@ -300,6 +368,21 @@
             <p class="cs-body">
                 問題は、<strong>「いつ、どうやって、そこへの橋を架けるか」</strong>。
             </p>
+
+            <!-- Evidence: Freelance population -->
+            <div class="fl-evidence">
+                <div class="fl-evidence-title">&#x1F4CA; データで見る世界的潮流</div>
+                <p class="fl-evidence-body">
+                    働き方の多様化は世界的な潮流です。特にアメリカでは、2022年時点で労働人口の約36%にあたる約7,040万人がフリーランスとして活動しています。
+                    日本でもその動きは加速しており、2023年7月の総務省の調査では、本業のフリーランス人口が209万人に達しました。
+                    副業者を含めた広義のフリーランス人口は2021年時点で1,670万人（労働力人口の約24%）との調査もあり、企業に属しながら個人のスキルを活かす働き方は、もはや特別な選択肢ではありません。
+                </p>
+                <div class="fl-citation">
+                    <div class="fl-citation-label">References</div>
+                    <p>統計 Today No.197 &mdash; 基幹統計として初めて把握したフリーランスの働き方 〜令和4年就業構造基本調査の結果から（総務省統計局）</p>
+                    <p style="margin-top: 0.3rem;">日本のフリーランス人口はどれくらいの割合？最新のデータを一挙公開（ラボル）</p>
+                </div>
+            </div>
         </section>
 
         <!-- ===== Section 3: 「社内フリーランス制度」という解 ===== -->
@@ -505,6 +588,21 @@
             <div class="fl-quote">
                 今、AIがその壁を壊した。<br>
                 だからこそ、「20%ルール＋レベニューシェア＋完全自律＋役割分化」を統合した新しい制度が、今このタイミングで必要なのです。
+            </div>
+
+            <!-- Evidence: KDDI case study -->
+            <div class="fl-evidence">
+                <div class="fl-evidence-title">&#x1F4CA; 日本企業の実証データ</div>
+                <p class="fl-evidence-body">
+                    海外のGoogle社がGmailなどを生み出した『20%ルール』は有名ですが、日本国内でも同様の取り組みが広がっています。例えばKDDIでは、2020年に『社内副業制度』を導入し、社員が就業時間の約2割を使って他部署の業務を経験できるようにしました。
+                    この制度は年々利用者が増加し、2023年度には419名が参加するなど、組織の壁を越えたイノベーション創出や人材育成に繋がっています。
+                    このように、社内リソースを流動化させ、社員の自律的な挑戦を促すことは、企業の新たな成長エンジンとなり得るのです。
+                </p>
+                <div class="fl-citation">
+                    <div class="fl-citation-label">References</div>
+                    <p>就業時間の2割で「社内」副業。自分のやりたい仕事を自らつかむ（KDDI「採用情報」）</p>
+                    <p style="margin-top: 0.3rem;">イノベーション創出を加速する「社内副業制度」を開始（2020年 KDDI株式会社）</p>
+                </div>
             </div>
         </section>
 
