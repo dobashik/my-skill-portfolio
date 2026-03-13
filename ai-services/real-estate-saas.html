@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>不動産×AI SaaS｜住み替えの意思決定を加速するSaaS | AIサービス案 | IMARCA</title>
+    <meta name="description" content="物件URLから3つのシミュレーションを提供する不動産×AIのSaaSサービス。リノベーション提案、今の家具の新居配置、理想の新生活イメージまで、引っ越し検討から購買まで一本でつなぐ。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../consulting/case-study.css">
+    <style>
+        .ai-service-detail {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .ai-service-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .ai-service-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ai-service-number {
+            background: linear-gradient(135deg, #d4af37, #f0d060);
+            color: #0a0a0a;
+            font-size: 1.2rem;
+            font-weight: 800;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .ai-service-header h2 {
+            font-size: 1.6rem;
+            margin: 0;
+            background: linear-gradient(135deg, #ffffff, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ai-service-desc {
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.9;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .ai-service-screenshot {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .ai-service-screenshot:hover {
+            transform: scale(1.02);
+        }
+
+        .ai-service-screenshot img {
+            width: 100%;
+            display: block;
+        }
+
+        .ai-service-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .ai-service-links .btn {
+            padding: 0.9rem 2rem;
+            font-size: 1rem;
+        }
+
+        .ai-service-page-hero {
+            text-align: center;
+            padding: 5.5rem 0 1rem;
+        }
+
+        .ai-service-page-hero h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ai-service-page-hero p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .ai-service-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4af37, #f0d060);
+            color: #0a0a0a;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .ai-service-tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ai-service-tech-tags span {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #d4af37;
+        }
+
+        /* テーマカラー: 不動産系のブルー〜ティール */
+        .realestate-accent {
+            color: #3498db;
+        }
+
+        .realestate-bg {
+            background: rgba(52, 152, 219, 0.08);
+            border-color: rgba(52, 152, 219, 0.2);
+        }
+
+        .service-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(52, 152, 219, 0.06);
+            border-radius: 16px;
+            border: 1px solid rgba(52, 152, 219, 0.15);
+        }
+
+        .service-flow-item {
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            background: rgba(52, 152, 219, 0.15);
+            border-radius: 10px;
+        }
+
+        .service-flow-arrow {
+            color: #3498db;
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        @media (max-width: 768px) {
+            .ai-service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .ai-service-header h2 {
+                font-size: 1.3rem;
+            }
+
+            .ai-service-page-hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <header><!-- nav.js will replace this --></header>
+    <main class="cs-page">
+        <section class="ai-service-page-hero">
+            <span class="ai-service-badge">🚀 AI活用サービス例</span>
+            <h1 class="fade-in-up">🏠 不動産×AI SaaS</h1>
+            <p class="fade-in-up delay-1">住み替えの意思決定を加速する、不動産×AIの3-in-1プラットフォーム</p>
+        </section>
+        <div class="ai-service-detail">
+            <a href="../ai-services.html" class="back-link fade-in-up">← AIサービス案 一覧に戻る</a>
+            <section class="ai-service-card fade-in-up"
+                style="border: 1px solid rgba(52,152,219,0.3); background: linear-gradient(135deg, rgba(52,152,219,0.05), rgba(255,255,255,0.03));">
+                <div
+                    style="display: inline-block; background: linear-gradient(135deg, #3498db, #2980b9); color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.5px;">
+                    🏠 立ち上げメンバー募集</div>
+                <div class="ai-service-header">
+                    <div class="ai-service-number" style="background: linear-gradient(135deg, #3498db, #2980b9);">🏠
+                    </div>
+                    <h2>不動産×AIのSaaSサービス</h2>
+                </div>
+                <div class="ai-service-tech-tags">
+                    <span>不動産DX</span><span>生成AI</span><span>画像合成</span><span>バーチャルステージング</span><span>SaaS</span><span>家具EC連携</span>
+                </div>
+                <p class="ai-service-desc">
+                    不動産屋さんや引っ越しをする人が使うツールで、<strong
+                        style="color: #3498db;">3つのサービスで構成</strong>されています。<br><br>
+                    引っ越し検討→内見→意思決定→購買まで<strong
+                        style="color: #d4af37;">一本でつながるSaaS</strong>として設計。<br>
+                    不動産会社にとっては空室期間の短縮や成約率アップにつながり、エンドユーザーにとっては<strong
+                        style="color: #3498db;">「この部屋に住んだらどうなるか」</strong>が引っ越す前に分かるようになります。
+                </p>
+                <div class="ai-service-screenshot">
+                    <img src="../assets/images/ai-service-an/不動産SaaS.png"
+                        alt="不動産×AI SaaS 概要図" loading="lazy" class="clickable-image">
+                    <p class="image-caption-hint">※画像をクリックで全画面表示できます</p>
+                </div>
+
+                <!-- サービス全体フロー -->
+                <div class="service-flow fade-in-up">
+                    <span class="service-flow-item">🔍 引っ越し検討</span>
+                    <span class="service-flow-arrow">→</span>
+                    <span class="service-flow-item">🏠 内見</span>
+                    <span class="service-flow-arrow">→</span>
+                    <span class="service-flow-item">💡 意思決定</span>
+                    <span class="service-flow-arrow">→</span>
+                    <span class="service-flow-item">🛒 購買</span>
+                </div>
+
+                <!-- サービス1: リノベーションシミュレーション -->
+                <div style="margin-top: 2.5rem; margin-bottom: 2rem;">
+                    <h3
+                        style="color: #3498db; font-size: 1.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        🔧 サービス1：リノベーションシミュレーション</h3>
+                    <div
+                        style="background: rgba(52,152,219,0.08); border-radius: 16px; padding: 2rem; border-left: 4px solid #3498db;">
+                        <p style="color: rgba(255,255,255,0.75); line-height: 1.9; font-size: 0.95rem;">
+                            <strong style="color: #3498db;">物件URLを入力</strong>すると、リノベーション後のイメージを提案してくれるサービスです。<br><br>
+                            壁材、床材、ライティングなどを好きなものを選ぶと、その部屋がどう変わるかをシミュレーションできます。大家さん向けにも、借りたい人向けにも使えます。<br><br>
+                            「この部屋、今は古いけど変えたら良くなるのか分からない」という悩みに対して、<strong style="color: #d4af37;">北欧風、ホテルライク、ナチュラル</strong>など複数パターンを提示できます。
+                        </p>
+                        <div
+                            style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 1.2rem; margin-top: 1rem; font-size: 0.9rem; line-height: 1.8;">
+                            <p style="color: rgba(255,255,255,0.6); margin-bottom: 0.3rem;">⚠️ 注意点：</p>
+                            <p style="color: rgba(255,255,255,0.7);">
+                                壁を壊す・キッチン位置を変えるといった構造変更は難易度が高いため、最初は<strong
+                                    style="color: #d4af37;">「内装・レイアウト・使い方提案」</strong>として提供する方が現実的です。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- サービス2: 今の家具を新居に持ち込むシミュレーション -->
+                <div style="margin-top: 2.5rem; margin-bottom: 2rem;">
+                    <h3
+                        style="color: #e67e22; font-size: 1.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        🛋️ サービス2：今の家具を新居に持ち込むシミュレーション</h3>
+                    <div
+                        style="background: linear-gradient(135deg, rgba(230,126,34,0.12), rgba(212,175,55,0.08)); border-radius: 16px; padding: 2rem; border-left: 4px solid #e67e22;">
+                        <div
+                            style="display: inline-block; background: linear-gradient(135deg, #e67e22, #d35400); color: #fff; padding: 0.25rem 0.8rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.3px;">
+                            ⭐ 最大の差別化ポイント</div>
+                        <p style="color: rgba(255,255,255,0.75); line-height: 1.9; font-size: 0.95rem;">
+                            物件URLを入力し、さらに<strong style="color: #e67e22;">今住んでいる家の部屋の写真</strong>をアップすると、今の家具や家電を新しい物件に置いた場合どうなるかをシミュレーションできるサービスです。<br><br>
+                            <strong style="color: #d4af37;">「ベッドを窓際に置いて」</strong>のように自然言語で指示することもできます。
+                        </p>
+                        <div
+                            style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 1.2rem; margin-top: 1rem; font-size: 0.9rem; line-height: 1.8;">
+                            <p style="color: rgba(255,255,255,0.6); margin-bottom: 0.3rem;">💡 なぜ差別化できるのか：</p>
+                            <p style="color: rgba(255,255,255,0.85);">
+                                既存のサービスは「空室に<strong style="color: #e67e22;">理想の家具</strong>を入れる」ものは多いが、<br>
+                                <strong style="color: #d4af37;">「今持っている自分の家具を新居に置いたらどうなるか」</strong>を見せてくれるサービスはほとんどない。<br><br>
+                                引っ越しのときに本当に知りたいのは——<br>
+                                ・このソファ入るのか<br>
+                                ・ベッドが大きすぎないか<br>
+                                ・今の暮らしの雰囲気を保てるのか
+                            </p>
+                        </div>
+                        <p style="color: rgba(255,255,255,0.65); line-height: 1.9; font-size: 0.9rem; margin-top: 1rem;">
+                            技術的には、今の部屋の写真から家具を認識して切り抜き、新居の写真にパースや光源を合わせて合成する流れになります。完全な実寸保証は難しいですが、<strong style="color: #d4af37;">意思決定を助けるレベルなら十分実現可能</strong>です。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- サービス3: 理想の新生活をイメージするシミュレーション -->
+                <div style="margin-top: 2.5rem; margin-bottom: 2rem;">
+                    <h3
+                        style="color: #2ecc71; font-size: 1.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        ✨ サービス3：理想の新生活をイメージするシミュレーション</h3>
+                    <div
+                        style="background: rgba(46,204,113,0.08); border-radius: 16px; padding: 2rem; border-left: 4px solid #2ecc71;">
+                        <p style="color: rgba(255,255,255,0.75); line-height: 1.9; font-size: 0.95rem;">
+                            物件URLを入力し、<strong style="color: #2ecc71;">新しい家具や寝具、家電などを配置</strong>して、全く新しい理想の部屋をイメージできるサービスです。<br><br>
+                            いわゆるバーチャルステージングですが、ここにはもう一つの可能性があります。
+                        </p>
+                        <div
+                            style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 1.2rem; margin-top: 1rem; font-size: 0.9rem; line-height: 1.8;">
+                            <p style="color: rgba(255,255,255,0.6); margin-bottom: 0.3rem;">🛒 収益化の可能性：</p>
+                            <p style="color: rgba(255,255,255,0.85);">
+                                生成画像に出てくる家具を<strong style="color: #2ecc71;">そのまま買える状態にする</strong>ことができます。<br><br>
+                                ・「この部屋に合うベッド3つ」<br>
+                                ・「この床色ならこのラグ」<br>
+                                ・「一人暮らし向け家電セット」<br><br>
+                                シミュレーションから<strong style="color: #d4af37;">購買までつなげる</strong>ことで、家具EC送客による収益も期待できます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3つのサービスが一本でつながる -->
+                <div style="margin-top: 2.5rem; margin-bottom: 2rem;">
+                    <h3
+                        style="color: #d4af37; font-size: 1.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        🔗 3つのサービスが一本でつながる</h3>
+                    <div
+                        style="background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(52,152,219,0.05)); border-radius: 16px; padding: 2rem; border: 1px solid rgba(212,175,55,0.2);">
+                        <p style="color: rgba(255,255,255,0.75); line-height: 1.9; font-size: 0.95rem;">
+                            この3つのサービスのポイントは、<strong style="color: #d4af37;">引っ越し検討→内見→意思決定→購買まで一本でつながっている</strong>ことです。<br><br>
+                            単発の画像生成ツールではなく、<strong style="color: #3498db;">「住み替えの意思決定を早めるSaaS」</strong>として設計しています。
+                        </p>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+                            <div
+                                style="background: rgba(52,152,219,0.1); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(52,152,219,0.2);">
+                                <strong style="color: #3498db;">🏢 不動産会社にとって</strong>
+                                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.8; margin-top: 0.5rem;">
+                                    空室期間の短縮や成約率アップにつながる
+                                </p>
+                            </div>
+                            <div
+                                style="background: rgba(46,204,113,0.1); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(46,204,113,0.2);">
+                                <strong style="color: #2ecc71;">👤 エンドユーザーにとって</strong>
+                                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.8; margin-top: 0.5rem;">
+                                    「この部屋に住んだらどうなるか」が引っ越す前に分かる
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 注意点 -->
+                <div style="margin-top: 2.5rem; margin-bottom: 2rem;">
+                    <h3
+                        style="color: #e74c3c; font-size: 1.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        ⚠️ 注意点</h3>
+                    <div
+                        style="background: rgba(231,76,60,0.08); border-radius: 16px; padding: 2rem; border-left: 4px solid #e74c3c;">
+                        <ul style="color: rgba(255,255,255,0.75); line-height: 1.9; font-size: 0.95rem; padding-left: 1.2rem;">
+                            <li>物件画像の<strong style="color: #e74c3c;">著作権の問題</strong>があるため、ユーザー自身に画像を選ばせるか、不動産会社・ポータルと正式連携する必要があります。</li>
+                            <li>AIで加工したイメージであること、<strong style="color: #e74c3c;">実際の寸法・設備・状態を保証するものではない</strong>ことの表記も必須です。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 進め方 -->
+                <div style="margin-top: 2.5rem; margin-bottom: 2rem;">
+                    <h3
+                        style="color: #3498db; font-size: 1.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        📋 進め方（ロードマップ）</h3>
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
+                        <div
+                            style="background: rgba(52,152,219,0.08); border-radius: 12px; padding: 1.5rem; border-left: 4px solid #3498db; position: relative;">
+                            <div
+                                style="position: absolute; top: -8px; left: 16px; background: #3498db; color: #fff; padding: 0.15rem 0.6rem; border-radius: 10px; font-size: 0.7rem; font-weight: 700;">
+                                STEP 1 — MVP</div>
+                            <strong style="color: #3498db; display: block; margin-top: 0.5rem;">サービス3（空室への新規家具配置）に絞ってMVPを作成</strong>
+                            <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.8; margin-top: 0.5rem;">
+                                「物件写真を入れると3つの暮らしパターンを即表示する」デモを最速で作る。<br>
+                                一番実装が簡単で、ユーザーにインパクトを与えやすい。
+                            </p>
+                        </div>
+                        <div
+                            style="background: rgba(230,126,34,0.08); border-radius: 12px; padding: 1.5rem; border-left: 4px solid #e67e22; position: relative;">
+                            <div
+                                style="position: absolute; top: -8px; left: 16px; background: #e67e22; color: #fff; padding: 0.15rem 0.6rem; border-radius: 10px; font-size: 0.7rem; font-weight: 700;">
+                                STEP 2 — 差別化</div>
+                            <strong style="color: #e67e22; display: block; margin-top: 0.5rem;">サービス2（今の家具を反映）を追加して一気に差別化</strong>
+                            <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.8; margin-top: 0.5rem;">
+                                「自分の家具が新居で使えるか」を可視化。競合にはない機能で一気に差別化する。
+                            </p>
+                        </div>
+                        <div
+                            style="background: rgba(46,204,113,0.08); border-radius: 12px; padding: 1.5rem; border-left: 4px solid #2ecc71; position: relative;">
+                            <div
+                                style="position: absolute; top: -8px; left: 16px; background: #2ecc71; color: #fff; padding: 0.15rem 0.6rem; border-radius: 10px; font-size: 0.7rem; font-weight: 700;">
+                                STEP 3 — 収益化</div>
+                            <strong style="color: #2ecc71; display: block; margin-top: 0.5rem;">家具ECへの送客を追加して収益を太くする</strong>
+                            <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.8; margin-top: 0.5rem;">
+                                シミュレーション画像内の家具を直接購入できる導線を構築し、SaaSに加えてEC収益も確保。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 興味のある方へ -->
+                <div
+                    style="background: linear-gradient(135deg, rgba(52,152,219,0.15), rgba(212,175,55,0.08)); border-radius: 16px; padding: 2rem; margin-top: 2.5rem; margin-bottom: 2rem; border: 1px solid rgba(52,152,219,0.3);">
+                    <h3
+                        style="color: #3498db; font-size: 1.2rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        💌 興味のある方へ</h3>
+                    <p style="color: rgba(255,255,255,0.8); line-height: 1.9; font-size: 0.95rem;">
+                        このアイデアに興味がある方は、DMで<strong style="color: #d4af37;">「興味がある」</strong>と言っていただければ、詳細なシークレットの市場分析、競合分析、マネタイズ方法、リターンについてなどの情報をお伝えします。<br><br>
+                        競合情報、ビジネスモデルの詳細、APIコストの試算なども用意していますので、DMでリクエストしていただければお伝えします。
+                    </p>
+                </div>
+
+                <!-- 募集要項 -->
+                <div style="margin-top: 2.5rem; margin-bottom: 2rem;">
+                    <h3
+                        style="color: #3498db; font-size: 1.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        🤝 立ち上げメンバー募集</h3>
+                    <p
+                        style="color: rgba(255,255,255,0.65); font-size: 0.95rem; margin-bottom: 1.2rem; line-height: 1.8;">
+                        成果報酬（レベニューシェア）型で、以下のメンバーを募集しています。</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                        <div
+                            style="background: rgba(52,152,219,0.08); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(52,152,219,0.2);">
+                            <strong style="color: #3498db; font-size: 1.05rem;">💡 コンセプトリーダー</strong>
+                            <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.9rem; margin-top: 0.5rem;">
+                                このプロジェクトのコンセプトを引っ張っていきたい方
+                            </p>
+                        </div>
+                        <div
+                            style="background: rgba(52,152,219,0.08); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(52,152,219,0.2);">
+                            <strong style="color: #3498db; font-size: 1.05rem;">📢 マーケター</strong>
+                            <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.9rem; margin-top: 0.5rem;">
+                                マーケティングで手伝いたい方
+                            </p>
+                        </div>
+                        <div
+                            style="background: rgba(52,152,219,0.08); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(52,152,219,0.2);">
+                            <strong style="color: #3498db; font-size: 1.05rem;">👨‍💻 AIデベロッパー</strong>
+                            <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.9rem; margin-top: 0.5rem;">
+                                AIコーディングにより開発を進めたい方
+                            </p>
+                        </div>
+                        <div
+                            style="background: rgba(52,152,219,0.08); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(52,152,219,0.2);">
+                            <strong style="color: #3498db; font-size: 1.05rem;">🏢 資金パートナー</strong>
+                            <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.9rem; margin-top: 0.5rem;">
+                                API料金などの資金を出してプロジェクトに貢献したい不動産会社やIT企業の方
+                            </p>
+                        </div>
+                        <div
+                            style="background: rgba(52,152,219,0.08); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(52,152,219,0.2);">
+                            <strong style="color: #3498db; font-size: 1.05rem;">🌐 物件ポータル連携</strong>
+                            <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 0.9rem; margin-top: 0.5rem;">
+                                一緒に開発を進めたい物件ポータルの方
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div
+                    style="background: linear-gradient(135deg, rgba(52,152,219,0.15), rgba(212,175,55,0.08)); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; border: 1px solid rgba(52,152,219,0.3); text-align: center;">
+                    <p style="color: rgba(255,255,255,0.9); font-size: 1.05rem; line-height: 1.8; margin-bottom: 0;">
+                        興味のある方はDMで<strong style="color: #3498db;">「興味がある」</strong>とお声がけください。<br>
+                        <strong style="color: #d4af37;">一緒にこのサービスを作りましょう。🚀</strong><br>
+                        <span style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">詳細なシークレットの市場分析、競合分析、マネタイズ方法、リターンについてなどの情報をお伝えします。</span>
+                    </p>
+                </div>
+
+                <!-- タグ -->
+                <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06);">
+                    <div class="ai-service-tech-tags">
+                        <span>#不動産DX</span><span>#生成AI</span><span>#バーチャルステージング</span><span>#画像合成</span><span>#SaaS</span><span>#家具EC</span><span>#リノベーション</span><span>#AI不動産</span>
+                    </div>
+                </div>
+
+                <div class="ai-service-links">
+                    <a href="../index.html#contact" class="btn btn-highlight btn-large">👉 お問い合わせ・ご相談はこちら</a>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 IMARCA. All Rights Reserved.</p>
+    </footer>
+    <script src="../nav.js"></script>
+    <script src="../script.js"></script>
+</body>
+
+</html>
