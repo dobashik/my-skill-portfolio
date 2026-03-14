@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About ― IMARCA | AIサービス企画開発者 / AI新規事業コンサルタント</title>
+    <meta name="description" content="IMARCA（イマルカ）のプロフィール。AIサービス企画開発者 / AI新規事業コンサルタントとして、AIを使った新しい事業づくりを広めています。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ========================================
+           About Page — Premium Indigo Theme
+           ======================================== */
+
+        .about-page {
+            padding-top: 80px;
+            background: #0a0a0a;
+        }
+
+        /* Hero Banner */
+        .about-hero {
+            position: relative;
+            padding: 100px 24px 80px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(8, 14, 41, 0.92) 0%, rgba(20, 31, 85, 0.92) 100%),
+                         url('assets/images/lp-hero-indigo.png') center/cover no-repeat;
+            overflow: hidden;
+        }
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: -100px; right: -100px;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .about-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px; left: -100px;
+            width: 350px; height: 350px;
+            background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .about-hero-badge {
+            display: inline-block;
+            padding: 6px 20px;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 50px;
+            letter-spacing: 0.08em;
+            margin-bottom: 20px;
+        }
+        .about-hero h1 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 12px;
+            font-family: 'Noto Sans JP', sans-serif;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+        .about-hero-sub {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Profile Image */
+        .about-profile-area {
+            max-width: 880px;
+            margin: -60px auto 0;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+        .about-profile-card {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+        }
+        .about-profile-img {
+            flex-shrink: 0;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid rgba(37,99,235,0.4);
+            box-shadow: 0 8px 32px rgba(37,99,235,0.15);
+        }
+        .about-profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .about-profile-info h2 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 8px;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        .about-profile-info .about-role {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 12px;
+        }
+        .about-profile-info .about-tagline {
+            font-size: 1.05rem;
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        /* Content Sections */
+        .about-content {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 60px 24px 80px;
+        }
+        .about-block {
+            margin-bottom: 48px;
+        }
+        .about-block h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 16px;
+            font-family: 'Noto Sans JP', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .about-block h3 .about-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(37,99,235,0.15), rgba(124,58,237,0.15));
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .about-block p {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 2;
+            margin-bottom: 12px;
+        }
+        .about-block p strong {
+            color: rgba(255,255,255,0.95);
+        }
+
+        /* Education */
+        .about-edu-list {
+            list-style: none;
+            padding: 0;
+        }
+        .about-edu-list li {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .about-edu-list li::before {
+            content: '🎓';
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        /* Highlight Quote */
+        .about-highlight {
+            background: linear-gradient(135deg, rgba(37,99,235,0.08), rgba(124,58,237,0.08));
+            border-left: 4px solid #2563eb;
+            border-radius: 0 16px 16px 0;
+            padding: 28px 32px;
+            margin: 40px 0;
+        }
+        .about-highlight p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 2;
+            margin-bottom: 0;
+        }
+
+        /* CTA Section */
+        .about-cta {
+            text-align: center;
+            padding: 60px 24px 80px;
+            background: linear-gradient(135deg, rgba(37,99,235,0.06), rgba(124,58,237,0.06));
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .about-cta h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 16px;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        .about-cta p {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.9;
+            max-width: 600px;
+            margin: 0 auto 28px;
+        }
+        .about-cta-btn {
+            display: inline-block;
+            padding: 14px 36px;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px rgba(37,99,235,0.3);
+        }
+        .about-cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(37,99,235,0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-hero { padding: 80px 20px 60px; }
+            .about-hero h1 { font-size: 1.6rem; }
+            .about-profile-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 24px;
+            }
+            .about-profile-img {
+                width: 120px;
+                height: 120px;
+            }
+            .about-content { padding: 40px 20px 60px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <header><!-- nav.js will replace this --></header>
+
+    <main class="about-page">
+
+        <!-- Hero -->
+        <section class="about-hero">
+            <span class="about-hero-badge">ABOUT</span>
+            <h1>IMARCA（イマルカ）</h1>
+            <p class="about-hero-sub">AIを使った新しい事業づくりを広めています。</p>
+        </section>
+
+        <!-- Profile Card -->
+        <div class="about-profile-area">
+            <div class="about-profile-card">
+                <div class="about-profile-img">
+                    <img src="assets/images/profile.png" alt="IMARCA">
+                </div>
+                <div class="about-profile-info">
+                    <h2>IMARCA</h2>
+                    <p class="about-role">AIサービス企画開発者 / AI新規事業コンサルタント</p>
+                    <p class="about-tagline">AIと価値を作る</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="about-content">
+
+            <!-- 自己紹介 -->
+            <div class="about-block">
+                <h3><span class="about-icon">💡</span>何をしている人か</h3>
+                <p>
+                    私は、AIサービス企画開発者 / AI新規事業コンサルタントとして、AIを活用した新しいサービスの企画、試作、発信、開発までを一気通貫で進めています。
+                </p>
+                <p>
+                    これからの時代は、一部の特別な人だけが新規事業を生み出すのではなく、AIを使いながら、より多くの人や企業が自分たちのアイデアを小さく形にし、育てていける時代になると考えています。
+                </p>
+            </div>
+
+            <!-- 強み -->
+            <div class="about-block">
+                <h3><span class="about-icon">🚀</span>強み：アイデア量産力</h3>
+                <p>
+                    私の強みは、<strong>アイデア量産力</strong>です。<br>
+                    これまでに、<strong>1か月で20以上の新規事業アイデア</strong>を企業やインフルエンサーに提案してきました。現在も、不動産×AIのSaaS、AI版Wikipediaチャットボット、ギルド型コラボレーション基盤、美容×AIのシミュレーションサービスなど、複数のAIサービス案を企画しています。
+                </p>
+            </div>
+
+            <!-- 実践 -->
+            <div class="about-block">
+                <h3><span class="about-icon">🛠️</span>アイデアで終わらせない</h3>
+                <p>
+                    また、アイデアだけで終わらせないことも大切にしています。<br>
+                    AIコーディングを活用しながら、Webサービス、Chrome拡張機能、iOSアプリなどの開発も進めており、<strong>自分自身でも新しい事業づくりを実践</strong>しています。
+                </p>
+            </div>
+
+            <!-- 学歴 -->
+            <div class="about-block">
+                <h3><span class="about-icon">🎓</span>学歴</h3>
+                <ul class="about-edu-list">
+                    <li>早稲田大学理工学部 電子情報通信学科 卒業</li>
+                    <li>早稲田大学大学院 国際情報通信研究科 修了</li>
+                    <li>ヘルシンキ工科大学 留学</li>
+                </ul>
+            </div>
+
+            <!-- 背景・想い -->
+            <div class="about-highlight">
+                <p>
+                    2014年の事故で脊髄を損傷し、現在は車椅子・ベッド中心の生活を送っています。<br>
+                    だからこそ私は、AIの力によって、人が考え、つくり、働き、価値を生み出す可能性がどこまで広がるかを、日々実感しています。<strong>制約があるからこそ、AIを使って新しいサービスを生み出し、個人や企業の可能性を広げることに強い意味を感じています。</strong>
+                </p>
+            </div>
+
+            <!-- 現在の活動 -->
+            <div class="about-block">
+                <h3><span class="about-icon">🔥</span>現在の活動</h3>
+                <p>
+                    現在は、AIを活用した新規事業づくりや、新しいAIサービスの企画・開発に力を入れています。<br>
+                    同時に、<strong>一緒に事業を作る仲間も探しています</strong>。AI時代の新しいサービスを、企画・発信・開発・事業化まで一緒に育てていける方と出会えたらうれしいです。
+                </p>
+            </div>
+
+            <!-- 信念 -->
+            <div class="about-block">
+                <h3><span class="about-icon">✨</span>信念</h3>
+                <p>
+                    AI時代の事業づくりは、完璧に考えてから始めるものではなく、<br>
+                    <strong>小さく試し、早く形にし、発信しながら育てていくもの</strong>だと考えています。<br>
+                    そんな新しい事業づくりを、これからもっと広げていきたいと思っています。
+                </p>
+            </div>
+
+        </div>
+
+        <!-- CTA -->
+        <section class="about-cta">
+            <h3>一緒にAI時代の新しい事業を作りませんか？</h3>
+            <p>
+                企業・SNS発信者・開発者の方、<br>
+                お気軽にご連絡ください。
+            </p>
+            <a href="index.html#contact" class="about-cta-btn">お問い合わせはこちら →</a>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 IMARCA. All Rights Reserved.</p>
+    </footer>
+
+    <script src="nav.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
