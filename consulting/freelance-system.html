@@ -4,622 +4,1292 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>社内フリーランス制度 ― AI時代の新しい組織デザイン | IMARCA</title>
-    <meta name="description" content="就業時間の20%を社員が社内フリーランスとして自律的に活動。AI時代に最適な組織構造の設計・導入を支援します。モデル導入企業募集中。">
+    <title>AIイントレプレナー育成プログラム ― 社員の「好き」と「得意」から新規事業を生み出す | IMARCA</title>
+    <meta name="description" content="AIを活用して、社員一人ひとりが小さな新規事業を立ち上げる力を育てる法人向け伴走プログラム。離職防止・AI人材育成・新規事業創出を同時に実現します。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="case-study.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        /* Freelance System Detail Page Styles */
-        .fl-hero {
-            text-align: center;
-            margin-bottom: 50px;
+        /* =====================================================
+           AIイントレプレナー育成プログラム LP — 白ベース法人向け
+           ===================================================== */
+
+        /* --- Reset & Variables --- */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --lp-white: #ffffff;
+            --lp-bg: #f8f9fb;
+            --lp-text: #1a1a2e;
+            --lp-text-sub: #555e6d;
+            --lp-text-light: #8892a4;
+            --lp-accent: #2563eb;
+            --lp-accent-light: #dbeafe;
+            --lp-accent-dark: #1d4ed8;
+            --lp-gradient: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            --lp-gradient-light: linear-gradient(135deg, rgba(37,99,235,0.06) 0%, rgba(124,58,237,0.06) 100%);
+            --lp-border: #e2e8f0;
+            --lp-card-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 24px rgba(0,0,0,0.04);
+            --lp-radius: 16px;
+            --lp-max-w: 880px;
+            --font-main: 'Inter', sans-serif;
+            --font-jp: 'Noto Sans JP', sans-serif;
         }
 
-        .fl-hero-inner {
+        body.lp-body {
+            background: var(--lp-bg);
+            color: var(--lp-text);
+            font-family: var(--font-jp);
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* カスタムカーソルをLP上では無効化 */
+        body.lp-body { cursor: auto; }
+        body.lp-body .cursor-dot,
+        body.lp-body .cursor-outline { display: none; }
+
+        /* --- Section Common --- */
+        .lp-section {
+            padding: 80px 24px;
+        }
+        .lp-section--gray { background: var(--lp-white); }
+        .lp-section--white { background: var(--lp-bg); }
+        .lp-inner {
+            max-width: var(--lp-max-w);
+            margin: 0 auto;
+        }
+        .lp-section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--lp-accent);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .lp-section-title {
+            font-size: 1.9rem;
+            font-weight: 900;
+            line-height: 1.5;
+            color: var(--lp-text);
+            margin-bottom: 20px;
+            font-family: var(--font-jp);
+        }
+        .lp-section-lead {
+            font-size: 1.05rem;
+            color: var(--lp-text-sub);
+            line-height: 1.9;
             margin-bottom: 40px;
         }
 
-        .fl-badge {
+        /* --- Hero --- */
+        .lp-hero {
+            background: linear-gradient(135deg, rgba(8, 14, 41, 0.85) 0%, rgba(20, 31, 85, 0.85) 100%), url('../assets/images/lp-hero-indigo.png') center/cover no-repeat;
+            padding: 160px 24px 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .lp-hero::before {
+            content: '';
+            position: absolute;
+            top: -200px; right: -200px;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .lp-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -150px; left: -150px;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(124,58,237,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .lp-hero-badge {
             display: inline-block;
-            padding: 10px 28px;
-            background: linear-gradient(135deg, #00d4ff 0%, #8a2be2 100%);
+            padding: 8px 24px;
+            background: var(--lp-gradient);
             color: #fff;
+            font-size: 0.85rem;
             font-weight: 700;
-            font-size: 0.95rem;
             border-radius: 50px;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
             letter-spacing: 0.08em;
-            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .lp-hero h1 {
+            font-size: 2.6rem;
+            font-weight: 900;
+            line-height: 1.55;
+            color: #ffffff;
+            margin-bottom: 24px;
+            font-family: var(--font-jp);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .lp-hero h1 .lp-hero-accent {
+            background: linear-gradient(135deg, #60a5fa 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .lp-hero-sub {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.9;
+            max-width: 640px;
+            margin: 0 auto 40px;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+        }
+        .lp-hero-detail {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 2;
+            max-width: 600px;
+            margin: 0 auto 48px;
+        }
+        .lp-cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        .fl-main-title {
-            font-size: 2.4rem;
-            line-height: 1.5;
-            font-weight: 800;
+        /* --- Buttons --- */
+        .lp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: var(--font-jp);
+            cursor: pointer;
+            border: none;
+        }
+        .lp-btn--primary {
+            background: var(--lp-gradient);
             color: #fff;
+            box-shadow: 0 4px 20px rgba(37,99,235,0.3);
+        }
+        .lp-btn--primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(37,99,235,0.4);
+        }
+        .lp-btn--outline {
+            background: transparent;
+            color: var(--lp-accent);
+            border: 2px solid var(--lp-accent);
+        }
+        .lp-btn--outline:hover {
+            background: var(--lp-accent);
+            color: #fff;
+        }
+
+        /* --- Cards --- */
+        .lp-card {
+            background: var(--lp-white);
+            border: 1px solid var(--lp-border);
+            border-radius: var(--lp-radius);
+            padding: 36px 32px;
+            box-shadow: var(--lp-card-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .lp-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        }
+
+        /* --- 課題 Grid --- */
+        .lp-challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 32px;
+        }
+        .lp-challenge-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 24px;
+            background: var(--lp-white);
+            border: 1px solid var(--lp-border);
+            border-radius: 14px;
+            box-shadow: var(--lp-card-shadow);
+        }
+        .lp-challenge-icon {
+            flex-shrink: 0;
+            width: 44px; height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fef3c7;
+            border-radius: 12px;
+            font-size: 1.3rem;
+        }
+        .lp-challenge-item p {
+            font-size: 0.95rem;
+            color: var(--lp-text-sub);
+            line-height: 1.7;
+        }
+
+        /* --- メリット --- */
+        .lp-merit-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 40px;
+        }
+        .lp-merit-card {
+            text-align: center;
+            padding: 44px 28px;
+        }
+        .lp-merit-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px; height: 56px;
+            background: var(--lp-gradient);
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 800;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            font-family: var(--font-main);
+        }
+        .lp-merit-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--lp-text);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        .lp-merit-card p {
+            font-size: 0.93rem;
+            color: var(--lp-text-sub);
+            line-height: 1.8;
+        }
+
+        /* --- 得られること Grid --- */
+        .lp-gain-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 32px;
+        }
+        .lp-gain-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 22px;
+            background: var(--lp-white);
+            border: 1px solid var(--lp-border);
+            border-radius: 14px;
+        }
+        .lp-gain-icon {
+            flex-shrink: 0;
+            width: 40px; height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--lp-accent-light);
+            border-radius: 10px;
+            font-size: 1.1rem;
+        }
+        .lp-gain-item p {
+            font-size: 0.95rem;
+            color: var(--lp-text-sub);
+            line-height: 1.7;
+        }
+
+        /* --- サイクル図解 --- */
+        .lp-cycle-wrap {
+            margin-top: 40px;
+        }
+        .lp-cycle-intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .lp-cycle-intro p {
+            font-size: 1rem;
+            color: var(--lp-text-sub);
+            line-height: 1.9;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        .lp-cycle-visual {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+        .lp-cycle-step {
+            flex: 0 0 calc(33.33% - 16px);
+            min-width: 220px;
+            background: var(--lp-white);
+            border: 1px solid var(--lp-border);
+            border-radius: 14px;
+            padding: 24px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: var(--lp-card-shadow);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .lp-cycle-step:hover {
+            transform: translateY(-3px);
+            border-color: var(--lp-accent);
+        }
+        .lp-cycle-step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px; height: 36px;
+            background: var(--lp-gradient);
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 800;
+            border-radius: 50%;
+            margin-bottom: 12px;
+        }
+        .lp-cycle-step h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--lp-text);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        .lp-cycle-step p {
+            font-size: 0.85rem;
+            color: var(--lp-text-light);
+            line-height: 1.7;
+        }
+        .lp-cycle-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 8px 0;
+        }
+        .lp-cycle-arrow svg {
+            width: 40px; height: 24px;
+        }
+        .lp-cycle-loop-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: var(--lp-gradient-light);
+            border: 2px dashed var(--lp-accent);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--lp-accent);
+            margin: 24px auto;
+        }
+        .lp-cycle-messages {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 32px;
+        }
+        .lp-cycle-msg {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 16px;
+            background: var(--lp-accent-light);
+            border-radius: 12px;
+        }
+        .lp-cycle-msg-icon {
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+        .lp-cycle-msg p {
+            font-size: 0.88rem;
+            color: var(--lp-accent-dark);
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        .lp-setup-box {
+            background: var(--lp-white);
+            border: 1px solid var(--lp-border);
+            border-radius: var(--lp-radius);
+            padding: 32px;
+            margin-bottom: 32px;
+        }
+        .lp-setup-box h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--lp-text);
+            margin-bottom: 12px;
+        }
+        .lp-setup-box p {
+            font-size: 0.93rem;
+            color: var(--lp-text-sub);
+            line-height: 1.8;
+        }
+
+        /* --- 特徴 --- */
+        .lp-feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+        .lp-feature-card {
+            padding: 32px 28px;
+        }
+        .lp-feature-card .lp-feature-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+        .lp-feature-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--lp-text);
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        .lp-feature-card p {
+            font-size: 0.93rem;
+            color: var(--lp-text-sub);
+            line-height: 1.8;
+        }
+
+        /* --- FAQ --- */
+        .lp-faq-list { margin-top: 32px; }
+        .lp-faq-item {
+            border-bottom: 1px solid var(--lp-border);
+            padding: 28px 0;
+        }
+        .lp-faq-q {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .lp-faq-q-badge {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px; height: 32px;
+            background: var(--lp-accent);
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 800;
+            border-radius: 8px;
+        }
+        .lp-faq-q h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--lp-text);
+            line-height: 1.6;
+            flex: 1;
+        }
+        .lp-faq-toggle {
+            flex-shrink: 0;
+            font-size: 1.5rem;
+            color: var(--lp-accent);
+            transition: transform 0.3s;
+            line-height: 1;
+        }
+        .lp-faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+        .lp-faq-item.active .lp-faq-a {
+            max-height: 500px;
+            padding-top: 16px;
+        }
+        .lp-faq-item.active .lp-faq-toggle {
+            transform: rotate(45deg);
+        }
+        .lp-faq-a p {
+            font-size: 0.95rem;
+            color: var(--lp-text-sub);
+            line-height: 1.9;
+            padding-left: 44px;
+        }
+
+        /* --- おすすめ企業 --- */
+        .lp-recommend-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 32px;
+        }
+        .lp-recommend-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 20px;
+            background: var(--lp-white);
+            border: 1px solid var(--lp-border);
+            border-radius: 14px;
+        }
+        .lp-recommend-icon {
+            flex-shrink: 0;
+            width: 44px; height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--lp-gradient-light);
+            border-radius: 12px;
+            font-size: 1.2rem;
+        }
+        .lp-recommend-item p {
+            font-size: 0.93rem;
+            color: var(--lp-text);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* --- 提供内容 --- */
+        .lp-service-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 32px;
+        }
+        .lp-service-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 20px;
+            background: var(--lp-white);
+            border: 1px solid var(--lp-border);
+            border-radius: 12px;
+        }
+        .lp-service-check {
+            flex-shrink: 0;
+            width: 28px; height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #dcfce7;
+            border-radius: 50%;
+            color: #16a34a;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+        .lp-service-item p {
+            font-size: 0.93rem;
+            color: var(--lp-text-sub);
+            line-height: 1.5;
+        }
+
+        /* --- 強み --- */
+        .lp-strength {
+            background: var(--lp-gradient-light);
+            border: 1px solid rgba(37,99,235,0.15);
+            border-radius: var(--lp-radius);
+            padding: 48px 40px;
+            text-align: center;
+            margin-top: 32px;
+        }
+        .lp-strength h3 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--lp-text);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .lp-strength p {
+            font-size: 1rem;
+            color: var(--lp-text-sub);
+            line-height: 1.9;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        /* --- Final CTA --- */
+        .lp-final-cta {
+            background: var(--lp-gradient);
+            padding: 80px 24px;
+            text-align: center;
+            color: #fff;
+        }
+        .lp-final-cta h2 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .lp-final-cta p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        .lp-final-cta .lp-btn--white {
+            background: #fff;
+            color: var(--lp-accent);
+            font-weight: 700;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        .lp-final-cta .lp-btn--white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+        .lp-final-cta-list {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 36px;
+            list-style: none;
+        }
+        .lp-final-cta-list li {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* --- mid CTA banner --- */
+        .lp-mid-cta {
+            text-align: center;
+            padding: 48px 24px;
+            background: var(--lp-gradient-light);
+            border-top: 1px solid rgba(37,99,235,0.1);
+            border-bottom: 1px solid rgba(37,99,235,0.1);
+        }
+        .lp-mid-cta p {
+            font-size: 1rem;
+            color: var(--lp-text-sub);
             margin-bottom: 20px;
         }
 
-        .fl-subtitle {
-            display: block;
-            font-size: 1rem;
-            font-weight: 400;
-            color: #aaa;
-            letter-spacing: 0.05em;
-            margin-bottom: 10px;
+        /* --- Quote --- */
+        .lp-quote {
+            border-left: 4px solid var(--lp-accent);
+            background: var(--lp-gradient-light);
+            padding: 24px 28px;
+            border-radius: 0 14px 14px 0;
+            margin: 28px 0;
+        }
+        .lp-quote p {
+            font-size: 1.05rem;
+            color: var(--lp-text);
+            line-height: 1.9;
+            font-weight: 500;
         }
 
-        .fl-hero-lead {
-            font-size: 1.1rem;
-            color: #999;
-            line-height: 1.8;
-        }
-
-        .fl-hero-thumbnail {
-            max-width: 680px;
-            margin: 0 auto;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        .fl-hero-thumbnail img {
-            width: 100%;
-            display: block;
-            height: auto;
-        }
-
-        /* Section heading accent */
-        .fl-section-icon {
-            font-size: 2rem;
-            margin-bottom: 12px;
-        }
-
-        /* Role cards */
-        .fl-role-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            margin: 2rem 0;
-        }
-
-        .fl-role-card {
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: 16px;
-            padding: 1.8rem;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .fl-role-card:hover {
-            transform: translateY(-3px);
-        }
-
-        .fl-role-name {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.6rem;
-        }
-
-        .fl-role-desc {
-            color: rgba(255, 255, 255, 0.75);
-            line-height: 1.8;
-            font-size: 0.95rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .fl-role-condition {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        /* Proof items */
-        .fl-proof-list {
-            list-style: none;
-            padding: 0;
-            margin: 1.5rem 0;
-        }
-
-        .fl-proof-list li {
-            padding: 1rem 1.2rem;
-            margin-bottom: 0.8rem;
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: 12px;
-            border-left: 3px solid rgba(0, 212, 255, 0.4);
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-
-        .fl-proof-list li strong {
-            color: #00d4ff;
-        }
-
-        /* Back link */
-        .fl-back-link {
+        /* --- Back link --- */
+        .lp-back-link {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
+            gap: 6px;
+            color: var(--lp-text-light);
+            font-size: 0.9rem;
             text-decoration: none;
             transition: color 0.3s;
+            margin-top: 12px;
         }
+        .lp-back-link:hover { color: var(--lp-accent); }
 
-        .fl-back-link:hover {
-            color: #00d4ff;
-        }
+        /* --- Fade animation --- */
+        .lp-fade { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .lp-fade.lp-visible { opacity: 1; transform: translateY(0); }
+        .lp-fade-d1 { transition-delay: 0.15s; }
+        .lp-fade-d2 { transition-delay: 0.3s; }
 
-        /* Quote highlight */
-        .fl-quote {
-            border-left: 4px solid #8a2be2;
-            background: linear-gradient(90deg, rgba(138, 43, 226, 0.08) 0%, transparent 100%);
-            padding: 20px 24px;
-            border-radius: 0 16px 16px 0;
-            margin: 1.5rem 0;
-            font-style: italic;
-            color: #fff;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        /* CTA section */
-        .fl-cta {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(138, 43, 226, 0.08));
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            border-radius: 24px;
-            padding: 3rem;
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .fl-cta h2 {
-            font-size: 1.5rem;
-            color: #fff;
-            margin-bottom: 1rem;
-        }
-
-        .fl-cta p {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.8;
-            font-size: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        /* Evidence / Citation styles */
-        .fl-evidence {
-            margin-top: 2rem;
-            padding: 2rem;
-            background: linear-gradient(135deg, rgba(138, 43, 226, 0.06), rgba(0, 212, 255, 0.04));
-            border: 1px solid rgba(138, 43, 226, 0.15);
-            border-radius: 16px;
-        }
-
-        .fl-evidence-title {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: #8a2be2;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .fl-evidence-body {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.85);
-            line-height: 1.9;
-            margin-bottom: 1.2rem;
-        }
-
-        .fl-citation {
-            border-left: 3px solid rgba(138, 43, 226, 0.4);
-            padding: 0.8rem 1.2rem;
-            margin-top: 1rem;
-            background: rgba(138, 43, 226, 0.05);
-            border-radius: 0 10px 10px 0;
-        }
-
-        .fl-citation-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: rgba(138, 43, 226, 0.8);
-            letter-spacing: 0.08em;
-            margin-bottom: 0.4rem;
-        }
-
-        .fl-citation p {
-            font-size: 0.82rem;
-            color: rgba(255, 255, 255, 0.5);
-            line-height: 1.6;
-            margin: 0;
-            font-style: italic;
-        }
-
+        /* --- Responsive --- */
         @media (max-width: 768px) {
-            .fl-main-title {
-                font-size: 1.7rem;
-            }
+            .lp-hero { padding: 130px 20px 60px; }
+            .lp-hero h1 { font-size: 1.7rem; }
+            .lp-hero-sub { font-size: 0.98rem; }
+            .lp-section { padding: 56px 18px; }
+            .lp-section-title { font-size: 1.45rem; }
+            .lp-challenge-grid,
+            .lp-gain-grid,
+            .lp-feature-grid,
+            .lp-service-grid,
+            .lp-cycle-messages { grid-template-columns: 1fr; }
+            .lp-merit-grid { grid-template-columns: 1fr; gap: 20px; }
+            .lp-recommend-grid { grid-template-columns: 1fr; }
+            .lp-cycle-step { flex: 0 0 100%; min-width: auto; }
+            .lp-strength { padding: 36px 24px; }
+            .lp-final-cta h2 { font-size: 1.5rem; }
+            .lp-cta-group { flex-direction: column; align-items: center; }
+            .lp-faq-a p { padding-left: 0; }
+        }
 
-            .fl-hero-thumbnail {
-                max-width: 100%;
-            }
-
-            .fl-cta {
-                padding: 2rem 1.5rem;
-            }
+        /* Headerの白背景化 */
+        body.lp-body header {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--lp-border);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        body.lp-body header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        body.lp-body header nav .logo a {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--lp-accent);
+            text-decoration: none;
+        }
+        body.lp-body header nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        body.lp-body header .logo { color: var(--lp-accent); }
+        body.lp-body header nav a { color: var(--lp-text-sub); text-decoration: none; font-size: 0.95rem; }
+        body.lp-body header nav a:hover { color: var(--lp-accent); }
+        @media (max-width: 768px) {
+            body.lp-body header { padding: 15px 20px; }
+            body.lp-body header nav ul { display: none; }
+        }
+        body.lp-body footer {
+            background: var(--lp-bg);
+            color: var(--lp-text-light);
+            border-top: 1px solid var(--lp-border);
         }
     </style>
 </head>
 
-<body>
+<body class="lp-body">
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
     <header><!-- nav.js will replace this --></header>
 
-    <main class="cs-page">
+    <main>
 
-        <!-- ===== Hero ===== -->
-        <section class="fl-hero">
-            <div class="fl-hero-inner">
-                <span class="fl-badge">🏢 AIコンサルティング</span>
-                <h1 class="fl-main-title fade-in-up">
-                    <span class="fl-subtitle">AI時代の新しい組織デザイン</span>
-                    社内フリーランス制度
+        <!-- ===== 1. ファーストビュー ===== -->
+        <section class="lp-hero" id="lp-top">
+            <div class="lp-inner">
+                <span class="lp-hero-badge lp-fade">法人向け伴走プログラム</span>
+                <h1 class="lp-fade lp-fade-d1">
+                    社員の<span class="lp-hero-accent">「好き」と「得意」</span>から、<br>
+                    会社の新しい事業を生み出す。
                 </h1>
-                <p class="fl-hero-lead fade-in-up delay-1">なぜ今、あなたの会社の「組織構造」そのものを疑うべきなのか</p>
-            </div>
-            <div class="fl-hero-thumbnail fade-in-up delay-2">
-                <img src="../assets/images/ai-service-an/社内フリーランス制度.png" alt="社内フリーランス制度" loading="lazy"
-                    class="clickable-image">
-                <p class="image-caption-hint">※画像をクリックで全画面表示できます</p>
+                <p class="lp-hero-sub lp-fade lp-fade-d2">
+                    <strong>AIイントレプレナー育成プログラム</strong><br>
+                    AIを活用して、社員一人ひとりが小さな新規事業を立ち上げる力を育てる、法人向け伴走プログラム。
+                </p>
+                <p class="lp-hero-detail lp-fade lp-fade-d2">
+                    これからの時代に必要なのは、「AIを使える社員」ではなく、<br>
+                    <strong>AIを使って自分で価値を生み出せる社員。</strong><br>
+                    本プログラムは、社員の興味・経験・情熱を起点に、<br>AIを活用しながら企画・検証・発信・形にするところまで伴走します。
+                </p>
+                <div class="lp-cta-group lp-fade lp-fade-d2">
+                    <a href="../index.html#contact" class="lp-btn lp-btn--primary">まずは相談する →</a>
+                    <a href="#lp-about" class="lp-btn lp-btn--outline">詳しく見る ↓</a>
+                </div>
             </div>
         </section>
 
-        <a href="ai-consulting.html" class="fl-back-link fade-in-up">← AIコンサルティング 一覧に戻る</a>
+        <div style="max-width:var(--lp-max-w);margin:0 auto;padding:0 24px;">
+            <a href="../index.html" class="lp-back-link lp-fade">← トップページに戻る</a>
+        </div>
 
-        <!-- ===== Section 1: トップダウン組織の「構造的な欠陥」 ===== -->
-        <section class="cs-card fade-in-up">
-            <div class="cs-card-header">
-                <span class="cs-card-number">01</span>
-                <h2>トップダウン組織の<br>「構造的な欠陥」</h2>
+        <!-- ===== 2. よくある課題 ===== -->
+        <section class="lp-section lp-section--gray" id="lp-about">
+            <div class="lp-inner">
+                <span class="lp-section-label lp-fade">CHALLENGES</span>
+                <h2 class="lp-section-title lp-fade">こんな課題、感じていませんか？</h2>
+                <div class="lp-challenge-grid">
+                    <div class="lp-challenge-item lp-fade">
+                        <div class="lp-challenge-icon">💡</div>
+                        <p>社員の中に埋もれているアイデアや才能がある気がするが、<strong>活かす仕組みがない</strong></p>
+                    </div>
+                    <div class="lp-challenge-item lp-fade">
+                        <div class="lp-challenge-icon">🤖</div>
+                        <p>AI研修をしても、実務に活用されないまま<strong>知識止まり</strong>になっている</p>
+                    </div>
+                    <div class="lp-challenge-item lp-fade">
+                        <div class="lp-challenge-icon">🚀</div>
+                        <p>新規事業を作りたいが、<strong>専任チームを置く余裕がない</strong></p>
+                    </div>
+                    <div class="lp-challenge-item lp-fade">
+                        <div class="lp-challenge-icon">🔥</div>
+                        <p>社員の主体性を高めたいが、<strong>具体的な方法が分からない</strong></p>
+                    </div>
+                    <div class="lp-challenge-item lp-fade">
+                        <div class="lp-challenge-icon">🏃</div>
+                        <p>優秀な人ほど会社の外に可能性を求めてしまい、<strong>人材流出が怖い</strong></p>
+                    </div>
+                    <div class="lp-challenge-item lp-fade">
+                        <div class="lp-challenge-icon">🌱</div>
+                        <p>本業の延長ではない発想から、<strong>新しい事業の種を生みたい</strong></p>
+                    </div>
+                </div>
+                <div class="lp-quote lp-fade" style="margin-top:36px;">
+                    <p>必要なのは単なる研修ではなく、社員一人ひとりが<strong>自分で事業の種を見つけ、AIを使って形にする仕組み</strong>です。</p>
+                </div>
             </div>
+        </section>
 
-            <p class="cs-body">
-                多くの会社はこうなっています。<br>
-                社長がビジョンを示す → 管理職が噛み砕く → 社員が指示に従う。
-            </p>
-
-            <p class="cs-body">
-                この構造には、見過ごされている致命的な問題があります。
-            </p>
-
-            <div class="fl-quote">
-                「社員一人ひとりの意見が反映されない」ということです。
-            </div>
-
-            <p class="cs-body">
-                会議を思い出してください。一度に喋れるのは一人だけ。他の人は黙って聞いている。声の大きい人、役職の高い人の意見が通る。本当はもっと良いアイデアを持っている人が、発言の順番が来ないまま会議が終わる。
-            </p>
-            <p class="cs-body">
-                これが毎日、毎週、何年も繰り返される。
-            </p>
-            <p class="cs-body">
-                結果、何が起きるか。
-            </p>
-            <p class="cs-body">
-                社員は「自分の才能を活かせない」と感じ始める。自分の表現したいこと、本来持っている能力を発揮する場がない。それがストレスになる。<strong>仕事そのものがストレス環境になる。</strong>
-            </p>
-            <p class="cs-body">
-                人事が本当に向き合うべき課題は、採用でも評価制度でもなく、<strong>「すべての社員が自分の能力を100%発揮できる仕組みになっていない」</strong>ということ。この構造問題を解かない限り、どんな施策を打っても表面的な対処にしかなりません。
-            </p>
-
-            <!-- Evidence: Top-down stress -->
-            <div class="fl-evidence">
-                <div class="fl-evidence-title">&#x1F4CA; Scientific Evidence</div>
-                <p class="fl-evidence-body">
-                    上意下達のトップダウン型組織では、社員は自らの業務に対するコントロール（裁量権）を失いがちです。心理学の『仕事の要求度-コントロールモデル』によれば、仕事の要求度が高い一方で、個人の裁量権が低い状態は、メンタルヘルスに最も悪影響を及ぼすことが示されています。
-                    また、『自己決定理論』では、「自律性」は人間の根源的な心理的欲求の一つとされており、これが満たされない職場環境は、社員のモチベーション低下や "やらされ感"
-                    に繋がり、結果として大きなストレスを生む原因となります。
+        <!-- ===== 3. このプログラムが目指すもの ===== -->
+        <section class="lp-section lp-section--white">
+            <div class="lp-inner">
+                <span class="lp-section-label lp-fade">VISION</span>
+                <h2 class="lp-section-title lp-fade">AIツール研修ではありません。</h2>
+                <div style="text-align:center;margin:32px 0 40px;" class="lp-fade">
+                    <img src="../assets/images/lp-vision-indigo.png" alt="これからの組織とAIの協働" style="max-width:100%; border-radius:24px; box-shadow:0 12px 36px rgba(10, 20, 60, 0.15);">
+                </div>
+                <p class="lp-section-lead lp-fade">
+                    このプログラムが目指すのは、<strong>社員一人ひとりが、自分の関心・得意・問題意識から新しい価値を生み出せる状態</strong>をつくることです。
                 </p>
-                <div class="fl-citation">
-                    <div class="fl-citation-label">References</div>
-                    <p>要求度・コントロールモデル（JD-C（Job Demand-Control Model）モデル） &mdash; パソナセーフティネット「メンタルヘルス・ストレスチェック・EAPサービス」
+                <p class="lp-section-lead lp-fade" style="margin-bottom:20px;">
+                    たとえば —
+                </p>
+                <div class="lp-challenge-grid" style="margin-top:0;">
+                    <div class="lp-challenge-item lp-fade">
+                        <div class="lp-challenge-icon">💃</div>
+                        <p>ダンスが好きな社員が、ダンス動画プラットフォームによるマッチングサービスを企画</p>
+                    </div>
+                    <div class="lp-challenge-item lp-fade">
+                        <div class="lp-challenge-icon">💄</div>
+                        <p>美容に詳しい社員が、AIパーソナル美容アドバイザーを試作</p>
+                    </div>
+                    <div class="lp-challenge-item lp-fade">
+                        <div class="lp-challenge-icon">🏠</div>
+                        <p>不動産に関心がある社員が、AI物件分析ツールを構築</p>
+                    </div>
+                    <div class="lp-challenge-item lp-fade">
+                        <div class="lp-challenge-icon">📚</div>
+                        <p>教育に関心がある社員が、高校生向け自分でサービスを生み出す教育コンテンツを開発</p>
+                    </div>
+                </div>
+                <p class="lp-section-lead lp-fade" style="margin-top:32px;">
+                    AIを使えば、市場調査、企画整理、発信、検証、試作まで、<strong>一人でもかなり前に進められる時代</strong>です。<br>
+                    本プログラムは、その一連のプロセスを伴走しながら支援します。
+                </p>
+            </div>
+        </section>
+
+        <!-- ===== 4. なぜ今必要なのか ===== -->
+        <section class="lp-section lp-section--gray">
+            <div class="lp-inner">
+                <span class="lp-section-label lp-fade">WHY NOW</span>
+                <h2 class="lp-section-title lp-fade">なぜ今、このプログラムが必要なのか</h2>
+                <p class="lp-section-lead lp-fade">
+                    AIの進化により、以前はチームが必要だった企画・調査・文章作成・発信・試作・改善を、<strong>今は一人＋AIでかなり前に進められる時代</strong>になりました。
+                </p>
+                <p class="lp-section-lead lp-fade">
+                    これまでは「新規事業＝一部の人が考えるもの」でした。<br>
+                    これからの企業に必要なのは、<strong>社員の数だけ挑戦の母数がある組織</strong>です。
+                </p>
+                <div class="lp-quote lp-fade">
+                    <p>AIが壁を壊した今こそ、社員一人ひとりの「好き」や「得意」から、<br>新しい事業の種を生み出す仕組みが必要です。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 中間CTA -->
+        <div class="lp-mid-cta lp-fade">
+            <p>まずは気軽にご相談ください。貴社に合った導入方法をご提案します。</p>
+            <a href="../index.html#contact" class="lp-btn lp-btn--primary">導入について問い合わせる →</a>
+        </div>
+
+        <!-- ===== 5. 会社にとっての3つのメリット ===== -->
+        <section class="lp-section lp-section--white">
+            <div class="lp-inner">
+                <span class="lp-section-label lp-fade">3 BENEFITS</span>
+                <h2 class="lp-section-title lp-fade">「本業と関係ない好きなこと」に<br>会社が投資する、3つの理由</h2>
+                <p class="lp-section-lead lp-fade">
+                    「社員の好きなことに会社が投資する意味があるのか？」<br>
+                    その答えは明確に<strong>「ある」</strong>です。理由は3つあります。
+                </p>
+                <div class="lp-merit-grid">
+                    <div class="lp-card lp-merit-card lp-fade">
+                        <div class="lp-merit-num">1</div>
+                        <h3>離職防止・<br>エンゲージメント向上</h3>
+                        <p>社員が会社の中で自己実現できるようになれば、「ここにいる理由」が生まれます。自分の情熱を活かせる場所がある会社を、優秀な人材は離れません。エンゲージメントの向上と人材流出の防止を同時に実現します。</p>
+                    </div>
+                    <div class="lp-card lp-merit-card lp-fade">
+                        <div class="lp-merit-num">2</div>
+                        <h3>AI人材育成が<br>実践ベースで進む</h3>
+                        <p>プログラムを通じて身につけたAI活用力、調査力、発信力、仮説検証力は本業にも直結します。座学の研修ではなく、自分ごとのテーマで実践するからこそ、本当に使えるスキルが身につきます。</p>
+                    </div>
+                    <div class="lp-card lp-merit-card lp-fade">
+                        <div class="lp-merit-num">3</div>
+                        <h3>新規事業の<br>打席数が増える</h3>
+                        <p>社員の数だけ事業の種が生まれます。小さく試しながら新しい収益源の可能性を育てられる。専任チームを置かずとも、社員一人ひとりが「小さく始める」ことで、新規事業の母数を一気に増やせます。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 6. このプログラムで得られること ===== -->
+        <section class="lp-section lp-section--gray">
+            <div class="lp-inner">
+                <span class="lp-section-label lp-fade">OUTCOMES</span>
+                <h2 class="lp-section-title lp-fade">このプログラムで得られること</h2>
+                <div class="lp-gain-grid">
+                    <div class="lp-gain-item lp-fade">
+                        <div class="lp-gain-icon">⚡</div>
+                        <p>AIを活用して<strong>一人で企画を前に進める力</strong></p>
+                    </div>
+                    <div class="lp-gain-item lp-fade">
+                        <div class="lp-gain-icon">🔍</div>
+                        <p>自分の関心や強みを<strong>事業の種に変える視点</strong></p>
+                    </div>
+                    <div class="lp-gain-item lp-fade">
+                        <div class="lp-gain-icon">📊</div>
+                        <p><strong>市場調査やターゲット整理</strong>のやり方</p>
+                    </div>
+                    <div class="lp-gain-item lp-fade">
+                        <div class="lp-gain-icon">📱</div>
+                        <p>SNSや発信を使って<strong>反応を見る方法</strong></p>
+                    </div>
+                    <div class="lp-gain-item lp-fade">
+                        <div class="lp-gain-icon">🛠️</div>
+                        <p>小さく試作し、反応を見て<strong>改善する力</strong></p>
+                    </div>
+                    <div class="lp-gain-item lp-fade">
+                        <div class="lp-gain-icon">✨</div>
+                        <p>考えるだけで終わらず、<strong>形にする習慣</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 7. 4か月の進め方 ===== -->
+        <section class="lp-section lp-section--white">
+            <div class="lp-inner">
+                <span class="lp-section-label lp-fade">4-MONTH PROCESS</span>
+                <h2 class="lp-section-title lp-fade">4か月の進め方<br><small style="font-size:0.7em;font-weight:500;color:var(--lp-text-sub);">— 高速実験型サイクル —</small></h2>
+
+                <div class="lp-cycle-wrap">
+                    <div class="lp-cycle-intro lp-fade">
+                        <p>
+                            このプログラムは、一般的な研修のように「1か月目はテーマ決め、2か月目は調査…」と順番に進めるものではありません。<br><br>
+                            AIを使うことの大きな価値は、<strong>短時間で壁打ちし、短時間で形にし、短時間で外に出せること</strong>。<br>
+                            4か月の間に、<strong>複数のアイデア・複数のアウトプット・複数の小さなサービス案</strong>を、同時並行・高速回転で試していきます。
+                        </p>
+                    </div>
+
+                    <!-- 最初にやること -->
+                    <div class="lp-setup-box lp-fade">
+                        <h4>🔧 最初にやること ― AI環境の整備</h4>
+                        <p>プログラム開始時に、ChatGPT・Claude・Geminiなど必要なAI環境を整え、それぞれの特徴や向いている用途を理解。その人に合ったAIを選定し、使い分けられる状態をつくります。思考やアイデア出しの速度を上げるため、音声入力環境の導入も行います。</p>
+                    </div>
+
+                    <div style="text-align:center;margin-bottom:20px;" class="lp-fade">
+                        <div class="lp-cycle-loop-badge">🔄 以下のサイクルを4か月間、何度も高速で回す</div>
+                    </div>
+
+                    <div style="text-align:center;margin-bottom:40px;" class="lp-fade">
+                        <img src="../assets/images/lp-process-indigo.png" alt="4か月の高速実験サイクル" style="max-width:100%; border-radius:24px; box-shadow:0 12px 36px rgba(10, 20, 60, 0.15);">
+                    </div>
+
+                    <!-- サイクル図解 -->
+                    <div class="lp-cycle-visual lp-fade">
+                        <div class="lp-cycle-step">
+                            <div class="lp-cycle-step-num">1</div>
+                            <h4>AIと壁打ちして<br>アイデアを出す</h4>
+                            <p>興味・得意・違和感・過去の経験から、複数のサービス案や発信テーマを生み出す</p>
+                        </div>
+                        <div class="lp-cycle-step">
+                            <div class="lp-cycle-step-num">2</div>
+                            <h4>すぐ形にする</h4>
+                            <p>文章・投稿案・企画書・簡易LP・試作品など、出せるものはすぐに形にする</p>
+                        </div>
+                        <div class="lp-cycle-step">
+                            <div class="lp-cycle-step-num">3</div>
+                            <h4>すぐ発信する</h4>
+                            <p>SNSを使って初期段階から外に出す。完成してからではなく、育てながら出す</p>
+                        </div>
+                        <div class="lp-cycle-step">
+                            <div class="lp-cycle-step-num">4</div>
+                            <h4>反応を見る</h4>
+                            <p>手応え・SNSの反応・問い合わせ・共感を見ながら、可能性を判断する</p>
+                        </div>
+                        <div class="lp-cycle-step">
+                            <div class="lp-cycle-step-num">5</div>
+                            <h4>反応のあるものを<br>深掘りする</h4>
+                            <p>反応のあったもの・熱量を持てるものに絞り、AIでさらに磨き込む</p>
+                        </div>
+                        <div class="lp-cycle-step">
+                            <div class="lp-cycle-step-num">6</div>
+                            <h4>また次を出す</h4>
+                            <p>1つに固執せず複数案を回し、4か月後に実際に立ち上がるものを生み出す</p>
+                        </div>
+                    </div>
+
+                    <!-- メッセージ -->
+                    <div class="lp-cycle-messages lp-fade">
+                        <div class="lp-cycle-msg">
+                            <div class="lp-cycle-msg-icon">📣</div>
+                            <p>SNSは1か月目から始める</p>
+                        </div>
+                        <div class="lp-cycle-msg">
+                            <div class="lp-cycle-msg-icon">🛠️</div>
+                            <p>形にするのも1か月目から</p>
+                        </div>
+                        <div class="lp-cycle-msg">
+                            <div class="lp-cycle-msg-icon">🚀</div>
+                            <p>「考えてから出す」より「出しながら育てる」</p>
+                        </div>
+                        <div class="lp-cycle-msg">
+                            <div class="lp-cycle-msg-icon">🔁</div>
+                            <p>この進め方自体がAI時代の事業立ち上げの訓練に</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 8. このプログラムの特徴 ===== -->
+        <section class="lp-section lp-section--gray">
+            <div class="lp-inner">
+                <span class="lp-section-label lp-fade">FEATURES</span>
+                <h2 class="lp-section-title lp-fade">このプログラムの特徴</h2>
+                <div class="lp-feature-grid">
+                    <div class="lp-card lp-feature-card lp-fade">
+                        <div class="lp-feature-icon">❤️</div>
+                        <h3>社員の「好き」「得意」「気になる問題」から始める</h3>
+                        <p>会社が決めたテーマではなく、社員一人ひとりの情熱や関心から事業の種を探します。だからこそ熱量が続き、本気のアウトプットが生まれます。</p>
+                    </div>
+                    <div class="lp-card lp-feature-card lp-fade">
+                        <div class="lp-feature-icon">🤖</div>
+                        <h3>AIを実践の相棒として使う</h3>
+                        <p>AIを「学ぶ」のではなく「使い倒す」プログラムです。壁打ち、調査、文章作成、試作、発信まで、AIと一緒に実践で進めます。</p>
+                    </div>
+                    <div class="lp-card lp-feature-card lp-fade">
+                        <div class="lp-feature-icon">💪</div>
+                        <h3>一人で前に進める力を育てる</h3>
+                        <p>チームに依存せず、自分で考え、自分で形にし、自分で発信できる力を養います。この力は本業でも大きな武器になります。</p>
+                    </div>
+                    <div class="lp-card lp-feature-card lp-fade">
+                        <div class="lp-feature-icon">🤝</div>
+                        <h3>必要があれば自然なコラボにつながる</h3>
+                        <p>最初は一人で始めますが、成果を共有する中で自然と「一緒にやりたい」という流れが生まれ、チームとしての相乗効果につながります。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 9. FAQ ===== -->
+        <section class="lp-section lp-section--white">
+            <div class="lp-inner">
+                <span class="lp-section-label lp-fade">FAQ</span>
+                <h2 class="lp-section-title lp-fade">導入時の不安への回答</h2>
+                <div class="lp-faq-list">
+                    <div class="lp-faq-item lp-fade">
+                        <div class="lp-faq-q" onclick="this.parentElement.classList.toggle('active')">
+                            <span class="lp-faq-q-badge">Q</span>
+                            <h3>本業に支障は出ませんか？</h3>
+                            <span class="lp-faq-toggle">+</span>
+                        </div>
+                        <div class="lp-faq-a">
+                            <p>本業を圧迫しない範囲で運用設計を行います。少人数のパイロット導入や、月数回のセッションなど、貴社の状況に合わせて柔軟に調整可能です。</p>
+                        </div>
+                    </div>
+                    <div class="lp-faq-item lp-fade">
+                        <div class="lp-faq-q" onclick="this.parentElement.classList.toggle('active')">
+                            <span class="lp-faq-q-badge">Q</span>
+                            <h3>本業と関係ないテーマに投資する意味はありますか？</h3>
+                            <span class="lp-faq-toggle">+</span>
+                        </div>
+                        <div class="lp-faq-a">
+                            <p>あります。情熱や原体験から始まるテーマは、既存事業の延長線上にはない発想を生みます。さらに、プログラムを通じて身につくAI活用力・発信力・仮説検証力は、本業にもそのまま還元されます。</p>
+                        </div>
+                    </div>
+                    <div class="lp-faq-item lp-fade">
+                        <div class="lp-faq-q" onclick="this.parentElement.classList.toggle('active')">
+                            <span class="lp-faq-q-badge">Q</span>
+                            <h3>失敗したらどうなりますか？</h3>
+                            <span class="lp-faq-toggle">+</span>
+                        </div>
+                        <div class="lp-faq-a">
+                            <p>失敗しても問題ありません。この取り組みの価値は、成功案件が出ることだけではありません。社員がAIを実際に使いこなす力、自分で考えてサービスを生み出す力、小さく形にして試す力が残ります。さらに、各AIの使い分けや発信の進め方など、今後も使える実践的な知識が社内に蓄積されます。たとえ一つの案が育たなくても、人と組織に確かな力が残ります。</p>
+                        </div>
+                    </div>
+                    <div class="lp-faq-item lp-fade">
+                        <div class="lp-faq-q" onclick="this.parentElement.classList.toggle('active')">
+                            <span class="lp-faq-q-badge">Q</span>
+                            <h3>いきなり全社導入は不安です。</h3>
+                            <span class="lp-faq-toggle">+</span>
+                        </div>
+                        <div class="lp-faq-a">
+                            <p>まずは少人数（2〜5名程度）から始めるのがおすすめです。小さく始めて手応えを確認してから、段階的に広げることができます。導入設計もサポートしますので、ご安心ください。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 中間CTA -->
+        <div class="lp-mid-cta lp-fade">
+            <p>少人数から小さく始められます。まずはお気軽にご相談ください。</p>
+            <a href="../index.html#contact" class="lp-btn lp-btn--primary">まずは相談する →</a>
+        </div>
+
+        <!-- ===== 10. こんな企業におすすめ ===== -->
+        <section class="lp-section lp-section--gray">
+            <div class="lp-inner">
+                <span class="lp-section-label lp-fade">RECOMMENDED FOR</span>
+                <h2 class="lp-section-title lp-fade">こんな企業におすすめです</h2>
+                <div class="lp-recommend-grid">
+                    <div class="lp-recommend-item lp-fade">
+                        <div class="lp-recommend-icon">🔥</div>
+                        <p>社員の主体性を<br>高めたい</p>
+                    </div>
+                    <div class="lp-recommend-item lp-fade">
+                        <div class="lp-recommend-icon">🤖</div>
+                        <p>AI活用を<br>現場に根付かせたい</p>
+                    </div>
+                    <div class="lp-recommend-item lp-fade">
+                        <div class="lp-recommend-icon">🌱</div>
+                        <p>新規事業の<br>種を増やしたい</p>
+                    </div>
+                    <div class="lp-recommend-item lp-fade">
+                        <div class="lp-recommend-icon">🎯</div>
+                        <p>人材育成と事業創出を<br>同時に進めたい</p>
+                    </div>
+                    <div class="lp-recommend-item lp-fade">
+                        <div class="lp-recommend-icon">🚀</div>
+                        <p>若手や中堅の<br>挑戦機会を増やしたい</p>
+                    </div>
+                    <div class="lp-recommend-item lp-fade">
+                        <div class="lp-recommend-icon">💎</div>
+                        <p>既存組織では才能を<br>活かしきれていないと感じる</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 11. 提供内容 ===== -->
+        <section class="lp-section lp-section--white">
+            <div class="lp-inner">
+                <span class="lp-section-label lp-fade">SERVICE DETAILS</span>
+                <h2 class="lp-section-title lp-fade">提供内容</h2>
+                <p class="lp-section-lead lp-fade">導入形態や参加人数に応じて、最適なプランをご提案いたします。</p>
+                <div class="lp-service-grid">
+                    <div class="lp-service-item lp-fade">
+                        <div class="lp-service-check">✓</div>
+                        <p>参加者向け伴走セッション</p>
+                    </div>
+                    <div class="lp-service-item lp-fade">
+                        <div class="lp-service-check">✓</div>
+                        <p>AI活用の実践支援</p>
+                    </div>
+                    <div class="lp-service-item lp-fade">
+                        <div class="lp-service-check">✓</div>
+                        <p>新規事業アイデアの壁打ち</p>
+                    </div>
+                    <div class="lp-service-item lp-fade">
+                        <div class="lp-service-check">✓</div>
+                        <p>市場調査・企画整理の支援</p>
+                    </div>
+                    <div class="lp-service-item lp-fade">
+                        <div class="lp-service-check">✓</div>
+                        <p>発信・検証の支援</p>
+                    </div>
+                    <div class="lp-service-item lp-fade">
+                        <div class="lp-service-check">✓</div>
+                        <p>小さなサービス化までの伴走</p>
+                    </div>
+                    <div class="lp-service-item lp-fade">
+                        <div class="lp-service-check">✓</div>
+                        <p>導入企業向けの進め方設計</p>
+                    </div>
+                    <div class="lp-service-item lp-fade">
+                        <div class="lp-service-check">✓</div>
+                        <p>必要なAI環境の整備支援</p>
+                    </div>
+                    <div class="lp-service-item lp-fade">
+                        <div class="lp-service-check">✓</div>
+                        <p>参加者ごとのAI選定支援</p>
+                    </div>
+                    <div class="lp-service-item lp-fade">
+                        <div class="lp-service-check">✓</div>
+                        <p>有料AIプラン活用の整理</p>
+                    </div>
+                    <div class="lp-service-item lp-fade">
+                        <div class="lp-service-check">✓</div>
+                        <p>音声入力など高速思考の環境整備</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 12. 強み紹介 ===== -->
+        <section class="lp-section lp-section--gray">
+            <div class="lp-inner">
+                <span class="lp-section-label lp-fade">OUR STRENGTH</span>
+                <h2 class="lp-section-title lp-fade">伴走者について</h2>
+                <div class="lp-strength lp-fade">
+                    <h3>アイデアで終わらせず、<br>AIで形にする伴走者です。</h3>
+                    <p>
+                        このプログラムの特徴は、単なるAI講師や一般的な研修担当ではなく、<br>
+                        新規事業のアイデア出しから、AIを使った試作、発信、形にするところまで伴走できることにあります。<br><br>
+                        社員の中にある、まだ言葉になっていないアイデアを引き出し、AIを使って前に進める。<br>
+                        それがこのプログラムで提供する価値です。
                     </p>
-                    <p style="margin-top: 0.3rem;">自己決定理論（SDT）が保証する：エンゲージメントとハイパフォーマンスを両立させる自律的組織の構築</p>
                 </div>
             </div>
         </section>
 
-        <!-- ===== Section 2: AI時代に起きる不可逆的な変化 ===== -->
-        <section class="cs-card fade-in-up">
-            <div class="cs-card-header">
-                <span class="cs-card-number">02</span>
-                <h2>AI時代に起きる<br>不可逆的な変化</h2>
-            </div>
-
-            <p class="cs-body">
-                ここに、AIの急速な進化が重なります。
-            </p>
-            <p class="cs-body">
-                今、AIを使えば一人で企画 → マーケティング → 設計 → 開発 →
-                リリースまで、サービスの全工程を回すことができます。以前なら5人、10人のチームが必要だったことが、<strong>一人＋AIでできる時代</strong>になった。
-            </p>
-            <p class="cs-body">
-                これが意味することは明確です。
-            </p>
-
-            <div class="fl-quote">
-                究極的には「会社」という箱は要らなくなる。全員がフリーランスとして、プロジェクト単位で協力し合う形に移行していく。これは予測ではなく、すでに始まっている現実です。
-            </div>
-
-            <p class="cs-body">
-                問題は、<strong>「いつ、どうやって、そこへの橋を架けるか」</strong>。
-            </p>
-
-            <!-- Evidence: Freelance population -->
-            <div class="fl-evidence">
-                <div class="fl-evidence-title">&#x1F4CA; データで見る世界的潮流</div>
-                <p class="fl-evidence-body">
-                    働き方の多様化は世界的な潮流です。特にアメリカでは、2022年時点で労働人口の約36%にあたる約7,040万人がフリーランスとして活動しています。
-                    日本でもその動きは加速しており、2023年7月の総務省の調査では、本業のフリーランス人口が209万人に達しました。
-                    副業者を含めた広義のフリーランス人口は2021年時点で1,670万人（労働力人口の約24%）との調査もあり、企業に属しながら個人のスキルを活かす働き方は、もはや特別な選択肢ではありません。
-                </p>
-                <div class="fl-citation">
-                    <div class="fl-citation-label">References</div>
-                    <p>統計 Today No.197 &mdash; 基幹統計として初めて把握したフリーランスの働き方 〜令和4年就業構造基本調査の結果から（総務省統計局）</p>
-                    <p style="margin-top: 0.3rem;">日本のフリーランス人口はどれくらいの割合？最新のデータを一挙公開（ラボル）</p>
+        <!-- ===== 12.5 関連コンテンツ（目立つカードバナー） ===== -->
+        <section class="lp-section lp-section--white" style="padding-bottom:80px;">
+            <div class="lp-inner">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px;">
+                    <!-- 概要ページカード -->
+                    <a href="ai-intrapreneur-concept.html" class="lp-fade" style="text-decoration:none;display:block;background:linear-gradient(135deg,rgba(37,99,235,0.06) 0%,rgba(124,58,237,0.06) 100%);border:2px solid rgba(37,99,235,0.15);border-radius:20px;padding:36px 32px;transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s;position:relative;overflow:hidden;">
+                        <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;background:linear-gradient(135deg,rgba(37,99,235,0.08),rgba(124,58,237,0.08));border-radius:50%;"></div>
+                        <div style="font-size:2rem;margin-bottom:12px;">📖</div>
+                        <div style="font-size:1.15rem;font-weight:800;color:var(--lp-text);margin-bottom:10px;line-height:1.5;">プログラムの背景にある<br>思想・概要を読む</div>
+                        <p style="font-size:0.9rem;color:var(--lp-text-sub);line-height:1.7;margin-bottom:16px;">AI時代の組織構造、なぜ社員の「好き」が会社の武器になるのか。<br>プログラムの思想的背景を詳しく解説しています。</p>
+                        <span style="display:inline-flex;align-items:center;gap:6px;color:var(--lp-accent);font-weight:700;font-size:0.95rem;">概要を読む <span style="transition:transform 0.3s;">→</span></span>
+                    </a>
+                    <!-- 導入事例カード -->
+                    <a href="case-study-notebooklm.html" class="lp-fade" style="text-decoration:none;display:block;background:linear-gradient(135deg,rgba(16,185,129,0.06) 0%,rgba(37,99,235,0.06) 100%);border:2px solid rgba(16,185,129,0.15);border-radius:20px;padding:36px 32px;transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s;position:relative;overflow:hidden;">
+                        <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(37,99,235,0.08));border-radius:50%;"></div>
+                        <div style="font-size:2rem;margin-bottom:12px;">📋</div>
+                        <div style="font-size:1.15rem;font-weight:800;color:var(--lp-text);margin-bottom:10px;line-height:1.5;">事業へのAI導入事例<br>を見る</div>
+                        <p style="font-size:0.9rem;color:var(--lp-text-sub);line-height:1.7;margin-bottom:16px;">AIエージェントとセキュア環境を組み合わせた、<br>ハルシネーション抑制リサーチシステムの構築事例。</p>
+                        <span style="display:inline-flex;align-items:center;gap:6px;color:#10b981;font-weight:700;font-size:0.95rem;">事例を見る <span style="transition:transform 0.3s;">→</span></span>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- ===== Section 3: 「社内フリーランス制度」という解 ===== -->
-        <section class="cs-card fade-in-up">
-            <div class="cs-card-header">
-                <span class="cs-card-number">03</span>
-                <h2>「社内フリーランス制度」<br>という解</h2>
-            </div>
-
-            <p class="cs-body">
-                僕はこの移行を実現するための仕組みとして、<strong>「社内フリーランス制度」</strong>を設計しています。
-            </p>
-            <p class="cs-body">コンセプトはシンプルです。</p>
-
-            <div class="fl-quote">
-                就業時間の20%（週1日）を、社員が「社内フリーランス」として自由に使う。会社はツールやAI環境を支援し、そこから生まれた収益を会社と社員でシェアする。
-            </div>
-
-            <p class="cs-body">
-                ただし、ここに最も重要なルールがあります。
-            </p>
-
-            <div class="cs-wall-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 1.5rem;">
-                <div class="cs-wall-item" style="border-color: rgba(138, 43, 226, 0.3);">
-                    <div class="cs-wall-icon">🚫</div>
-                    <h3>ミーティング禁止</h3>
-                    <p>この時間は上司もいない、チームもない。一人のフリーランスとしてAIを相棒に自律的に動く。</p>
-                </div>
-                <div class="cs-wall-item" style="border-color: rgba(138, 43, 226, 0.3);">
-                    <div class="cs-wall-icon">🚫</div>
-                    <h3>指示禁止</h3>
-                    <p>カフェ巡りが好きならカフェに行く。プログラミングが好きならコードを書く。完全に個人のパッション（情熱）に従う。</p>
+        <!-- ===== 13. 最後のCTA ===== -->
+        <section class="lp-final-cta">
+            <div class="lp-inner lp-fade">
+                <h2>最初から大きく始める必要はありません。<br>少人数から、小さく始められます。</h2>
+                <ul class="lp-final-cta-list">
+                    <li>✔ 社員の主体性を高めたい</li>
+                    <li>✔ AI活用を現場に浸透させたい</li>
+                    <li>✔ 新規事業の種を増やしたい</li>
+                    <li>✔ 既存組織だけでは生まれない発想を育てたい</li>
+                </ul>
+                <p>まずはお気軽にご相談ください。<br>貴社の状況に合わせた導入方法をご提案いたします。</p>
+                <div class="lp-cta-group">
+                    <a href="../index.html#contact" class="lp-btn lp-btn--white">導入について相談する →</a>
                 </div>
             </div>
-
-            <p class="cs-body">
-                なぜこのルールが必要か。
-            </p>
-            <p class="cs-body">
-                この制度にトップダウン型のマネジメントを持ち込んだ瞬間、「ただのやらされ仕事」に成り下がり、エコシステムは死にます。従来の組織構造の再生産になってしまう。だから<strong>「指示しない・会議しない」を徹底する。</strong>
-            </p>
-        </section>
-
-        <!-- ===== Section 4: まずは全員が「一人で全部やる」からスタート ===== -->
-        <section class="cs-card fade-in-up">
-            <div class="cs-card-header">
-                <span class="cs-card-number">04</span>
-                <h2>まずは全員が<br>「一人で全部やる」からスタート</h2>
-            </div>
-
-            <p class="cs-body">
-                ここがこの制度の核心です。
-            </p>
-            <p class="cs-body">
-                最初は、全員がAIを使って一人で全工程をやります。企画も、集客も、設計も、開発も。AIがあれば、一人でサービスの立ち上げができる。完璧じゃなくていい。まずは自分の興味があることを、自分の手で形にしてみる。
-            </p>
-            <p class="cs-body">
-                そして、<strong>金曜日の夕方。</strong>
-            </p>
-            <p class="cs-body">
-                ここで初めて、メンバー全員が集まる。ただし「報告会議」ではない。各自がその週に取り組んだこと、AIで作った成果物、発見したニーズなどを<strong>「個人のポートフォリオ」として共有する場</strong>です。
-            </p>
-            <p class="cs-body">
-                この共有を重ねていくうちに、あることが見えてきます。
-            </p>
-
-            <div class="cs-wall-grid" style="grid-template-columns: repeat(2, 1fr);">
-                <div class="cs-wall-item" style="border-color: rgba(0, 212, 255, 0.2);">
-                    <div class="cs-wall-icon">💡</div>
-                    <h3>アイデアを出すのが<br><small>得意だ</small></h3>
-                </div>
-                <div class="cs-wall-item" style="border-color: rgba(0, 212, 255, 0.2);">
-                    <div class="cs-wall-icon">📣</div>
-                    <h3>発信して人を<br><small>巻き込むのが好きだ</small></h3>
-                </div>
-                <div class="cs-wall-item" style="border-color: rgba(0, 212, 255, 0.2);">
-                    <div class="cs-wall-icon">📋</div>
-                    <h3>計画を立てて<br><small>整理するのが向いている</small></h3>
-                </div>
-                <div class="cs-wall-item" style="border-color: rgba(0, 212, 255, 0.2);">
-                    <div class="cs-wall-icon">🛠️</div>
-                    <h3>手を動かして<br><small>形にするのが一番楽しい</small></h3>
-                </div>
-            </div>
-
-            <p class="cs-body" style="text-align: center; margin-top: 1.5rem;">
-                自分の特性、自分の役割が、<strong>実践を通じて明確になっていく。</strong>
-            </p>
-        </section>
-
-        <!-- ===== Section 5: 4つの役割と収益配分 ===== -->
-        <section class="cs-card fade-in-up">
-            <div class="cs-card-header">
-                <span class="cs-card-number">05</span>
-                <h2>4つの役割と収益配分</h2>
-            </div>
-
-            <p class="cs-body">
-                この制度では、プロジェクトに関わる人の役割を4つに定義しています。それぞれの人には特性があり、自然とどれかの役割に惹かれていく。もちろん複数の役割を兼ねることもある。
-            </p>
-
-            <div class="fl-role-grid">
-                <!-- ① プロデューサー -->
-                <div class="fl-role-card" style="border-left: 4px solid #e74c3c;">
-                    <div class="fl-role-name" style="color: #e74c3c;">① プロデューサー（コンセプトメイカー）<span
-                            style="opacity: 0.6; font-size: 0.85em; margin-left: 0.5rem;">配分目安：1.5</span></div>
-                    <p class="fl-role-desc">「こんな課題を解決したい」という原案を作り、プロジェクトの旗を立てる人。</p>
-                    <span class="fl-role-condition"
-                        style="background: rgba(231, 76, 60, 0.15); color: #e74c3c;">【権利確定条件】企画書・要件定義の作成と初期メンバー募集の完了</span>
-                </div>
-
-                <!-- ② グロースマーケター -->
-                <div class="fl-role-card" style="border-left: 4px solid #f39c12;">
-                    <div class="fl-role-name" style="color: #f39c12;">② グロースマーケター（需要創出＆拡声器）<span
-                            style="opacity: 0.6; font-size: 0.85em; margin-left: 0.5rem;">配分目安：3.0</span></div>
-                    <p class="fl-role-desc">影も形もない段階からストーリーを発信してニーズを証明し、製品完成後も継続的に市場へ届け、熱狂を拡大し続ける人。</p>
-                    <span class="fl-role-condition"
-                        style="background: rgba(243, 156, 18, 0.15); color: #f39c12;">【権利確定条件】指定の事前登録者数の達成、リリース後の拡散指標クリア</span>
-                </div>
-
-                <!-- ③ プロジェクト・アーキテクト -->
-                <div class="fl-role-card" style="border-left: 4px solid #2ecc71;">
-                    <div class="fl-role-name" style="color: #2ecc71;">③ プロジェクト・アーキテクト（自律型マネージャー）<span
-                            style="opacity: 0.6; font-size: 0.85em; margin-left: 0.5rem;">配分目安：1.5</span></div>
-                    <p class="fl-role-desc">証明されたニーズに対し、実現までの最短ルートを設計する人。時間・予算・利益配分を計算し、タスクを最適にアサインする。</p>
-                    <span class="fl-role-condition"
-                        style="background: rgba(46, 204, 113, 0.15); color: #2ecc71;">【権利確定条件】実行計画・予算配分表の作成、タスクアサインの完了</span>
-                </div>
-
-                <!-- ④ クリエイター -->
-                <div class="fl-role-card" style="border-left: 4px solid #3498db;">
-                    <div class="fl-role-name" style="color: #3498db;">④ クリエイター（エグゼキューション）<span
-                            style="opacity: 0.6; font-size: 0.85em; margin-left: 0.5rem;">配分目安：4.0</span></div>
-                    <p class="fl-role-desc">すべての準備とニーズが整った「最後」に登場し、AIを駆使して最速でプロダクトを形にする実行部隊。</p>
-                    <span class="fl-role-condition"
-                        style="background: rgba(52, 152, 219, 0.15); color: #3498db;">【権利確定条件】指定仕様を満たすプロダクトの納品</span>
-                </div>
-            </div>
-
-            <p class="cs-body">
-                配分目安の数字は、社内プロジェクトが立ち上がったときの成果報酬の割合です。<strong>「需要を作る人」（②）と「実行する人」（④）に最も高い価値を置いています。</strong>AIを使って最速で実行できる時代において、この2つの能力が最も希少だからです。
-            </p>
-            <p class="cs-body">
-                重要なのは、最初から「自分は②だ」と決める必要はないということ。まず一人で全部やってみる。金曜日に共有する。それを繰り返すうちに、自然と自分の特性が見えてくる。そこから役割が分化していく。
-            </p>
-        </section>
-
-        <!-- ===== Section 6: 自然発生するコラボレーション ===== -->
-        <section class="cs-card fade-in-up">
-            <div class="cs-card-header">
-                <span class="cs-card-number">06</span>
-                <h2>自然発生する<br>コラボレーション</h2>
-            </div>
-
-            <p class="cs-body">
-                金曜日の共有を続けていくと、こんなことが起きます。
-            </p>
-
-            <div class="fl-quote"
-                style="border-left-color: #2ecc71; background: linear-gradient(90deg, rgba(46, 204, 113, 0.08) 0%, transparent 100%);">
-                「その課題、僕がSNSで発信して反応を見てみましょうか？」
-            </div>
-            <div class="fl-quote"
-                style="border-left-color: #3498db; background: linear-gradient(90deg, rgba(52, 152, 219, 0.08) 0%, transparent 100%);">
-                「そのアプリ、私なら今のスキルセットで1週間で実装できますよ」
-            </div>
-            <div class="fl-quote"
-                style="border-left-color: #f39c12; background: linear-gradient(90deg, rgba(243, 156, 18, 0.08) 0%, transparent 100%);">
-                「面白い。その2つのプロジェクト、組み合わせたらもっと大きなサービスになりませんか？」
-            </div>
-
-            <p class="cs-body">
-                誰かに指示されたのではなく、お互いのポートフォリオを見て、<strong>自発的に手を挙げる。これが本当の相乗効果です。</strong>
-            </p>
-            <p class="cs-body">
-                そして、無理にコラボレーションを合わせないことも大切。自然消滅するプロジェクトは手放していい。モチベーションが落ちたらやめていい。その代わり、実際にプロダクトを納品した、目標を達成した、という成果が出た時点で初めてレベニューシェアの権利が確定する。だから<strong>会社側のリスクもコントロールできる。</strong>
-            </p>
-        </section>
-
-        <!-- ===== Section 7: すでに世界で「パーツ」は実証されている ===== -->
-        <section class="cs-card fade-in-up">
-            <div class="cs-card-header">
-                <span class="cs-card-number">07</span>
-                <h2>すでに世界で<br>「パーツ」は実証されている</h2>
-            </div>
-
-            <p class="cs-body">
-                この制度は完全に新しい概念ではありません。構成要素はすでに世界中で実証されています。
-            </p>
-
-            <ul class="fl-proof-list">
-                <li><strong>Googleの20%ルール：</strong>就業時間の20%を自由なプロジェクトに使い、Gmail、Google News、AdSenseなどが生まれた</li>
-                <li><strong>3Mの15%ルール：</strong>Post-it Notesがここから誕生</li>
-                <li><strong>AdobeのKickbox：</strong>社員にツールと資金を渡してアイデア開発を支援</li>
-                <li><strong>日本企業の実績：</strong>KDDI、リコー、丸紅などが社内副業制度を導入し成果を出している</li>
-                <li><strong>Slicing Pieモデル：</strong>貢献の種類ごとにウェイトを付けてリアルタイムでシェアを計算する手法がスタートアップで広く採用</li>
-            </ul>
-
-            <p class="cs-body">
-                しかし、これらには共通の限界がありました。「個人が完全に自律してサービスを立ち上げる」という設計にはなっていなかった。AIが登場する前は、一人で全工程を回すことが物理的に不可能だったからです。
-            </p>
-
-            <div class="fl-quote">
-                今、AIがその壁を壊した。<br>
-                だからこそ、「20%ルール＋レベニューシェア＋完全自律＋役割分化」を統合した新しい制度が、今このタイミングで必要なのです。
-            </div>
-
-            <!-- Evidence: KDDI case study -->
-            <div class="fl-evidence">
-                <div class="fl-evidence-title">&#x1F4CA; 日本企業の実証データ</div>
-                <p class="fl-evidence-body">
-                    海外のGoogle社がGmailなどを生み出した『20%ルール』は有名ですが、日本国内でも同様の取り組みが広がっています。例えばKDDIでは、2020年に『社内副業制度』を導入し、社員が就業時間の約2割を使って他部署の業務を経験できるようにしました。
-                    この制度は年々利用者が増加し、2023年度には419名が参加するなど、組織の壁を越えたイノベーション創出や人材育成に繋がっています。
-                    このように、社内リソースを流動化させ、社員の自律的な挑戦を促すことは、企業の新たな成長エンジンとなり得るのです。
-                </p>
-                <div class="fl-citation">
-                    <div class="fl-citation-label">References</div>
-                    <p>就業時間の2割で「社内」副業。自分のやりたい仕事を自らつかむ（KDDI「採用情報」）</p>
-                    <p style="margin-top: 0.3rem;">イノベーション創出を加速する「社内副業制度」を開始（2020年 KDDI株式会社）</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== Section 8: CTA ===== -->
-        <section class="fl-cta fade-in-up">
-            <span class="fl-badge" style="margin-bottom: 1.5rem;">🤝 モデル導入企業募集</span>
-            <h2>一緒に成功事例を<br>作りませんか</h2>
-            <p>
-                この「社内フリーランス制度」の設計と導入支援を、<br>
-                <strong style="color: #00d4ff;">モデル企業2〜3社に無料</strong>で行います。
-            </p>
-            <p style="font-size: 0.95rem; max-width: 600px; margin: 0 auto 2rem;">
-                特にIT企業の方はAIリテラシーが高く、この制度との相性が抜群ですが、業種は問いません。<br>
-                「社員の才能を今の組織構造では活かしきれていない」と感じている経営者の方なら、きっと共感していただけると思います。
-            </p>
-            <a href="../index.html#contact" class="btn btn-highlight btn-large">ご連絡はこちら</a>
-            <p style="margin-top: 1.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.5);">IMARCA</p>
         </section>
 
     </main>
@@ -630,6 +1300,20 @@
 
     <script src="../nav.js"></script>
     <script src="../script.js"></script>
+    <script>
+        /* LP用スクロールアニメーション */
+        (function () {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('lp-visible');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+            document.querySelectorAll('.lp-fade').forEach(el => observer.observe(el));
+        })();
+    </script>
 </body>
 
 </html>

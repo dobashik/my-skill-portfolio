@@ -17,7 +17,7 @@
             <div class="logo"><a href="${prefix}index.html">IMARCA</a></div>
             <ul>
                 <li><a href="${prefix}ai-services.html" class="nav-highlight">プロジェクト</a></li>
-                <li><a href="${prefix}consulting/ai-consulting.html" class="nav-highlight">AIコンサルティング</a></li>
+                <li><a href="${prefix}consulting/freelance-system.html" class="nav-highlight">新規事業×AI</a></li>
                 <li><a href="${prefix}index.html#about">About</a></li>
                 <li><a href="${prefix}portfolio.html">ポートフォリオ</a></li>
                 <li><a href="${prefix}index.html#contact">Contact</a></li>
