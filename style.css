@@ -104,7 +104,7 @@ nav a:hover {
 
 /* Hero Section */
 #hero {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -112,6 +112,8 @@ nav a:hover {
     position: relative;
     text-align: center;
     overflow: hidden;
+    padding-top: 100px;
+    padding-bottom: 40px;
 }
 
 .hero-bg {
