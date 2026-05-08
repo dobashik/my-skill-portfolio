@@ -222,21 +222,25 @@ section {
 }
 
 .section-title {
-    font-size: 3rem;
-    margin-bottom: 60px;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    line-height: 1.3;
+    margin: 0 auto 60px;
     text-align: center;
     position: relative;
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    padding: 0 8px 14px;
+    word-break: keep-all;
+    overflow-wrap: break-word;
 }
 
 .section-title::after {
     content: '';
     position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 100%;
+    bottom: 0;
+    left: 8px;
+    right: 8px;
     height: 4px;
     background: var(--accent-color);
     transform: scaleX(0);
@@ -1099,5 +1103,433 @@ footer {
     to {
         transform: scale(1);
         opacity: 1;
+    }
+}
+
+/* =====================================================
+   IMAR Refresh — Hero / Entry / Category Sections
+   ===================================================== */
+
+/* Hero Refresh */
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 920px;
+    padding: 0 24px;
+}
+
+.hero-subtitle {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-family: var(--font-jp);
+    margin: 0 auto 18px;
+    max-width: 720px;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+}
+
+.hero-lead {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.78);
+    font-family: var(--font-jp);
+    line-height: 2;
+    margin: 30px auto 30px;
+    max-width: 640px;
+    text-align: center;
+}
+
+.hero-cta-group {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.hero-cta-group .btn-large {
+    font-size: 1rem;
+    padding: 14px 32px;
+}
+
+.hero-trust {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px 28px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.55);
+    font-family: var(--font-jp);
+    letter-spacing: 0.02em;
+}
+
+.hero-trust span {
+    white-space: nowrap;
+}
+
+/* 3つの入口 — Entry Section */
+.entry-section {
+    background: linear-gradient(180deg, rgba(0, 212, 255, 0.04) 0%, transparent 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.entry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+}
+
+.entry-card {
+    display: block;
+    padding: 36px 28px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.entry-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    transition: left 0.6s ease;
+}
+
+.entry-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0, 212, 255, 0.4);
+    background: rgba(0, 212, 255, 0.06);
+    box-shadow: 0 18px 50px rgba(0, 212, 255, 0.12);
+}
+
+.entry-card:hover::before {
+    left: 100%;
+}
+
+.entry-icon {
+    font-size: 2.6rem;
+    margin-bottom: 14px;
+}
+
+.entry-card h3 {
+    font-size: 1.15rem;
+    color: #fff;
+    font-family: var(--font-jp);
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.entry-card p {
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.75;
+    margin-bottom: 18px;
+}
+
+.entry-arrow {
+    display: inline-block;
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: var(--font-jp);
+    letter-spacing: 0.04em;
+    transition: transform 0.3s ease;
+}
+
+.entry-card:hover .entry-arrow {
+    transform: translateX(6px);
+}
+
+/* Category Section Header */
+.category-section {
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+.category-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.category-badge {
+    display: inline-block;
+    padding: 6px 18px;
+    border-radius: 50px;
+    background: rgba(0, 212, 255, 0.12);
+    border: 1px solid rgba(0, 212, 255, 0.35);
+    color: var(--accent-color);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+    font-family: var(--font-main);
+}
+
+.category-badge.tools-badge {
+    background: rgba(138, 43, 226, 0.14);
+    border-color: rgba(138, 43, 226, 0.4);
+    color: #b487ff;
+}
+
+.category-badge.dev-badge {
+    background: rgba(255, 107, 107, 0.12);
+    border-color: rgba(255, 107, 107, 0.4);
+    color: #ff8e8e;
+}
+
+.category-header .section-title {
+    margin-bottom: 24px;
+}
+
+.category-lead {
+    max-width: 720px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.78);
+    font-family: var(--font-jp);
+    line-height: 2;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Tools section subtle background */
+.tools-bg {
+    background: linear-gradient(180deg, transparent 0%, rgba(138, 43, 226, 0.05) 50%, transparent 100%);
+}
+
+/* Subsection title */
+.subsection-title {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-family: var(--font-jp);
+    font-weight: 700;
+    margin: 30px 0 30px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 14px;
+}
+
+.subsection-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background: rgba(0, 212, 255, 0.4);
+    border-radius: 2px;
+}
+
+/* Featured Card with Ribbon */
+.work-card.featured-card {
+    border: 1px solid rgba(0, 212, 255, 0.4);
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(138, 43, 226, 0.05) 100%);
+    box-shadow: 0 12px 40px rgba(0, 212, 255, 0.1);
+    position: relative;
+    overflow: visible;
+}
+
+.featured-ribbon {
+    position: absolute;
+    top: -12px;
+    right: 24px;
+    padding: 6px 16px;
+    background: linear-gradient(135deg, #00d4ff 0%, #8a2be2 100%);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 50px;
+    letter-spacing: 0.08em;
+    box-shadow: 0 6px 20px rgba(0, 212, 255, 0.4);
+    font-family: var(--font-main);
+    z-index: 2;
+}
+
+/* Consulting Section (downgraded styling) */
+.consulting-section {
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Contact Form */
+.contact-wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.contact-form {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 50px;
+    backdrop-filter: blur(10px);
+}
+
+.form-group {
+    margin-bottom: 22px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-family: var(--font-jp);
+    font-weight: 500;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+}
+
+.form-group .required {
+    color: #ff6b6b;
+    font-weight: 700;
+    margin-left: 4px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    color: #fff;
+    font-family: var(--font-jp);
+    font-size: 1rem;
+    line-height: 1.6;
+    transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.15);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2300d4ff' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 44px;
+}
+
+.form-group select option {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.contact-form button[type="submit"] {
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    font-family: var(--font-main);
+    margin-top: 6px;
+}
+
+.contact-direct {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.12);
+}
+
+.contact-direct-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 18px;
+    font-family: var(--font-jp);
+}
+
+.contact-email-display {
+    margin-top: 18px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    font-family: var(--font-main);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-subtitle {
+        font-size: 0.95rem;
+        padding: 0 20px;
+    }
+
+    .hero-lead {
+        font-size: 0.95rem;
+        padding: 0 16px;
+    }
+
+    .hero-cta-group {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0 24px;
+    }
+
+    .hero-cta-group .btn-large {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-trust {
+        flex-direction: column;
+        gap: 8px;
+        font-size: 0.78rem;
+    }
+
+    .entry-card {
+        padding: 28px 22px;
+    }
+
+    .entry-icon {
+        font-size: 2.2rem;
+    }
+
+    .category-section {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+
+    .category-lead {
+        font-size: 0.92rem;
+        padding: 0 12px;
+    }
+
+    .featured-ribbon {
+        right: 16px;
+        top: -10px;
+        font-size: 0.68rem;
+        padding: 5px 12px;
+    }
+
+    .contact-form {
+        padding: 28px 20px;
+    }
+
+    .subsection-title {
+        font-size: 1.2rem;
     }
 }

@@ -14,12 +14,12 @@
     const header = document.createElement('header');
     header.innerHTML = `
         <nav>
-            <div class="logo"><a href="${prefix}index.html">IMARCA</a></div>
+            <div class="logo"><a href="${prefix}index.html">IMAR</a></div>
             <ul>
-                <li><a href="${prefix}ai-services.html" class="nav-highlight">プロジェクト</a></li>
-                <li><a href="${prefix}consulting/freelance-system.html" class="nav-highlight">新規事業×AI</a></li>
+                <li><a href="${prefix}index.html#writing" class="nav-highlight">文章作成</a></li>
+                <li><a href="${prefix}index.html#tools" class="nav-highlight">促進ツール</a></li>
+                <li><a href="${prefix}index.html#development">開発</a></li>
                 <li><a href="${prefix}about.html">About</a></li>
-                <li><a href="${prefix}portfolio.html">ポートフォリオ</a></li>
                 <li><a href="${prefix}index.html#contact">Contact</a></li>
             </ul>
         </nav>
