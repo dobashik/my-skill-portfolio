@@ -66,6 +66,90 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =====================================================
+    // Contact Form (AJAX submission via Formspree)
+    // =====================================================
+    const contactForm = document.getElementById('contact-form');
+    const contactSuccess = document.getElementById('contact-success-message');
+    const contactError = document.getElementById('contact-error-message');
+    const contactSubmitBtn = document.getElementById('contact-submit-btn');
+    const contactResetBtn = document.getElementById('contact-reset-btn');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Reset error display
+            if (contactError) {
+                contactError.textContent = '';
+                contactError.classList.remove('visible');
+            }
+
+            // Disable button during submission
+            const originalBtnText = contactSubmitBtn.textContent;
+            contactSubmitBtn.disabled = true;
+            contactSubmitBtn.textContent = '送信中...';
+
+            try {
+                const formData = new FormData(contactForm);
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Show success message, hide form
+                    contactForm.style.display = 'none';
+                    if (contactSuccess) {
+                        contactSuccess.classList.add('visible');
+                        contactSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    contactForm.reset();
+                } else {
+                    // Try to extract Formspree error
+                    let errorMsg = '送信に失敗しました。時間をおいて再度お試しください。';
+                    try {
+                        const data = await response.json();
+                        if (data && data.errors && data.errors.length > 0) {
+                            errorMsg = data.errors.map(err => err.message).join(' / ');
+                        }
+                    } catch (_) { /* ignore JSON parse error */ }
+
+                    if (contactError) {
+                        contactError.textContent = '⚠ ' + errorMsg;
+                        contactError.classList.add('visible');
+                    }
+                }
+            } catch (error) {
+                if (contactError) {
+                    contactError.textContent = '⚠ ネットワークエラーが発生しました。接続を確認して再度お試しください。';
+                    contactError.classList.add('visible');
+                }
+            } finally {
+                contactSubmitBtn.disabled = false;
+                contactSubmitBtn.textContent = originalBtnText;
+            }
+        });
+    }
+
+    if (contactResetBtn) {
+        contactResetBtn.addEventListener('click', () => {
+            if (contactSuccess) contactSuccess.classList.remove('visible');
+            if (contactForm) {
+                contactForm.style.display = '';
+                contactForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // Focus first input for convenience
+                const firstInput = contactForm.querySelector('input, textarea');
+                if (firstInput) {
+                    setTimeout(() => firstInput.focus(), 400);
+                }
+            }
+        });
+    }
+
+    // =====================================================
     // Image Modal (Lightbox) Functionality
     // =====================================================
     // Create modal HTML dynamically

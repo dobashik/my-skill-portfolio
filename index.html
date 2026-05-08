@@ -588,9 +588,8 @@
             </p>
 
             <div class="contact-wrapper">
-                <!-- Formspree Form -->
-                <!-- ⚠️ Formspreeの設定後、action属性のYOUR_FORM_IDを実際のIDに置き換えてください -->
-                <form action="https://formspree.io/f/maqvdgwk" method="POST" class="contact-form">
+                <!-- Formspree Form (AJAX submission - displays message on this page) -->
+                <form id="contact-form" action="https://formspree.io/f/maqvdgwk" method="POST" class="contact-form">
                     <div class="form-group">
                         <label for="name">お名前 <span class="required">*</span></label>
                         <input type="text" name="name" id="name" required>
@@ -615,8 +614,20 @@
                         <textarea name="message" id="message" rows="6" required
                             placeholder="お問い合わせ内容をご記入ください"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-large btn-highlight">送信する</button>
+                    <button type="submit" class="btn btn-large btn-highlight" id="contact-submit-btn">送信する</button>
+                    <p class="form-error-message" id="contact-error-message" role="alert"></p>
                 </form>
+
+                <!-- Success Message (shown after successful submission) -->
+                <div class="form-success-message" id="contact-success-message" role="status" aria-live="polite">
+                    <div class="form-success-icon">✓</div>
+                    <h3>メッセージを送信しました</h3>
+                    <p>
+                        お問い合わせいただきありがとうございます。<br>
+                        内容を確認のうえ、2〜3営業日以内にメールにてご返信いたします。
+                    </p>
+                    <button type="button" class="btn btn-secondary" id="contact-reset-btn">別のメッセージを送る</button>
+                </div>
 
                 <!-- Email & X Links -->
                 <div class="contact-direct">
